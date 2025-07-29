@@ -1,0 +1,70 @@
+{
+  "data_sources": {
+    "free_apis": {
+      "binance": {
+        "enabled": true,
+        "priority": "high"
+      },
+      "coinbase": {
+        "enabled": true,
+        "priority": "medium"
+      },
+      "coingecko": {
+        "enabled": true,
+        "priority": "high"
+      },
+      "fear_greed": {
+        "enabled": true,
+        "priority": "medium"
+      }
+    },
+    "paid_apis": {
+      "coinglass": {
+        "enabled": false,
+        "key": null,
+        "cost_per_call": 0.01
+      },
+      "taapi": {
+        "enabled": false,
+        "key": null,
+        "cost_per_call": 0.005
+      }
+    }
+  },
+  "data_delivery": {
+    "http_api": {
+      "enabled": true,
+      "port": 8080
+    },
+    "file_output": {
+      "enabled": true,
+      "formats": [
+        "json",
+        "csv"
+      ]
+    },
+    "webhooks": {
+      "enabled": false,
+      "endpoints": []
+    },
+    "database": {
+      "enabled": false,
+      "connection": null
+    }
+  },
+  "clients": {
+    "trustlogiq": {
+      "enabled": true,
+      "type": "website"
+    },
+    "correlation_system": {
+      "enabled": true,
+      "type": "analysis"
+    }
+  },
+  "update_intervals": {
+    "fast_data": 60,
+    "slow_data": 300,
+    "very_slow": 3600
+  }
+}

@@ -1,0 +1,535 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>🐙 AgentCeli Dashboard</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+            color: #333;
+        }
+        
+        .header {
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(10px);
+            padding: 1rem 2rem;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.2);
+        }
+        
+        .header h1 {
+            color: white;
+            font-size: 2rem;
+            font-weight: 700;
+        }
+        
+        .nav {
+            display: flex;
+            gap: 1rem;
+            margin-top: 1rem;
+        }
+        
+        .nav a {
+            color: white;
+            text-decoration: none;
+            padding: 0.5rem 1rem;
+            border-radius: 6px;
+            background: rgba(255, 255, 255, 0.1);
+            transition: all 0.3s ease;
+        }
+        
+        .nav a:hover, .nav a.active {
+            background: rgba(255, 255, 255, 0.2);
+            transform: translateY(-1px);
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 2rem;
+        }
+        
+        .grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 1.5rem;
+            margin-bottom: 2rem;
+        }
+        
+        .card {
+            background: rgba(255, 255, 255, 0.95);
+            border-radius: 12px;
+            padding: 1.5rem;
+            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+        }
+        
+        .card h3 {
+            margin-bottom: 1rem;
+            color: #333;
+            font-size: 1.2rem;
+            font-weight: 600;
+        }
+        
+        .status-indicator {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            padding: 0.25rem 0.75rem;
+            border-radius: 20px;
+            font-size: 0.9rem;
+            font-weight: 500;
+        }
+        
+        .status-online {
+            background: #d4edda;
+            color: #155724;
+        }
+        
+        .status-offline {
+            background: #f8d7da;
+            color: #721c24;
+        }
+        
+        .status-dot {
+            width: 8px;
+            height: 8px;
+            border-radius: 50%;
+        }
+        
+        .online { background: #28a745; }
+        .offline { background: #dc3545; }
+        
+        .price-card {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 1rem;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            border-radius: 8px;
+            color: white;
+            margin-bottom: 0.5rem;
+        }
+        
+        .price-symbol {
+            font-weight: 700;
+            font-size: 1.1rem;
+        }
+        
+        .price-value {
+            font-size: 1.2rem;
+            font-weight: 600;
+        }
+        
+        .price-change {
+            font-size: 0.9rem;
+            padding: 0.2rem 0.5rem;
+            border-radius: 4px;
+            background: rgba(255, 255, 255, 0.2);
+        }
+        
+        .positive { color: #28a745; }
+        .negative { color: #dc3545; }
+        
+        .control-buttons {
+            display: flex;
+            gap: 0.5rem;
+            flex-wrap: wrap;
+            margin-top: 1rem;
+        }
+        
+        .btn {
+            padding: 0.5rem 1rem;
+            border: none;
+            border-radius: 6px;
+            cursor: pointer;
+            font-weight: 500;
+            transition: all 0.3s ease;
+            text-decoration: none;
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+        
+        .btn-primary {
+            background: #007bff;
+            color: white;
+        }
+        
+        .btn-success {
+            background: #28a745;
+            color: white;
+        }
+        
+        .btn-danger {
+            background: #dc3545;
+            color: white;
+        }
+        
+        .btn-warning {
+            background: #ffc107;
+            color: #212529;
+        }
+        
+        .btn:hover {
+            transform: translateY(-1px);
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+        }
+        
+        .metric {
+            text-align: center;
+            padding: 1rem;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            border-radius: 8px;
+            color: white;
+            margin-bottom: 0.5rem;
+        }
+        
+        .metric-value {
+            font-size: 2rem;
+            font-weight: 700;
+            display: block;
+        }
+        
+        .metric-label {
+            font-size: 0.9rem;
+            opacity: 0.9;
+        }
+        
+        .loading {
+            text-align: center;
+            padding: 2rem;
+            color: #666;
+        }
+        
+        .alert {
+            padding: 1rem;
+            border-radius: 6px;
+            margin-bottom: 1rem;
+        }
+        
+        .alert-success {
+            background: #d4edda;
+            color: #155724;
+            border: 1px solid #c3e6cb;
+        }
+        
+        .alert-error {
+            background: #f8d7da;
+            color: #721c24;
+            border: 1px solid #f5c6cb;
+        }
+        
+        .data-source {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 0.75rem;
+            background: #f8f9fa;
+            border-radius: 6px;
+            margin-bottom: 0.5rem;
+        }
+        
+        .source-name {
+            font-weight: 600;
+        }
+        
+        .source-message {
+            font-size: 0.9rem;
+            color: #666;
+        }
+        
+        @media (max-width: 768px) {
+            .container {
+                padding: 1rem;
+            }
+            
+            .grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .header {
+                padding: 1rem;
+            }
+            
+            .nav {
+                flex-direction: column;
+                gap: 0.5rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="header">
+        <h1>🐙 AgentCeli Dashboard</h1>
+        <nav class="nav">
+            <a href="/" class="active">📊 Dashboard</a>
+            <a href="/sources">🔌 Data Sources</a>
+            <a href="/clients">👥 Clients</a>
+            <a href="/logs">📝 Logs</a>
+        </nav>
+    </div>
+    
+    <div class="container">
+        <div id="alerts"></div>
+        
+        <!-- System Status -->
+        <div class="grid">
+            <div class="card">
+                <h3>🚀 System Status</h3>
+                <div id="system-status">
+                    <div class="loading">Loading system status...</div>
+                </div>
+                
+                <div class="control-buttons">
+                    <button class="btn btn-success" onclick="controlSystem('start')">
+                        ▶️ Start AgentCeli
+                    </button>
+                    <button class="btn btn-danger" onclick="controlSystem('stop')">
+                        ⏹️ Stop AgentCeli
+                    </button>
+                    <button class="btn btn-warning" onclick="controlSystem('restart')">
+                        🔄 Restart AgentCeli
+                    </button>
+                </div>
+            </div>
+            
+            <!-- Live Prices -->
+            <div class="card">
+                <h3>💰 Live Crypto Prices</h3>
+                <div id="live-prices">
+                    <div class="loading">Loading live prices...</div>
+                </div>
+            </div>
+            
+            <!-- Market Metrics -->
+            <div class="card">
+                <h3>📈 Market Metrics</h3>
+                <div id="market-metrics">
+                    <div class="loading">Loading market data...</div>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Data Sources & Clients -->
+        <div class="grid">
+            <div class="card">
+                <h3>🔌 Data Sources Status</h3>
+                <div id="data-sources">
+                    <div class="loading">Loading data sources...</div>
+                </div>
+                <div class="control-buttons">
+                    <a href="/sources" class="btn btn-primary">⚙️ Manage Sources</a>
+                </div>
+            </div>
+            
+            <div class="card">
+                <h3>👥 Connected Clients</h3>
+                <div id="client-info">
+                    <div class="loading">Loading client info...</div>
+                </div>
+                <div class="control-buttons">
+                    <a href="/clients" class="btn btn-primary">👥 Manage Clients</a>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <script>
+        let refreshInterval;
+        
+        // Load dashboard data
+        async function loadDashboard() {
+            try {
+                await Promise.all([
+                    loadSystemStatus(),
+                    loadLivePrices(),
+                    loadDataSources(),
+                    loadClientInfo()
+                ]);
+            } catch (error) {
+                console.error('Error loading dashboard:', error);
+            }
+        }
+        
+        async function loadSystemStatus() {
+            try {
+                const response = await fetch('/api/dashboard/status');
+                const data = await response.json();
+                
+                const statusHtml = `
+                    <div class="data-source">
+                        <div>
+                            <div class="source-name">AgentCeli Core</div>
+                            <div class="source-message">Main data collection system</div>
+                        </div>
+                        <span class="status-indicator ${data.agentceli.running ? 'status-online' : 'status-offline'}">
+                            <span class="status-dot ${data.agentceli.running ? 'online' : 'offline'}"></span>
+                            ${data.agentceli.running ? 'Online' : 'Offline'}
+                        </span>
+                    </div>
+                    <div class="data-source">
+                        <div>
+                            <div class="source-name">Public API</div>
+                            <div class="source-message">Website integration endpoint</div>
+                        </div>
+                        <span class="status-indicator ${data.public_api.running ? 'status-online' : 'status-offline'}">
+                            <span class="status-dot ${data.public_api.running ? 'online' : 'offline'}"></span>
+                            ${data.public_api.running ? 'Online' : 'Offline'}
+                        </span>
+                    </div>
+                    <div class="data-source">
+                        <div>
+                            <div class="source-name">Client API</div>
+                            <div class="source-message">Client management system</div>
+                        </div>
+                        <span class="status-indicator ${data.client_api.running ? 'status-online' : 'status-offline'}">
+                            <span class="status-dot ${data.client_api.running ? 'online' : 'offline'}"></span>
+                            ${data.client_api.running ? 'Online' : 'Offline'}
+                        </span>
+                    </div>
+                `;
+                
+                document.getElementById('system-status').innerHTML = statusHtml;
+            } catch (error) {
+                document.getElementById('system-status').innerHTML = '<div class="alert alert-error">Error loading system status</div>';
+            }
+        }
+        
+        async function loadLivePrices() {
+            try {
+                const response = await fetch('/api/dashboard/live-data');
+                const data = await response.json();
+                
+                if (data.success && data.prices) {
+                    const pricesHtml = Object.entries(data.prices).map(([symbol, info]) => `
+                        <div class="price-card">
+                            <span class="price-symbol">${symbol}</span>
+                            <span class="price-value">$${info.price.toLocaleString()}</span>
+                            <span class="price-change ${info.change_24h >= 0 ? 'positive' : 'negative'}">
+                                ${info.change_24h >= 0 ? '+' : ''}${info.change_24h.toFixed(2)}%
+                            </span>
+                        </div>
+                    `).join('');
+                    
+                    document.getElementById('live-prices').innerHTML = pricesHtml;
+                } else {
+                    document.getElementById('live-prices').innerHTML = '<div class="alert alert-error">No price data available</div>';
+                }
+            } catch (error) {
+                document.getElementById('live-prices').innerHTML = '<div class="alert alert-error">Error loading prices</div>';
+            }
+        }
+        
+        async function loadDataSources() {
+            try {
+                const response = await fetch('/api/dashboard/sources');
+                const data = await response.json();
+                
+                const sourcesHtml = Object.entries(data).map(([name, info]) => `
+                    <div class="data-source">
+                        <div>
+                            <div class="source-name">${name.charAt(0).toUpperCase() + name.slice(1)}</div>
+                            <div class="source-message">${info.message}</div>
+                        </div>
+                        <span class="status-indicator ${info.status === 'connected' ? 'status-online' : 'status-offline'}">
+                            <span class="status-dot ${info.status === 'connected' ? 'online' : 'offline'}"></span>
+                            ${info.status === 'connected' ? 'Connected' : 'Disconnected'}
+                        </span>
+                    </div>
+                `).join('');
+                
+                document.getElementById('data-sources').innerHTML = sourcesHtml;
+            } catch (error) {
+                document.getElementById('data-sources').innerHTML = '<div class="alert alert-error">Error loading data sources</div>';
+            }
+        }
+        
+        async function loadClientInfo() {
+            try {
+                const response = await fetch('/api/dashboard/clients');
+                const data = await response.json();
+                
+                const clientsHtml = `
+                    <div class="metric">
+                        <span class="metric-value">${data.total}</span>
+                        <span class="metric-label">Connected Clients</span>
+                    </div>
+                `;
+                
+                document.getElementById('client-info').innerHTML = clientsHtml;
+            } catch (error) {
+                document.getElementById('client-info').innerHTML = '<div class="alert alert-error">Error loading client info</div>';
+            }
+        }
+        
+        async function controlSystem(action) {
+            try {
+                showAlert(`${action.charAt(0).toUpperCase() + action.slice(1)}ing AgentCeli...`, 'info');
+                
+                const response = await fetch(`/api/dashboard/control/${action}`);
+                const data = await response.json();
+                
+                if (data.success) {
+                    showAlert(data.message, 'success');
+                    // Refresh status after action
+                    setTimeout(loadSystemStatus, 2000);
+                } else {
+                    showAlert(data.message, 'error');
+                }
+            } catch (error) {
+                showAlert(`Error ${action}ing system: ${error.message}`, 'error');
+            }
+        }
+        
+        function showAlert(message, type) {
+            const alertsDiv = document.getElementById('alerts');
+            const alert = document.createElement('div');
+            alert.className = `alert alert-${type === 'error' ? 'error' : 'success'}`;
+            alert.textContent = message;
+            
+            alertsDiv.appendChild(alert);
+            
+            setTimeout(() => {
+                alert.remove();
+            }, 5000);
+        }
+        
+        // Auto-refresh every 30 seconds
+        function startAutoRefresh() {
+            refreshInterval = setInterval(loadDashboard, 30000);
+        }
+        
+        function stopAutoRefresh() {
+            if (refreshInterval) {
+                clearInterval(refreshInterval);
+            }
+        }
+        
+        // Initialize dashboard
+        document.addEventListener('DOMContentLoaded', () => {
+            loadDashboard();
+            startAutoRefresh();
+        });
+        
+        // Stop refresh when page is not visible
+        document.addEventListener('visibilitychange', () => {
+            if (document.hidden) {
+                stopAutoRefresh();
+            } else {
+                loadDashboard();
+                startAutoRefresh();
+            }
+        });
+    </script>
+</body>
+</html>

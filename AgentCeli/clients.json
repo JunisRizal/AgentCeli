@@ -1,0 +1,12 @@
+{
+  "your_other_website": {
+    "name": "Your Other Website",
+    "type": "webhook",
+    "endpoint": null,
+    "webhook_url": "https://yourwebsite.com/api/crypto-data",
+    "api_key": null,
+    "enabled": true,
+    "created_at": "2025-07-23T02:17:19.722873",
+    "delivery_count": 0
+  }
+}

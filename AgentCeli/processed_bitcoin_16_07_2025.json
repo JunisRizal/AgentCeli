@@ -1,0 +1,44 @@
+{
+  "community_data": {
+    "facebook_likes": null,
+    "reddit_active_48h": 0.0,
+    "reddit_comments_48h": 0.0,
+    "reddit_posts_48h": 0.0,
+    "reddit_subscribers": null
+  },
+  "developer_data": {
+    "github_closed_issues": null,
+    "github_commits_4w": null,
+    "github_forks": null,
+    "github_stars": null,
+    "github_subscribers": null,
+    "github_total_issues": null
+  },
+  "market_data": {
+    "coingecko_rank": null,
+    "coingecko_score": null,
+    "current_price": {
+      "btc": 1.0,
+      "eur": 101378.82351011859,
+      "usd": 117678.19493404306
+    },
+    "market_cap": {
+      "eur": 2016992049335.3293,
+      "usd": 2341223394839.9204
+    },
+    "market_cap_rank": null,
+    "total_volume": {
+      "eur": 69177394928.3033,
+      "usd": 80299520980.2335
+    }
+  },
+  "metadata": {
+    "coin_id": "bitcoin",
+    "data_source": "coingecko_api",
+    "date": "16-07-2025",
+    "name": "Bitcoin",
+    "processed_at": "2025-07-17T22:32:00.783795",
+    "symbol": "BTC"
+  },
+  "raw_json_size": 5813
+}
