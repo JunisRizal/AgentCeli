@@ -1,0 +1,13 @@
+{
+  "coin_id": "bitcoin",
+  "symbol": "btc",
+  "name": "Bitcoin",
+  "timestamp": "2025-07-17T22:30:48.138536",
+  "prices": {
+    "usd": 117678.19493404306,
+    "eur": 101378.82351011859,
+    "btc": 1.0
+  },
+  "market_cap_usd": 2341223394839.9204,
+  "total_volume_usd": 80299520980.2335
+}

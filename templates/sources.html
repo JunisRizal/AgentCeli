@@ -1,0 +1,719 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>🔌 Data Sources - AgentCeli Dashboard</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+            color: #333;
+        }
+        
+        .header {
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(10px);
+            padding: 1rem 2rem;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.2);
+        }
+        
+        .header h1 {
+            color: white;
+            font-size: 2rem;
+            font-weight: 700;
+        }
+        
+        .nav {
+            display: flex;
+            gap: 1rem;
+            margin-top: 1rem;
+        }
+        
+        .nav a {
+            color: white;
+            text-decoration: none;
+            padding: 0.5rem 1rem;
+            border-radius: 6px;
+            background: rgba(255, 255, 255, 0.1);
+            transition: all 0.3s ease;
+        }
+        
+        .nav a:hover, .nav a.active {
+            background: rgba(255, 255, 255, 0.2);
+            transform: translateY(-1px);
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 2rem;
+        }
+        
+        .card {
+            background: rgba(255, 255, 255, 0.95);
+            border-radius: 12px;
+            padding: 1.5rem;
+            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            margin-bottom: 1.5rem;
+        }
+        
+        .card h3 {
+            margin-bottom: 1rem;
+            color: #333;
+            font-size: 1.2rem;
+            font-weight: 600;
+        }
+        
+        .source-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 1rem;
+            margin-bottom: 1rem;
+        }
+        
+        .source-card {
+            border: 2px solid #e9ecef;
+            border-radius: 8px;
+            padding: 1rem;
+            transition: all 0.3s ease;
+        }
+        
+        .source-card.connected {
+            border-color: #28a745;
+            background: #f8fff9;
+        }
+        
+        .source-card.disconnected {
+            border-color: #dc3545;
+            background: #fff8f8;
+        }
+        
+        .source-card.available {
+            border-color: #6c757d;
+            background: #f8f9fa;
+        }
+        
+        .source-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 0.5rem;
+        }
+        
+        .source-name {
+            font-weight: 700;
+            font-size: 1.1rem;
+        }
+        
+        .source-status {
+            padding: 0.25rem 0.75rem;
+            border-radius: 20px;
+            font-size: 0.9rem;
+            font-weight: 500;
+        }
+        
+        .status-connected {
+            background: #d4edda;
+            color: #155724;
+        }
+        
+        .status-disconnected {
+            background: #f8d7da;
+            color: #721c24;
+        }
+        
+        .status-available {
+            background: #e2e3e5;
+            color: #383d41;
+        }
+        
+        .source-description {
+            color: #666;
+            margin-bottom: 1rem;
+        }
+        
+        .source-details {
+            font-size: 0.9rem;
+            color: #666;
+            margin-bottom: 1rem;
+        }
+        
+        .source-actions {
+            display: flex;
+            gap: 0.5rem;
+            flex-wrap: wrap;
+        }
+        
+        .btn {
+            padding: 0.5rem 1rem;
+            border: none;
+            border-radius: 6px;
+            cursor: pointer;
+            font-weight: 500;
+            transition: all 0.3s ease;
+            text-decoration: none;
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            font-size: 0.9rem;
+        }
+        
+        .btn-primary {
+            background: #007bff;
+            color: white;
+        }
+        
+        .btn-success {
+            background: #28a745;
+            color: white;
+        }
+        
+        .btn-danger {
+            background: #dc3545;
+            color: white;
+        }
+        
+        .btn-secondary {
+            background: #6c757d;
+            color: white;
+        }
+        
+        .btn:hover {
+            transform: translateY(-1px);
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+        }
+        
+        .add-source-form {
+            background: #f8f9fa;
+            border-radius: 8px;
+            padding: 1.5rem;
+            margin-top: 1rem;
+        }
+        
+        .form-group {
+            margin-bottom: 1rem;
+        }
+        
+        .form-group label {
+            display: block;
+            margin-bottom: 0.5rem;
+            font-weight: 600;
+            color: #333;
+        }
+        
+        .form-group input, .form-group select {
+            width: 100%;
+            padding: 0.75rem;
+            border: 1px solid #ced4da;
+            border-radius: 6px;
+            font-size: 1rem;
+        }
+        
+        .form-row {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 1rem;
+        }
+        
+        .alert {
+            padding: 1rem;
+            border-radius: 6px;
+            margin-bottom: 1rem;
+        }
+        
+        .alert-success {
+            background: #d4edda;
+            color: #155724;
+            border: 1px solid #c3e6cb;
+        }
+        
+        .alert-error {
+            background: #f8d7da;
+            color: #721c24;
+            border: 1px solid #f5c6cb;
+        }
+        
+        .alert-info {
+            background: #d1ecf1;
+            color: #0c5460;
+            border: 1px solid #bee5eb;
+        }
+        
+        .test-results {
+            background: #f8f9fa;
+            border-radius: 6px;
+            padding: 1rem;
+            margin-top: 1rem;
+            max-height: 300px;
+            overflow-y: auto;
+        }
+        
+        .hidden {
+            display: none;
+        }
+        
+        @media (max-width: 768px) {
+            .container {
+                padding: 1rem;
+            }
+            
+            .source-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .form-row {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="header">
+        <h1>🐙 AgentCeli Dashboard</h1>
+        <nav class="nav">
+            <a href="/">📊 Dashboard</a>
+            <a href="/sources" class="active">🔌 Data Sources</a>
+            <a href="/clients">👥 Clients</a>
+            <a href="/logs">📝 Logs</a>
+        </nav>
+    </div>
+    
+    <div class="container">
+        <div id="alerts"></div>
+        
+        <!-- Current Data Sources -->
+        <div class="card">
+            <h3>🔌 Active Data Sources</h3>
+            <div id="current-sources" class="source-grid">
+                <div class="alert alert-info">Loading current data sources...</div>
+            </div>
+        </div>
+        
+        <!-- Available Sources to Add -->
+        <div class="card">
+            <h3>➕ Available Data Sources</h3>
+            <div class="source-grid">
+                <div class="source-card available">
+                    <div class="source-header">
+                        <div class="source-name">🏪 Kraken Exchange</div>
+                        <span class="source-status status-available">Available</span>
+                    </div>
+                    <div class="source-description">Free public API for crypto prices, volumes, and order book data</div>
+                    <div class="source-details">
+                        • No API key required<br>
+                        • Rate limit: 1 call/second<br>
+                        • Cost: Free
+                    </div>
+                    <div class="source-actions">
+                        <button class="btn btn-primary" onclick="testSource('kraken')">🧪 Test Connection</button>
+                        <button class="btn btn-success" onclick="addSource('kraken', 'kraken')">➕ Add Source</button>
+                    </div>
+                </div>
+                
+                <div class="source-card available">
+                    <div class="source-header">
+                        <div class="source-name">🏛️ Coinbase Advanced</div>
+                        <span class="source-status status-available">Available</span>
+                    </div>
+                    <div class="source-description">Professional trading data from Coinbase Pro/Advanced Trade</div>
+                    <div class="source-details">
+                        • No API key required for public data<br>
+                        • Rate limit: 10 requests/second<br>
+                        • Cost: Free
+                    </div>
+                    <div class="source-actions">
+                        <button class="btn btn-primary" onclick="testSource('coinbase_advanced')">🧪 Test Connection</button>
+                        <button class="btn btn-success" onclick="addSource('coinbase_pro', 'coinbase_advanced')">➕ Add Source</button>
+                    </div>
+                </div>
+                
+                <div class="source-card available">
+                    <div class="source-header">
+                        <div class="source-name">📊 Alpha Vantage</div>
+                        <span class="source-status status-available">API Key Required</span>
+                    </div>
+                    <div class="source-description">Financial market data including crypto, stocks, and forex</div>
+                    <div class="source-details">
+                        • API key required<br>
+                        • Free tier: 5 calls/minute<br>
+                        • Cost: Free tier available
+                    </div>
+                    <div class="source-actions">
+                        <button class="btn btn-primary" onclick="showApiKeyForm('alphavantage')">🔑 Add with API Key</button>
+                    </div>
+                </div>
+                
+                <div class="source-card available">
+                    <div class="source-header">
+                        <div class="source-name">📈 Custom API</div>
+                        <span class="source-status status-available">Custom</span>
+                    </div>
+                    <div class="source-description">Add your own custom API endpoint for additional data</div>
+                    <div class="source-details">
+                        • Fully customizable<br>
+                        • Your own rate limits<br>
+                        • Custom cost structure
+                    </div>
+                    <div class="source-actions">
+                        <button class="btn btn-primary" onclick="showCustomApiForm()">⚙️ Add Custom API</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <!-- API Key Form -->
+        <div id="api-key-form" class="card hidden">
+            <h3>🔑 Add Data Source with API Key</h3>
+            <div class="add-source-form">
+                <div class="form-group">
+                    <label for="api-source-type">Data Source:</label>
+                    <select id="api-source-type">
+                        <option value="alphavantage">Alpha Vantage</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label for="api-key">API Key:</label>
+                    <input type="text" id="api-key" placeholder="Enter your API key">
+                </div>
+                <div class="form-group">
+                    <label for="cost-per-call">Cost per API Call ($):</label>
+                    <input type="number" id="cost-per-call" step="0.001" value="0.000" placeholder="0.000">
+                </div>
+                <div class="source-actions">
+                    <button class="btn btn-primary" onclick="testApiKeySource()">🧪 Test Connection</button>
+                    <button class="btn btn-success" onclick="addApiKeySource()">➕ Add Source</button>
+                    <button class="btn btn-secondary" onclick="hideApiKeyForm()">❌ Cancel</button>
+                </div>
+                <div id="test-results" class="test-results hidden"></div>
+            </div>
+        </div>
+        
+        <!-- Custom API Form -->
+        <div id="custom-api-form" class="card hidden">
+            <h3>📈 Add Custom API Source</h3>
+            <div class="add-source-form">
+                <div class="form-row">
+                    <div class="form-group">
+                        <label for="custom-name">Source Name:</label>
+                        <input type="text" id="custom-name" placeholder="My Custom API">
+                    </div>
+                    <div class="form-group">
+                        <label for="custom-url">API URL:</label>
+                        <input type="url" id="custom-url" placeholder="https://api.example.com/crypto">
+                    </div>
+                </div>
+                <div class="form-row">
+                    <div class="form-group">
+                        <label for="custom-key">API Key (optional):</label>
+                        <input type="text" id="custom-key" placeholder="API key if required">
+                    </div>
+                    <div class="form-group">
+                        <label for="custom-cost">Cost per Call ($):</label>
+                        <input type="number" id="custom-cost" step="0.001" value="0.000">
+                    </div>
+                </div>
+                <div class="source-actions">
+                    <button class="btn btn-primary" onclick="testCustomApi()">🧪 Test Connection</button>
+                    <button class="btn btn-success" onclick="addCustomApi()">➕ Add Source</button>
+                    <button class="btn btn-secondary" onclick="hideCustomApiForm()">❌ Cancel</button>
+                </div>
+                <div id="custom-test-results" class="test-results hidden"></div>
+            </div>
+        </div>
+    </div>
+    
+    <script>
+        // Load current data sources
+        async function loadCurrentSources() {
+            try {
+                const response = await fetch('/api/dashboard/sources');
+                const data = await response.json();
+                
+                const sourcesHtml = Object.entries(data).map(([name, info]) => `
+                    <div class="source-card ${info.status === 'connected' ? 'connected' : 'disconnected'}">
+                        <div class="source-header">
+                            <div class="source-name">${name.charAt(0).toUpperCase() + name.slice(1)}</div>
+                            <span class="source-status ${info.status === 'connected' ? 'status-connected' : 'status-disconnected'}">
+                                ${info.status === 'connected' ? 'Connected' : 'Disconnected'}
+                            </span>
+                        </div>
+                        <div class="source-description">${info.message}</div>
+                        <div class="source-actions">
+                            <button class="btn btn-primary" onclick="testExistingSource('${name}')">🧪 Test</button>
+                            <button class="btn btn-danger" onclick="removeSource('${name}')">🗑️ Remove</button>
+                        </div>
+                    </div>
+                `).join('');
+                
+                document.getElementById('current-sources').innerHTML = sourcesHtml;
+            } catch (error) {
+                document.getElementById('current-sources').innerHTML = '<div class="alert alert-error">Error loading data sources</div>';
+            }
+        }
+        
+        // Test a data source
+        async function testSource(sourceType) {
+            try {
+                showAlert(`Testing ${sourceType} connection...`, 'info');
+                
+                const response = await fetch('/api/dashboard/test-source', {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify({ type: sourceType })
+                });
+                
+                const data = await response.json();
+                
+                if (data.success && data.connected) {
+                    showAlert(`${sourceType} connection successful! Sample data received.`, 'success');
+                } else {
+                    showAlert(`${sourceType} connection failed: ${data.message}`, 'error');
+                }
+            } catch (error) {
+                showAlert(`Error testing ${sourceType}: ${error.message}`, 'error');
+            }
+        }
+        
+        // Add a data source
+        async function addSource(sourceName, sourceType) {
+            try {
+                showAlert(`Adding ${sourceName}...`, 'info');
+                
+                const response = await fetch('/api/dashboard/add-source', {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify({
+                        name: sourceName,
+                        type: sourceType
+                    })
+                });
+                
+                const data = await response.json();
+                
+                if (data.success) {
+                    showAlert(data.message, 'success');
+                    loadCurrentSources(); // Refresh the list
+                } else {
+                    showAlert(data.message, 'error');
+                }
+            } catch (error) {
+                showAlert(`Error adding source: ${error.message}`, 'error');
+            }
+        }
+        
+        // Show API key form
+        function showApiKeyForm(sourceType) {
+            document.getElementById('api-source-type').value = sourceType;
+            document.getElementById('api-key-form').classList.remove('hidden');
+        }
+        
+        // Hide API key form
+        function hideApiKeyForm() {
+            document.getElementById('api-key-form').classList.add('hidden');
+            document.getElementById('test-results').classList.add('hidden');
+        }
+        
+        // Test API key source
+        async function testApiKeySource() {
+            const sourceType = document.getElementById('api-source-type').value;
+            const apiKey = document.getElementById('api-key').value;
+            
+            if (!apiKey.trim()) {
+                showAlert('Please enter an API key', 'error');
+                return;
+            }
+            
+            try {
+                showAlert(`Testing ${sourceType} with API key...`, 'info');
+                
+                const response = await fetch('/api/dashboard/test-source', {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify({
+                        type: sourceType,
+                        config: { api_key: apiKey }
+                    })
+                });
+                
+                const data = await response.json();
+                
+                const resultsDiv = document.getElementById('test-results');
+                resultsDiv.classList.remove('hidden');
+                
+                if (data.success && data.connected) {
+                    resultsDiv.innerHTML = `
+                        <h4>✅ Connection Successful</h4>
+                        <p><strong>Cost Estimate:</strong> $${data.cost_estimate}/call</p>
+                        <p><strong>Sample Data:</strong></p>
+                        <pre>${JSON.stringify(data.sample_data, null, 2)}</pre>
+                    `;
+                    showAlert(`${sourceType} connection successful!`, 'success');
+                } else {
+                    resultsDiv.innerHTML = `
+                        <h4>❌ Connection Failed</h4>
+                        <p>${data.message}</p>
+                    `;
+                    showAlert(`${sourceType} connection failed`, 'error');
+                }
+            } catch (error) {
+                showAlert(`Error testing source: ${error.message}`, 'error');
+            }
+        }
+        
+        // Add API key source
+        async function addApiKeySource() {
+            const sourceType = document.getElementById('api-source-type').value;
+            const apiKey = document.getElementById('api-key').value;
+            const costPerCall = document.getElementById('cost-per-call').value;
+            
+            if (!apiKey.trim()) {
+                showAlert('Please enter an API key', 'error');
+                return;
+            }
+            
+            try {
+                const response = await fetch('/api/dashboard/add-source', {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify({
+                        name: sourceType,
+                        type: sourceType,
+                        config: {
+                            api_key: apiKey,
+                            cost_per_call: parseFloat(costPerCall)
+                        }
+                    })
+                });
+                
+                const data = await response.json();
+                
+                if (data.success) {
+                    showAlert(data.message, 'success');
+                    hideApiKeyForm();
+                    loadCurrentSources();
+                } else {
+                    showAlert(data.message, 'error');
+                }
+            } catch (error) {
+                showAlert(`Error adding source: ${error.message}`, 'error');
+            }
+        }
+        
+        // Show custom API form
+        function showCustomApiForm() {
+            document.getElementById('custom-api-form').classList.remove('hidden');
+        }
+        
+        // Hide custom API form
+        function hideCustomApiForm() {
+            document.getElementById('custom-api-form').classList.add('hidden');
+            document.getElementById('custom-test-results').classList.add('hidden');
+        }
+        
+        // Test custom API
+        async function testCustomApi() {
+            const url = document.getElementById('custom-url').value;
+            
+            if (!url.trim()) {
+                showAlert('Please enter an API URL', 'error');
+                return;
+            }
+            
+            try {
+                showAlert('Testing custom API...', 'info');
+                
+                const response = await fetch(url, { method: 'GET', timeout: 5000 });
+                const data = await response.json();
+                
+                const resultsDiv = document.getElementById('custom-test-results');
+                resultsDiv.classList.remove('hidden');
+                resultsDiv.innerHTML = `
+                    <h4>✅ Connection Successful</h4>
+                    <p><strong>Status:</strong> ${response.status}</p>
+                    <p><strong>Response:</strong></p>
+                    <pre>${JSON.stringify(data, null, 2)}</pre>
+                `;
+                
+                showAlert('Custom API connection successful!', 'success');
+            } catch (error) {
+                const resultsDiv = document.getElementById('custom-test-results');
+                resultsDiv.classList.remove('hidden');
+                resultsDiv.innerHTML = `
+                    <h4>❌ Connection Failed</h4>
+                    <p>${error.message}</p>
+                `;
+                showAlert('Custom API connection failed', 'error');
+            }
+        }
+        
+        // Add custom API
+        async function addCustomApi() {
+            const name = document.getElementById('custom-name').value;
+            const url = document.getElementById('custom-url').value;
+            const apiKey = document.getElementById('custom-key').value;
+            const cost = document.getElementById('custom-cost').value;
+            
+            if (!name.trim() || !url.trim()) {
+                showAlert('Please fill in name and URL', 'error');
+                return;
+            }
+            
+            try {
+                const response = await fetch('/api/dashboard/add-source', {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify({
+                        name: name,
+                        type: 'custom',
+                        config: {
+                            url: url,
+                            api_key: apiKey || null,
+                            cost_per_call: parseFloat(cost)
+                        }
+                    })
+                });
+                
+                const data = await response.json();
+                
+                if (data.success) {
+                    showAlert(data.message, 'success');
+                    hideCustomApiForm();
+                    loadCurrentSources();
+                } else {
+                    showAlert(data.message, 'error');
+                }
+            } catch (error) {
+                showAlert(`Error adding custom API: ${error.message}`, 'error');
+            }
+        }
+        
+        function showAlert(message, type) {
+            const alertsDiv = document.getElementById('alerts');
+            const alert = document.createElement('div');
+            alert.className = `alert alert-${type === 'error' ? 'error' : type === 'info' ? 'info' : 'success'}`;
+            alert.textContent = message;
+            
+            alertsDiv.appendChild(alert);
+            
+            setTimeout(() => {
+                alert.remove();
+            }, 5000);
+        }
+        
+        // Initialize page
+        document.addEventListener('DOMContentLoaded', () => {
+            loadCurrentSources();
+        });
+    </script>
+</body>
+</html>

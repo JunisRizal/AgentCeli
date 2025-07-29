@@ -1,0 +1,54 @@
+{
+  "api_settings": {
+    "base_url": "https://api.coingecko.com/api/v3",
+    "rate_limit_delay": 1.2,
+    "max_days_free_api": 365,
+    "default_currency": "usd"
+  },
+  "target_coins": [
+    {
+      "id": "bitcoin",
+      "symbol": "BTC",
+      "name": "Bitcoin",
+      "priority": 1
+    },
+    {
+      "id": "ethereum", 
+      "symbol": "ETH",
+      "name": "Ethereum",
+      "priority": 2
+    },
+    {
+      "id": "cardano",
+      "symbol": "ADA", 
+      "name": "Cardano",
+      "priority": 3
+    },
+    {
+      "id": "polkadot",
+      "symbol": "DOT",
+      "name": "Polkadot", 
+      "priority": 4
+    },
+    {
+      "id": "chainlink",
+      "symbol": "LINK",
+      "name": "Chainlink",
+      "priority": 5
+    }
+  ],
+  "output_settings": {
+    "save_raw_json": true,
+    "save_processed_json": true,
+    "create_csv": true,
+    "create_dataframe": true
+  },
+  "data_fields": [
+    "current_price",
+    "market_cap", 
+    "total_volume",
+    "price_change_24h",
+    "market_cap_rank"
+  ]
+}
+

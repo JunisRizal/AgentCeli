@@ -1,0 +1,28 @@
+{
+  "timestamp": "2025-07-22T23:25:26.584793",
+  "prices": {
+    "BTC": 119570.79,
+    "ETH": 3708.42,
+    "SOL": 200.59,
+    "XRP": 3.5294
+  },
+  "volumes": {
+    "BTC": 20504.2812,
+    "ETH": 862011.4432,
+    "SOL": 8369213.443,
+    "XRP": 248477569.1
+  },
+  "changes_24h": {
+    "BTC": 2.044,
+    "ETH": -1.321,
+    "SOL": 3.02,
+    "XRP": -0.311
+  },
+  "market_metrics": {
+    "fear_greed_index": "72",
+    "total_market_cap": 4023655923954.8384,
+    "coins_up": 3,
+    "coins_down": 1
+  },
+  "data_source": "AgentCeli_LIVE_EXCHANGES"
+}

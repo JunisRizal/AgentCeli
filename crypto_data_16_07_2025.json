@@ -1,0 +1,30 @@
+{
+  "date": "16-07-2025",
+  "processed_at": "2025-07-17T22:30:48.138801",
+  "coins": {
+    "bitcoin": {
+      "coin_id": "bitcoin",
+      "symbol": "btc",
+      "name": "Bitcoin",
+      "timestamp": "2025-07-17T22:30:49.386848",
+      "prices": {
+        "usd": 117678.19493404306,
+        "eur": 101378.82351011859,
+        "btc": 1.0
+      },
+      "market_cap_usd": 2341223394839.9204,
+      "total_volume_usd": 80299520980.2335
+    },
+    "ethereum": {
+      "coin_id": "ethereum",
+      "symbol": "eth",
+      "name": "Ethereum",
+      "timestamp": "2025-07-17T22:30:50.644018",
+      "prices": {
+        "usd": 3133.069857747011,
+        "eur": 2699.114617890189,
+        "btc": 0.026623088774865144
+      },
+      "market_cap_usd": 378233206915.81635,
+      "total_volume_usd": 43416230283.76601
+    },

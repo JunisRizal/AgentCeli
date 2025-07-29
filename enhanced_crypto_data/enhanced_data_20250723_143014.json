@@ -1,0 +1,140 @@
+{
+  "timestamp": "2025-07-23T14:30:14.801617",
+  "update_interval_seconds": 120,
+  "api_status": {
+    "coingecko": "active",
+    "coinglass": "limited",
+    "taapi": "not_configured",
+    "fear_greed": "active"
+  },
+  "coins": {
+    "avalanche-2": {
+      "id": "avalanche-2",
+      "price_usd": 25.03,
+      "price_eur": 21.34,
+      "market_cap_usd": 10567798553.493427,
+      "volume_24h_usd": 1069455300.9815624,
+      "change_24h_percent": -2.004735549727987,
+      "last_updated": 1753273812
+    },
+    "bitcoin": {
+      "id": "bitcoin",
+      "price_usd": 118589,
+      "price_eur": 101103,
+      "market_cap_usd": 2359598795063.6704,
+      "volume_24h_usd": 47152740706.67901,
+      "change_24h_percent": -0.6044380612786949,
+      "last_updated": 1753273802
+    },
+    "cardano": {
+      "id": "cardano",
+      "price_usd": 0.859335,
+      "price_eur": 0.732627,
+      "market_cap_usd": 31088504880.887245,
+      "volume_24h_usd": 1310644615.0941947,
+      "change_24h_percent": -2.2484277026636126,
+      "last_updated": 1753273802
+    },
+    "dogecoin": {
+      "id": "dogecoin",
+      "price_usd": 0.254749,
+      "price_eur": 0.217244,
+      "market_cap_usd": 38255676642.503944,
+      "volume_24h_usd": 9050883517.688288,
+      "change_24h_percent": -4.144013055192376,
+      "last_updated": 1753273804
+    },
+    "ethereum": {
+      "id": "ethereum",
+      "price_usd": 3675.43,
+      "price_eur": 3133.49,
+      "market_cap_usd": 443640222787.5417,
+      "volume_24h_usd": 41231178838.797035,
+      "change_24h_percent": -0.730260680892206,
+      "last_updated": 1753273803
+    },
+    "solana": {
+      "id": "solana",
+      "price_usd": 196.88,
+      "price_eur": 167.89,
+      "market_cap_usd": 105936700768.04437,
+      "volume_24h_usd": 21604975859.45973,
+      "change_24h_percent": -1.5851638751592876,
+      "last_updated": 1753273810
+    },
+    "tether": {
+      "id": "tether",
+      "price_usd": 1.0,
+      "price_eur": 0.853181,
+      "market_cap_usd": 162015701118.73856,
+      "volume_24h_usd": 129862310911.36356,
+      "change_24h_percent": 0.0009902284228706546,
+      "last_updated": 1753273811
+    },
+    "usd-coin": {
+      "id": "usd-coin",
+      "price_usd": 0.999906,
+      "price_eur": 0.852697,
+      "market_cap_usd": 64657283526.13281,
+      "volume_24h_usd": 8030347791.744111,
+      "change_24h_percent": 0.004171461202097305,
+      "last_updated": 1753273811
+    }
+  },
+  "market_metrics": {
+    "total_market_cap_usd": 3215760683341.0127,
+    "total_volume_24h_usd": 259312537541.80746,
+    "average_24h_change": -1.4139846544111496,
+    "coins_above_zero": 2,
+    "coins_below_zero": 6,
+    "market_dominance": {},
+    "global_metrics": {
+      "total_market_cap_usd": 3990981188497.456,
+      "total_volume_24h_usd": 205196533868.83847,
+      "market_cap_percentage": {
+        "btc": 59.13215774378203,
+        "eth": 11.119183410408356,
+        "xrp": 5.105495598926701,
+        "usdt": 4.060619834331372,
+        "bnb": 2.814063066395241,
+        "sol": 2.6550353110645335,
+        "usdc": 1.6205388001757957,
+        "doge": 0.9588068210529263,
+        "steth": 0.8356227821072635,
+        "ada": 0.7791750964094535
+      },
+      "active_cryptocurrencies": 17767,
+      "markets": 1326
+    }
+  },
+  "liquidations": {},
+  "fear_greed_index": {
+    "value": "74",
+    "value_classification": "Greed",
+    "timestamp": "1753228800",
+    "time_until_update": "41386"
+  },
+  "technical_indicators": {
+    "btc_rsi": null
+  },
+  "rate_limit_status": {
+    "coingecko": {
+      "current_requests_per_minute": 2,
+      "limit_per_minute": 30,
+      "usage_percentage": 6.7,
+      "available_requests": 28
+    },
+    "coinglass": {
+      "current_requests_per_minute": 0,
+      "limit_per_minute": 20,
+      "usage_percentage": 0.0,
+      "available_requests": 20
+    },
+    "taapi": {
+      "current_requests_per_minute": 0,
+      "limit_per_minute": 15,
+      "usage_percentage": 0.0,
+      "available_requests": 15
+    }
+  }
+}

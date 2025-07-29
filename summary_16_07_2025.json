@@ -1,0 +1,54 @@
+{
+  "coins_overview": [
+    {
+      "coin_id": "bitcoin",
+      "market_cap_usd": 2341223394839.9204,
+      "name": "Bitcoin",
+      "price_usd": 117678.19493404306,
+      "symbol": "BTC",
+      "volume_usd": 80299520980.2335
+    },
+    {
+      "coin_id": "ethereum",
+      "market_cap_usd": 378233206915.81635,
+      "name": "Ethereum",
+      "price_usd": 3133.069857747011,
+      "symbol": "ETH",
+      "volume_usd": 43416230283.76601
+    },
+    {
+      "coin_id": "cardano",
+      "market_cap_usd": 27037380803.49243,
+      "name": "Cardano",
+      "price_usd": 0.747277634667093,
+      "symbol": "ADA",
+      "volume_usd": 1354949575.963603
+    },
+    {
+      "coin_id": "polkadot",
+      "market_cap_usd": 6216375491.38863,
+      "name": "Polkadot",
+      "price_usd": 4.076744966774124,
+      "symbol": "DOT",
+      "volume_usd": 386886897.9077191
+    },
+    {
+      "coin_id": "chainlink",
+      "market_cap_usd": 10902552814.52214,
+      "name": "Chainlink",
+      "price_usd": 16.080169421541605,
+      "symbol": "LINK",
+      "volume_usd": 731482027.3893318
+    }
+  ],
+  "market_summary": {
+    "average_price_usd": 24166.433796762612,
+    "total_market_cap_usd": 2763612910865.14,
+    "total_volume_usd": 126189069765.26016
+  },
+  "summary_metadata": {
+    "agent_version": "2.0",
+    "generated_at": "2025-07-17T22:32:05.811122",
+    "total_coins": 5
+  }
+}

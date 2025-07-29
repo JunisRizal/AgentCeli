@@ -1,0 +1,140 @@
+{
+  "timestamp": "2025-07-17T22:43:56.745816",
+  "update_interval_seconds": 120,
+  "api_status": {
+    "coingecko": "active",
+    "coinglass": "limited",
+    "taapi": "not_configured",
+    "fear_greed": "active"
+  },
+  "coins": {
+    "avalanche-2": {
+      "id": "avalanche-2",
+      "price_usd": 24.02,
+      "price_eur": 20.66,
+      "market_cap_usd": 10145846250.695583,
+      "volume_24h_usd": 1233629588.547433,
+      "change_24h_percent": 7.372141340160693,
+      "last_updated": 1752806622
+    },
+    "bitcoin": {
+      "id": "bitcoin",
+      "price_usd": 120332,
+      "price_eur": 103482,
+      "market_cap_usd": 2394114425900.8906,
+      "volume_24h_usd": 50716907958.16604,
+      "change_24h_percent": 1.6872410059170764,
+      "last_updated": 1752806622
+    },
+    "cardano": {
+      "id": "cardano",
+      "price_usd": 0.849052,
+      "price_eur": 0.730159,
+      "market_cap_usd": 30723407035.615482,
+      "volume_24h_usd": 2636252444.412551,
+      "change_24h_percent": 12.905431321134008,
+      "last_updated": 1752806623
+    },
+    "dogecoin": {
+      "id": "dogecoin",
+      "price_usd": 0.230033,
+      "price_eur": 0.197822,
+      "market_cap_usd": 34554506902.37747,
+      "volume_24h_usd": 12820110219.737011,
+      "change_24h_percent": 7.979706855879884,
+      "last_updated": 1752806623
+    },
+    "ethereum": {
+      "id": "ethereum",
+      "price_usd": 3612.49,
+      "price_eur": 3106.63,
+      "market_cap_usd": 436388738972.7138,
+      "volume_24h_usd": 62962501697.752525,
+      "change_24h_percent": 7.7429862278302934,
+      "last_updated": 1752806631
+    },
+    "solana": {
+      "id": "solana",
+      "price_usd": 179.61,
+      "price_eur": 154.46,
+      "market_cap_usd": 96617078695.95966,
+      "volume_24h_usd": 17565053469.498722,
+      "change_24h_percent": 4.648502811436537,
+      "last_updated": 1752806630
+    },
+    "tether": {
+      "id": "tether",
+      "price_usd": 1.001,
+      "price_eur": 0.86058,
+      "market_cap_usd": 160373424614.4097,
+      "volume_24h_usd": 159561262053.13574,
+      "change_24h_percent": 0.04335933918723903,
+      "last_updated": 1752806630
+    },
+    "usd-coin": {
+      "id": "usd-coin",
+      "price_usd": 0.999881,
+      "price_eur": 0.859867,
+      "market_cap_usd": 64818927351.588585,
+      "volume_24h_usd": 23236761624.551033,
+      "change_24h_percent": 0.007405582464513234,
+      "last_updated": 1752806630
+    }
+  },
+  "market_metrics": {
+    "total_market_cap_usd": 3227736355724.251,
+    "total_volume_24h_usd": 330732479055.801,
+    "average_24h_change": 5.298346810501281,
+    "coins_above_zero": 8,
+    "coins_below_zero": 0,
+    "market_dominance": {},
+    "global_metrics": {
+      "total_market_cap_usd": 4000053075345.929,
+      "total_volume_24h_usd": 260679168553.2524,
+      "market_cap_percentage": {
+        "btc": 59.892536182494574,
+        "eth": 10.911777738829368,
+        "xrp": 5.30091006579547,
+        "usdt": 4.010092397725154,
+        "bnb": 2.6603093301740746,
+        "sol": 2.4154097051269994,
+        "usdc": 1.620707770821854,
+        "doge": 0.8640257310057767,
+        "steth": 0.8218457260068269,
+        "ada": 0.7682301558500683
+      },
+      "active_cryptocurrencies": 17671,
+      "markets": 1316
+    }
+  },
+  "liquidations": {},
+  "fear_greed_index": {
+    "value": "73",
+    "value_classification": "Greed",
+    "timestamp": "1752796800",
+    "time_until_update": "76564"
+  },
+  "technical_indicators": {
+    "btc_rsi": null
+  },
+  "rate_limit_status": {
+    "coingecko": {
+      "current_requests_per_minute": 2,
+      "limit_per_minute": 30,
+      "usage_percentage": 6.7,
+      "available_requests": 28
+    },
+    "coinglass": {
+      "current_requests_per_minute": 0,
+      "limit_per_minute": 20,
+      "usage_percentage": 0.0,
+      "available_requests": 20
+    },
+    "taapi": {
+      "current_requests_per_minute": 0,
+      "limit_per_minute": 15,
+      "usage_percentage": 0.0,
+      "available_requests": 15
+    }
+  }
+}
