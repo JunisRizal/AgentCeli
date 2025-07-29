@@ -574,7 +574,9 @@ cp /Users/julius/Desktop/AgentCeli/agentceli_bridge_for_agents_main3.py /path/to
 from agentceli_bridge_for_agents_main3 import AgentCeliBridge
 
 # Initialize connection to AgentCeli
-bridge = AgentCeliBridge()
+# Set ``use_fallback=False`` if you prefer to ignore stale files when the API
+# is unreachable
+bridge = AgentCeliBridge(use_fallback=True)
 
 # Test connection
 if bridge.monitor_connection():

@@ -12,12 +12,22 @@ from datetime import datetime
 import sqlite3
 
 class AgentCeliBridge:
-    def __init__(self, agentceli_path="/Users/julius/Desktop/AgentCeli"):
-        """Initialize bridge to AgentCeli data"""
+    def __init__(self, agentceli_path="/Users/julius/Desktop/AgentCeli", use_fallback=True):
+        """Initialize bridge to AgentCeli data
+
+        Parameters
+        ----------
+        agentceli_path : str
+            Path to your AgentCeli installation.
+        use_fallback : bool, optional
+            When ``True`` (default) load prices from ``hybrid_latest.json`` if
+            the API is unavailable. Set to ``False`` to return ``None`` instead.
+        """
         self.agentceli_path = Path(agentceli_path)
         self.api_url = "http://localhost:8080"
         self.data_path = self.agentceli_path / "correlation_data"
         self.db_path = self.data_path / "hybrid_crypto_data.db"
+        self.use_fallback = use_fallback
         
         print("🌉 AgentCeli Bridge initialized for Agents-main3")
     
@@ -27,23 +37,32 @@ class AgentCeliBridge:
             # Method 1: API (fastest)
             response = requests.get(f"{self.api_url}/api/prices", timeout=5)
             if response.status_code == 200:
-                data = response.json()
-                print(f"✅ Live prices: BTC=${data['btc']:,.2f}, ETH=${data['eth']:,.2f}")
+                data = response.json() or {}
+                btc = data.get('btc')
+                eth = data.get('eth')
+                print(
+                    f"✅ Live prices: BTC=${btc if btc is not None else 'N/A'}, "
+                    f"ETH=${eth if eth is not None else 'N/A'}"
+                )
                 return data
         except Exception as e:
             print(f"⚠️ API failed: {e}")
-        
+            if not self.use_fallback:
+                print("⚠️ Fallback disabled - no data returned")
+                return None
+
         # Method 2: File fallback
-        try:
-            json_file = self.data_path / "hybrid_latest.json"
-            if json_file.exists():
-                with open(json_file) as f:
-                    data = json.load(f)
-                print("✅ Prices loaded from file")
-                return data
-        except Exception as e:
-            print(f"❌ File access failed: {e}")
-        
+        if self.use_fallback:
+            try:
+                json_file = self.data_path / "hybrid_latest.json"
+                if json_file.exists():
+                    with open(json_file) as f:
+                        data = json.load(f)
+                    print("✅ Prices loaded from file")
+                    return data
+            except Exception as e:
+                print(f"❌ File access failed: {e}")
+
         return None
     
     def get_historical_data(self, hours=24, symbols=['BTC', 'ETH', 'SOL', 'XRP']):

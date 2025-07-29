@@ -17,11 +17,23 @@ import warnings
 warnings.filterwarnings('ignore')
 
 class CryptoPredictor1h1d3d:
-    def __init__(self, agentceli_data_path="correlation_data"):
-        """Initialize with AgentCeli data connection"""
+    def __init__(self, agentceli_data_path="correlation_data", use_fallback=True):
+        """Initialize with AgentCeli data connection
+
+        Parameters
+        ----------
+        agentceli_data_path : str
+            Path to correlation data directory.
+        use_fallback : bool, optional
+            If ``True`` (default) old CSV data will be used when the API is
+            unreachable. Set to ``False`` to return ``None`` instead.
+        """
         self.data_path = agentceli_data_path
         self.db_path = f"{agentceli_data_path}/hybrid_crypto_data.db"
         self.api_url = "http://localhost:8080"  # AgentCeli API
+
+        # Whether to use local CSV data when API fails
+        self.use_fallback = use_fallback
         
         # Your existing ML models
         self.models_1h = {}
@@ -40,40 +52,55 @@ class CryptoPredictor1h1d3d:
             # Method 1: HTTP API (fastest)
             response = requests.get(f"{self.api_url}/api/prices", timeout=5)
             if response.status_code == 200:
-                api_data = response.json()
-                
+                api_data = response.json() or {}
+
+                timestamp = api_data.get('timestamp')
+                btc = api_data.get('btc')
+                eth = api_data.get('eth')
+                sol = api_data.get('sol')
+                xrp = api_data.get('xrp')
+                fg = api_data.get('fear_greed')
+
                 live_df = pd.DataFrame({
-                    'timestamp': [pd.to_datetime(api_data['timestamp'])],
-                    'BTC_price': [api_data['btc']],
-                    'ETH_price': [api_data['eth']],
-                    'SOL_price': [api_data['sol']],
-                    'XRP_price': [api_data['xrp']],
-                    'fear_greed': [api_data['fear_greed']],
-                    'market_cap': [api_data.get('market_cap', 0)]
+                    'timestamp': [pd.to_datetime(timestamp) if timestamp else pd.NaT],
+                    'BTC_price': [btc if btc is not None else np.nan],
+                    'ETH_price': [eth if eth is not None else np.nan],
+                    'SOL_price': [sol if sol is not None else np.nan],
+                    'XRP_price': [xrp if xrp is not None else np.nan],
+                    'fear_greed': [fg if fg is not None else np.nan],
+                    'market_cap': [api_data.get('market_cap')]
                 })
-                
-                print(f"✅ Live data: BTC=${api_data['btc']:,.2f}, ETH=${api_data['eth']:,.2f}")
+
+                print(
+                    f"✅ Live data: BTC=${btc if btc is not None else 'N/A'}, "
+                    f"ETH=${eth if eth is not None else 'N/A'}"
+                )
                 return live_df
                 
         except Exception as e:
             print(f"⚠️ API connection failed: {e}")
-        
+            if not self.use_fallback:
+                print("⚠️ Fallback disabled - no data returned")
+                return None
+
         # Method 2: File fallback
-        try:
-            csv_file = f"{self.data_path}/hybrid_latest.csv"
-            df = pd.read_csv(csv_file)
-            df['timestamp'] = pd.to_datetime(df['timestamp'])
-            
-            # Pivot to get prices in columns
-            pivot_df = df.pivot(index='timestamp', columns='symbol', values='price').reset_index()
-            pivot_df.columns.name = None
-            
-            print("✅ Live data loaded from CSV")
-            return pivot_df
-            
-        except Exception as e:
-            print(f"❌ Failed to load live data: {e}")
-            return None
+        if self.use_fallback:
+            try:
+                csv_file = f"{self.data_path}/hybrid_latest.csv"
+                df = pd.read_csv(csv_file)
+                df['timestamp'] = pd.to_datetime(df['timestamp'])
+
+                # Pivot to get prices in columns
+                pivot_df = df.pivot(index='timestamp', columns='symbol', values='price').reset_index()
+                pivot_df.columns.name = None
+
+                print("✅ Live data loaded from CSV")
+                return pivot_df
+
+            except Exception as e:
+                print(f"❌ Failed to load live data: {e}")
+
+        return None
     
     def get_historical_data_from_agentceli(self, hours=168):  # 7 days default
         """Get historical data from AgentCeli database for training"""
