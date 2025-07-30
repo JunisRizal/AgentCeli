@@ -1,0 +1,954 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>🐙 AgentCeli - Data Source Monitor</title>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            background: linear-gradient(135deg, #1e3c72 0%, #2a5298 100%);
+            min-height: 100vh;
+            color: #333;
+        }
+        
+        .header {
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(10px);
+            padding: 1rem 2rem;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.2);
+            color: white;
+        }
+        
+        .header h1 {
+            font-size: 2rem;
+            margin-bottom: 0.5rem;
+        }
+        
+        .header .subtitle {
+            opacity: 0.8;
+            font-size: 1rem;
+        }
+        
+        .dashboard {
+            padding: 2rem;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 2rem;
+        }
+        
+        .panel {
+            background: rgba(255, 255, 255, 0.95);
+            border-radius: 12px;
+            padding: 1.5rem;
+            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
+            backdrop-filter: blur(10px);
+        }
+        
+        .panel h2 {
+            color: #2a5298;
+            margin-bottom: 1rem;
+            font-size: 1.3rem;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+        
+        .status-grid {
+            display: grid;
+            gap: 1rem;
+        }
+        
+        .source-card {
+            background: #f8f9fa;
+            border-radius: 8px;
+            padding: 1rem;
+            border-left: 4px solid #28a745;
+            transition: all 0.3s ease;
+        }
+        
+        .source-card.disabled {
+            border-left-color: #dc3545;
+            opacity: 0.7;
+        }
+        
+        .source-card.paid {
+            border-left-color: #ffc107;
+        }
+        
+        .source-card.ai-api {
+            border-left-color: #e74c3c;
+            background: #ffe6e6;
+        }
+        
+        .source-header {
+            display: flex;
+            justify-content: between;
+            align-items: center;
+            margin-bottom: 0.5rem;
+        }
+        
+        .source-name {
+            font-weight: bold;
+            font-size: 1.1rem;
+        }
+        
+        .source-type {
+            padding: 0.2rem 0.5rem;
+            border-radius: 4px;
+            font-size: 0.8rem;
+            font-weight: bold;
+        }
+        
+        .type-free {
+            background: #d4edda;
+            color: #155724;
+        }
+        
+        .type-paid {
+            background: #fff3cd;
+            color: #856404;
+        }
+        
+        .source-metrics {
+            display: grid;
+            grid-template-columns: 1fr 1fr 1fr;
+            gap: 0.5rem;
+            margin-top: 0.5rem;
+            font-size: 0.9rem;
+        }
+        
+        .metric {
+            text-align: center;
+            padding: 0.3rem;
+            background: white;
+            border-radius: 4px;
+        }
+        
+        .metric-label {
+            font-size: 0.7rem;
+            opacity: 0.7;
+            margin-bottom: 0.2rem;
+        }
+        
+        .metric-value {
+            font-weight: bold;
+        }
+        
+        .data-types {
+            margin-top: 0.5rem;
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.3rem;
+        }
+        
+        .data-type-tag {
+            background: #e9ecef;
+            color: #495057;
+            padding: 0.2rem 0.4rem;
+            border-radius: 12px;
+            font-size: 0.7rem;
+            margin: 0.1rem;
+        }
+        
+        .data-category {
+            margin-bottom: 0.5rem;
+        }
+        
+        .category-title {
+            font-weight: bold;
+            font-size: 0.8rem;
+            color: #495057;
+            margin-bottom: 0.2rem;
+        }
+        
+        .category-items {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.2rem;
+        }
+        
+        .category-item {
+            background: #f8f9fa;
+            border: 1px solid #dee2e6;
+            color: #495057;
+            padding: 0.1rem 0.3rem;
+            border-radius: 8px;
+            font-size: 0.65rem;
+        }
+        
+        .source-expanded {
+            margin-top: 0.5rem;
+            padding: 0.5rem;
+            background: #f8f9fa;
+            border-radius: 6px;
+            border-left: 3px solid #007bff;
+        }
+        
+        .expand-btn {
+            background: #007bff;
+            color: white;
+            border: none;
+            padding: 0.2rem 0.4rem;
+            border-radius: 4px;
+            font-size: 0.7rem;
+            cursor: pointer;
+            margin-left: 0.5rem;
+        }
+        
+        .expand-btn:hover {
+            background: #0056b3;
+        }
+        
+        .alert-panel {
+            max-height: 400px;
+            overflow-y: auto;
+        }
+        
+        .alert {
+            background: #f8f9fa;
+            border-radius: 6px;
+            padding: 0.8rem;
+            margin-bottom: 0.5rem;
+            border-left: 4px solid #ffc107;
+        }
+        
+        .alert.high {
+            border-left-color: #dc3545;
+            background: #ffe6e6;
+        }
+        
+        .alert.medium {
+            border-left-color: #ffc107;
+            background: #fff8e1;
+        }
+        
+        .alert.low {
+            border-left-color: #28a745;
+            background: #e8f5e8;
+        }
+        
+        .alert-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 0.3rem;
+        }
+        
+        .alert-type {
+            font-weight: bold;
+            font-size: 0.9rem;
+        }
+        
+        .alert-time {
+            font-size: 0.8rem;
+            opacity: 0.7;
+        }
+        
+        .alert-cost {
+            font-weight: bold;
+            color: #dc3545;
+        }
+        
+        .chart-container {
+            height: 200px;
+            margin-top: 1rem;
+            background: #f8f9fa;
+            border-radius: 6px;
+            padding: 1rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #666;
+        }
+        
+        .ai-usage-warning {
+            background: #ffe6e6;
+            border: 2px solid #dc3545;
+            border-radius: 8px;
+            padding: 1rem;
+            margin-bottom: 1rem;
+            color: #721c24;
+        }
+        
+        .ai-usage-warning h3 {
+            margin-bottom: 0.5rem;
+            color: #dc3545;
+        }
+        
+        .cost-summary {
+            background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%);
+            border-radius: 8px;
+            padding: 1rem;
+            margin-bottom: 1rem;
+            text-align: center;
+        }
+        
+        .cost-today {
+            font-size: 2rem;
+            font-weight: bold;
+            color: #dc3545;
+        }
+        
+        .refresh-btn {
+            background: #007bff;
+            color: white;
+            border: none;
+            padding: 0.5rem 1rem;
+            border-radius: 6px;
+            cursor: pointer;
+            margin-bottom: 1rem;
+        }
+        
+        .refresh-btn:hover {
+            background: #0056b3;
+        }
+        
+        .status-indicator {
+            width: 12px;
+            height: 12px;
+            border-radius: 50%;
+            display: inline-block;
+            margin-right: 0.5rem;
+        }
+        
+        .status-active {
+            background: #28a745;
+        }
+        
+        .status-disabled {
+            background: #dc3545;
+        }
+        
+        .status-warning {
+            background: #ffc107;
+        }
+        
+        .full-width {
+            grid-column: 1 / -1;
+        }
+        
+        @media (max-width: 768px) {
+            .dashboard {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="header">
+        <h1>🐙 AgentCeli Data Source Monitor</h1>
+        <div class="subtitle">Real-time monitoring • API cost tracking • Request rate analysis</div>
+    </div>
+    
+    <div class="dashboard">
+        <!-- Data Sources Panel -->
+        <div class="panel">
+            <h2>📡 Data Sources Status</h2>
+            <button class="refresh-btn" onclick="refreshData()">🔄 Refresh</button>
+            <div id="sources-container" class="status-grid">
+                <!-- Sources will be loaded here -->
+            </div>
+        </div>
+        
+        <!-- Cost Alerts Panel -->
+        <div class="panel">
+            <h2>💰 Cost Alerts & AI Usage</h2>
+            <div id="cost-summary" class="cost-summary">
+                <div class="cost-today">$0.00</div>
+                <div>Total cost today</div>
+            </div>
+            <div id="ai-usage-warning" style="display: none;" class="ai-usage-warning">
+                <h3>⚠️ AI API Usage Detected!</h3>
+                <div id="ai-usage-details"></div>
+            </div>
+            <div id="alerts-container" class="alert-panel">
+                <!-- Alerts will be loaded here -->
+            </div>
+        </div>
+        
+        <!-- Crypto Prices Panel -->
+        <div class="panel">
+            <h2>💰 Current Crypto Prices</h2>
+            <div id="price-grid" style="display: grid; grid-template-columns: 1fr 1fr; gap: 1rem;">
+                <!-- Price cards will be loaded here -->
+            </div>
+            <canvas id="price-chart" width="400" height="200" style="margin-top: 1rem;"></canvas>
+        </div>
+
+        <!-- Santiment Exchange Flows Panel -->
+        <div class="panel">
+            <h2>📈 Santiment Exchange Flows</h2>
+            <div class="chart-controls" style="margin-bottom: 1rem;">
+                <select id="asset-selector" onchange="updateFlowCharts()" style="padding: 0.5rem; border-radius: 4px; border: 1px solid #ddd;">
+                    <option value="BTC">Bitcoin (BTC)</option>
+                    <option value="ETH">Ethereum (ETH)</option>
+                    <option value="SOL">Solana (SOL)</option>
+                    <option value="XRP">Ripple (XRP)</option>
+                </select>
+            </div>
+            <canvas id="flow-chart" width="400" height="200"></canvas>
+            <div id="flow-summary" style="margin-top: 1rem; text-align: center; background: #f8f9fa; padding: 1rem; border-radius: 6px;">
+                <!-- Flow summary will be loaded here -->
+            </div>
+        </div>
+
+        <!-- Request Rates Panel -->
+        <div class="panel full-width">
+            <h2>📊 Request Rates (Last Hour)</h2>
+            <div id="rates-chart" class="chart-container">
+                Request rate visualization will appear here
+            </div>
+            <div id="rates-summary" style="margin-top: 1rem;">
+                <!-- Rate summaries will be loaded here -->
+            </div>
+        </div>
+    </div>
+    
+    <script>
+        let refreshInterval;
+        let detailedSources = {};
+        let santimentData = null;
+        let correlationData = null;
+        let flowChart = null;
+        let priceChart = null;
+        
+        // Initialize dashboard
+        document.addEventListener('DOMContentLoaded', function() {
+            loadDetailedSources();
+            refreshData();
+            loadIntegratedData();
+            // Auto-refresh every 60 seconds (REDUCED to save API calls)
+            refreshInterval = setInterval(refreshData, 60000);
+            // Refresh integrated data every 5 minutes 
+            setInterval(loadIntegratedData, 300000);
+        });
+        
+        async function loadDetailedSources() {
+            try {
+                const response = await fetch('/api/sources/detailed');
+                detailedSources = await response.json();
+            } catch (error) {
+                console.error('Error loading detailed sources:', error);
+            }
+        }
+        
+        async function refreshData() {
+            try {
+                await Promise.all([
+                    loadSourcesStatus(),
+                    loadCostAlerts(),
+                    loadRequestRates()
+                ]);
+            } catch (error) {
+                console.error('Error refreshing data:', error);
+            }
+        }
+        
+        async function loadSourcesStatus() {
+            try {
+                const response = await fetch('/api/sources/status');
+                const sources = await response.json();
+                
+                const container = document.getElementById('sources-container');
+                container.innerHTML = '';
+                
+                Object.entries(sources).forEach(([name, source]) => {
+                    const card = document.createElement('div');
+                    card.className = `source-card ${source.enabled ? '' : 'disabled'} ${source.type.toLowerCase()} ${name.includes('openai') || name.includes('anthropic') ? 'ai-api' : ''}`;
+                    
+                    const statusClass = source.enabled ? 'status-active' : 'status-disabled';
+                    const dataTypes = source.data_types.map(type => `<span class="data-type-tag">${type}</span>`).join('');
+                    
+                    // Get detailed info if available
+                    const detailedInfo = detailedSources[name] || {};
+                    const hasDetailedInfo = Object.keys(detailedInfo).length > 0;
+                    
+                    let expandedContent = '';
+                    if (hasDetailedInfo && detailedInfo.data_categories) {
+                        expandedContent = Object.entries(detailedInfo.data_categories).map(([category, items]) => `
+                            <div class="data-category">
+                                <div class="category-title">${category}</div>
+                                <div class="category-items">
+                                    ${items.map(item => `<span class="category-item">${item}</span>`).join('')}
+                                </div>
+                            </div>
+                        `).join('');
+                    }
+                    
+                    card.innerHTML = `
+                        <div class="source-header">
+                            <div>
+                                <span class="status-indicator ${statusClass}"></span>
+                                <span class="source-name">${name.toUpperCase()}</span>
+                                ${hasDetailedInfo ? `<button class="expand-btn" onclick="toggleSourceDetails('${name}')">Details</button>` : ''}
+                            </div>
+                            <span class="source-type type-${source.type.toLowerCase()}">${source.type}</span>
+                        </div>
+                        <div class="source-metrics">
+                            <div class="metric">
+                                <div class="metric-label">Requests Today</div>
+                                <div class="metric-value">${source.requests_today}</div>
+                            </div>
+                            <div class="metric">
+                                <div class="metric-label">Avg Response</div>
+                                <div class="metric-value">${source.avg_response_time}s</div>
+                            </div>
+                            <div class="metric">
+                                <div class="metric-label">Cost Today</div>
+                                <div class="metric-value">$${source.cost_today.toFixed(4)}</div>
+                            </div>
+                        </div>
+                        <div class="data-types">
+                            ${dataTypes}
+                        </div>
+                        ${hasDetailedInfo ? `
+                            <div id="details-${name}" class="source-expanded" style="display: none;">
+                                <div style="margin-bottom: 0.5rem;">
+                                    <strong>${detailedInfo.description || 'No description available'}</strong>
+                                </div>
+                                <div style="font-size: 0.8rem; margin-bottom: 0.5rem;">
+                                    <strong>Rate Limit:</strong> ${detailedInfo.rate_limit || 'Not specified'} | 
+                                    <strong>Assets:</strong> ${detailedInfo.assets_supported ? detailedInfo.assets_supported.slice(0, 3).join(', ') + (detailedInfo.assets_supported.length > 3 ? '...' : '') : 'Not specified'}
+                                    ${detailedInfo.cost_per_call ? ` | <strong>Cost:</strong> ${detailedInfo.cost_per_call}` : ''}
+                                </div>
+                                <div style="margin-top: 0.5rem;">
+                                    <div style="font-weight: bold; font-size: 0.9rem; margin-bottom: 0.3rem;">Data Categories:</div>
+                                    ${expandedContent}
+                                </div>
+                            </div>
+                        ` : ''}
+                    `;
+                    
+                    container.appendChild(card);
+                });
+            } catch (error) {
+                console.error('Error loading sources:', error);
+            }
+        }
+        
+        function toggleSourceDetails(sourceName) {
+            const detailsDiv = document.getElementById(`details-${sourceName}`);
+            const button = event.target;
+            
+            if (detailsDiv.style.display === 'none') {
+                detailsDiv.style.display = 'block';
+                button.textContent = 'Hide';
+            } else {
+                detailsDiv.style.display = 'none';
+                button.textContent = 'Details';
+            }
+        }
+        
+        async function loadCostAlerts() {
+            try {
+                const response = await fetch('/api/costs/alerts');
+                const data = await response.json();
+                
+                // Update cost summary
+                const costSummary = document.querySelector('.cost-today');
+                costSummary.textContent = `$${data.total_cost_today.toFixed(4)}`;
+                
+                // Show AI usage warning if detected
+                const aiWarning = document.getElementById('ai-usage-warning');
+                const aiDetails = document.getElementById('ai-usage-details');
+                
+                const hasAiUsage = data.ai_usage.openai.requests > 0 || data.ai_usage.anthropic.requests > 0;
+                
+                if (hasAiUsage) {
+                    aiWarning.style.display = 'block';
+                    aiDetails.innerHTML = `
+                        <div><strong>OpenAI:</strong> ${data.ai_usage.openai.requests} requests, $${data.ai_usage.openai.cost.toFixed(4)}</div>
+                        <div><strong>Anthropic:</strong> ${data.ai_usage.anthropic.requests} requests, $${data.ai_usage.anthropic.cost.toFixed(4)}</div>
+                    `;
+                } else {
+                    aiWarning.style.display = 'none';
+                }
+                
+                // Load alerts
+                const container = document.getElementById('alerts-container');
+                container.innerHTML = '';
+                
+                if (data.alerts.length === 0) {
+                    container.innerHTML = '<div style="text-align: center; opacity: 0.7; padding: 2rem;">No cost alerts</div>';
+                    return;
+                }
+                
+                data.alerts.reverse().forEach(alert => {
+                    const alertDiv = document.createElement('div');
+                    alertDiv.className = `alert ${alert.severity.toLowerCase()}`;
+                    
+                    const time = new Date(alert.timestamp).toLocaleTimeString();
+                    
+                    alertDiv.innerHTML = `
+                        <div class="alert-header">
+                            <span class="alert-type">${alert.type}</span>
+                            <span class="alert-time">${time}</span>
+                        </div>
+                        <div>${alert.message}</div>
+                        <div class="alert-cost">Cost: $${alert.cost.toFixed(4)}</div>
+                    `;
+                    
+                    container.appendChild(alertDiv);
+                });
+            } catch (error) {
+                console.error('Error loading cost alerts:', error);
+            }
+        }
+        
+        async function loadRequestRates() {
+            try {
+                const response = await fetch('/api/requests/rates');
+                const rates = await response.json();
+                
+                const chartContainer = document.getElementById('rates-chart');
+                const summaryContainer = document.getElementById('rates-summary');
+                
+                if (Object.keys(rates).length === 0) {
+                    chartContainer.innerHTML = '<div>No request data available</div>';
+                    summaryContainer.innerHTML = '';
+                    return;
+                }
+                
+                // Simple text-based visualization for now
+                let chartHtml = '<div style="font-family: monospace; font-size: 0.8rem;">';
+                Object.entries(rates).forEach(([source, data]) => {
+                    const totalRequests = Object.values(data).reduce((sum, count) => sum + count, 0);
+                    chartHtml += `<div style="margin-bottom: 0.5rem;"><strong>${source}:</strong> ${totalRequests} requests/hour</div>`;
+                });
+                chartHtml += '</div>';
+                
+                chartContainer.innerHTML = chartHtml;
+                
+                // Summary
+                const totalSources = Object.keys(rates).length;
+                const totalRequests = Object.values(rates).reduce((sum, sourceData) => {
+                    return sum + Object.values(sourceData).reduce((s, c) => s + c, 0);
+                }, 0);
+                
+                summaryContainer.innerHTML = `
+                    <div style="text-align: center; background: #f8f9fa; padding: 1rem; border-radius: 6px;">
+                        <strong>${totalSources}</strong> active sources • 
+                        <strong>${totalRequests}</strong> total requests/hour
+                    </div>
+                `;
+            } catch (error) {
+                console.error('Error loading request rates:', error);
+            }
+        }
+        
+        // Add test functionality
+        async function simulateRequest(source) {
+            try {
+                await fetch(`/api/simulate/request/${source}`);
+                refreshData();
+            } catch (error) {
+                console.error('Error simulating request:', error);
+            }
+        }
+        
+        // Add click handlers for testing
+        document.addEventListener('click', function(e) {
+            if (e.target.closest('.source-card')) {
+                const sourceCard = e.target.closest('.source-card');
+                const sourceName = sourceCard.querySelector('.source-name').textContent.toLowerCase();
+                // simulateRequest(sourceName);
+            }
+        });
+
+        // === INTEGRATED DATA FUNCTIONS ===
+        
+        async function loadIntegratedData() {
+            console.log('Loading integrated data...');
+            try {
+                const response = await fetch('/api/integrated/dashboard');
+                console.log('API response status:', response.status);
+                
+                if (response.ok) {
+                    const data = await response.json();
+                    console.log('Integrated data loaded:', data);
+                    
+                    santimentData = data.santiment;
+                    correlationData = data.correlation;
+                    
+                    // Update all charts
+                    if (santimentData && santimentData.assets) {
+                        updateFlowCharts();
+                    }
+                    
+                    if (correlationData && correlationData.sources) {
+                        updatePriceCharts();
+                    }
+                    
+                    console.log('Data sources available:', data.data_sources_available);
+                } else {
+                    throw new Error(`API returned ${response.status}`);
+                }
+            } catch (error) {
+                console.error('Error loading integrated data:', error);
+                showDataError('Unable to load data');
+            }
+        }
+
+        function showDataError(message) {
+            // Show error in chart containers
+            document.getElementById('flow-summary').innerHTML = `
+                <div style="text-align: center; color: #dc3545; padding: 2rem;">
+                    <strong>⚠️ ${message}</strong>
+                    <br><small>Please check if data collection is running</small>
+                </div>
+            `;
+            
+            document.getElementById('price-grid').innerHTML = `
+                <div style="text-align: center; color: #dc3545; padding: 2rem; grid-column: 1 / -1;">
+                    <strong>⚠️ ${message}</strong>
+                    <br><small>Please check if data collection is running</small>
+                </div>
+            `;
+        }
+
+        function updatePriceCharts() {
+            console.log('Updating price charts...');
+            if (!correlationData || !correlationData.sources) {
+                console.warn('No correlation data available for price charts');
+                return;
+            }
+            
+            const priceGrid = document.getElementById('price-grid');
+            priceGrid.innerHTML = '';
+            
+            // Display current prices for major coins
+            const binanceData = correlationData.sources.binance;
+            if (binanceData) {
+                const coins = ['BTCUSDT', 'ETHUSDT', 'SOLUSDT', 'XRPUSDT'];
+                const labels = [];
+                const prices = [];
+                const changes = [];
+                
+                coins.forEach(coin => {
+                    if (binanceData[coin]) {
+                        const coinData = binanceData[coin];
+                        const symbol = coin.replace('USDT', '');
+                        
+                        // Create price card
+                        const priceCard = document.createElement('div');
+                        priceCard.style.cssText = 'background: #f8f9fa; padding: 1rem; border-radius: 8px; text-align: center;';
+                        
+                        const changeColor = coinData.change_24h >= 0 ? '#28a745' : '#dc3545';
+                        const changeIcon = coinData.change_24h >= 0 ? '📈' : '📉';
+                        
+                        priceCard.innerHTML = `
+                            <div style="font-weight: bold; font-size: 0.9rem; margin-bottom: 0.5rem;">${symbol}</div>
+                            <div style="font-size: 1.2rem; font-weight: bold; color: #2a5298;">$${coinData.price.toLocaleString()}</div>
+                            <div style="font-size: 0.8rem; color: ${changeColor}; margin-top: 0.3rem;">
+                                ${changeIcon} ${coinData.change_24h.toFixed(2)}%
+                            </div>
+                            <div style="font-size: 0.7rem; opacity: 0.7; margin-top: 0.2rem;">
+                                Vol: ${(coinData.volume_24h / 1000).toFixed(1)}K
+                            </div>
+                        `;
+                        
+                        priceGrid.appendChild(priceCard);
+                        
+                        // Prepare data for chart
+                        labels.push(symbol);
+                        prices.push(coinData.price);
+                        changes.push(coinData.change_24h);
+                    }
+                });
+                
+                // Create price chart
+                if (priceChart) {
+                    priceChart.destroy();
+                }
+                
+                const ctx = document.getElementById('price-chart').getContext('2d');
+                priceChart = new Chart(ctx, {
+                    type: 'bar',
+                    data: {
+                        labels: labels,
+                        datasets: [{
+                            label: '24h Change (%)',
+                            data: changes,
+                            backgroundColor: changes.map(change => change >= 0 ? 'rgba(40, 167, 69, 0.8)' : 'rgba(220, 53, 69, 0.8)'),
+                            borderColor: changes.map(change => change >= 0 ? '#28a745' : '#dc3545'),
+                            borderWidth: 2
+                        }]
+                    },
+                    options: {
+                        responsive: true,
+                        maintainAspectRatio: false,
+                        scales: {
+                            y: {
+                                title: {
+                                    display: true,
+                                    text: '24h Change (%)'
+                                },
+                                grid: {
+                                    color: 'rgba(0,0,0,0.1)'
+                                }
+                            },
+                            x: {
+                                grid: {
+                                    color: 'rgba(0,0,0,0.1)'
+                                }
+                            }
+                        },
+                        plugins: {
+                            legend: {
+                                position: 'top'
+                            },
+                            tooltip: {
+                                callbacks: {
+                                    label: function(context) {
+                                        return `${context.dataset.label}: ${context.parsed.y.toFixed(2)}%`;
+                                    }
+                                }
+                            }
+                        }
+                    }
+                });
+            }
+        }
+
+        function updateFlowCharts() {
+            console.log('Updating flow charts...');
+            if (!santimentData || !santimentData.assets) {
+                console.warn('No santiment data available for flow charts');
+                return;
+            }
+            
+            const selectedAsset = document.getElementById('asset-selector').value;
+            const assetData = santimentData.assets[selectedAsset];
+            
+            console.log('Selected asset:', selectedAsset, 'Asset data:', assetData);
+            
+            if (!assetData) {
+                console.warn('No data for selected asset:', selectedAsset);
+                return;
+            }
+            
+            if (!assetData.inflows || !assetData.outflows) {
+                console.warn('Missing inflow/outflow data for:', selectedAsset);
+                document.getElementById('flow-summary').innerHTML = `
+                    <div style="text-align: center; color: #ffc107; padding: 1rem;">
+                        <strong>⚠️ No flow data available for ${selectedAsset}</strong>
+                    </div>
+                `;
+                return;
+            }
+            
+            // Prepare data for Chart.js
+            const labels = assetData.inflows.map(point => {
+                const date = new Date(point.datetime);
+                return date.toLocaleDateString('de-DE', { month: 'short', day: 'numeric' });
+            });
+            
+            const inflowData = assetData.inflows.map(point => point.value || 0);
+            const outflowData = assetData.outflows.map(point => (point.value || 0) * -1); // Negative for outflows
+            
+            // Destroy existing chart
+            if (flowChart) {
+                flowChart.destroy();
+            }
+            
+            // Create new chart
+            const ctx = document.getElementById('flow-chart').getContext('2d');
+            flowChart = new Chart(ctx, {
+                type: 'line',
+                data: {
+                    labels: labels,
+                    datasets: [{
+                        label: 'Inflows ($)',
+                        data: inflowData,
+                        borderColor: '#28a745',
+                        backgroundColor: 'rgba(40, 167, 69, 0.1)',
+                        fill: true,
+                        tension: 0.4
+                    }, {
+                        label: 'Outflows ($)',
+                        data: outflowData,
+                        borderColor: '#dc3545',
+                        backgroundColor: 'rgba(220, 53, 69, 0.1)',
+                        fill: true,
+                        tension: 0.4
+                    }]
+                },
+                options: {
+                    responsive: true,
+                    maintainAspectRatio: false,
+                    scales: {
+                        y: {
+                            title: {
+                                display: true,
+                                text: 'USD ($)'
+                            },
+                            grid: {
+                                color: 'rgba(0,0,0,0.1)'
+                            }
+                        },
+                        x: {
+                            grid: {
+                                color: 'rgba(0,0,0,0.1)'
+                            }
+                        }
+                    },
+                    plugins: {
+                        legend: {
+                            position: 'top'
+                        },
+                        tooltip: {
+                            mode: 'index',
+                            intersect: false,
+                            callbacks: {
+                                label: function(context) {
+                                    const value = Math.abs(context.parsed.y);
+                                    const label = context.dataset.label;
+                                    return `${label}: $${value.toLocaleString()}`;
+                                }
+                            }
+                        }
+                    },
+                    interaction: {
+                        mode: 'nearest',
+                        axis: 'x',
+                        intersect: false
+                    }
+                }
+            });
+            
+            // Update summary
+            const latestInflow = assetData.inflows[assetData.inflows.length - 1]?.value || 0;
+            const latestOutflow = assetData.outflows[assetData.outflows.length - 1]?.value || 0;
+            const netFlow = latestInflow - latestOutflow;
+            const flowDirection = netFlow > 0 ? '📈 Inflow' : '📉 Outflow';
+            const flowColor = netFlow > 0 ? '#28a745' : '#dc3545';
+            
+            document.getElementById('flow-summary').innerHTML = `
+                <div style="display: flex; justify-content: space-around; text-align: center;">
+                    <div>
+                        <div style="font-size: 0.8rem; opacity: 0.7;">Latest Inflow</div>
+                        <div style="font-weight: bold; color: #28a745;">$${latestInflow.toLocaleString()}</div>
+                    </div>
+                    <div>
+                        <div style="font-size: 0.8rem; opacity: 0.7;">Latest Outflow</div>
+                        <div style="font-weight: bold; color: #dc3545;">$${latestOutflow.toLocaleString()}</div>
+                    </div>
+                    <div>
+                        <div style="font-size: 0.8rem; opacity: 0.7;">Net Flow</div>
+                        <div style="font-weight: bold; color: ${flowColor};">${flowDirection} $${Math.abs(netFlow).toLocaleString()}</div>
+                    </div>
+                </div>
+            `;
+        }
+
+    </script>
+</body>
+</html>

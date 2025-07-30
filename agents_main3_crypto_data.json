@@ -1,0 +1,1809 @@
+{
+  "timestamp": "2025-07-30T05:53:37.073053",
+  "source": "AgentCeli",
+  "live_prices": {
+    "api_tier": "FREE",
+    "btc": 118134.75,
+    "cost_estimate": 0,
+    "eth": 3822.13,
+    "fear_greed": "74",
+    "sol": 181.98,
+    "timestamp": "2025-07-30T05:51:39.497355",
+    "xrp": 3.1457
+  },
+  "market_summary": null,
+  "historical_data": [
+    {
+      "timestamp": "2025-07-29 17:46:18.979172",
+      "symbol": "BTC",
+      "price": 117390.0,
+      "volume_24h": 14778.65983,
+      "change_24h": -0.798,
+      "fear_greed": 73
+    },
+    {
+      "timestamp": "2025-07-29 17:46:18.979172",
+      "symbol": "ETH",
+      "price": 3758.0,
+      "volume_24h": 569427.3076,
+      "change_24h": -1.439,
+      "fear_greed": 73
+    },
+    {
+      "timestamp": "2025-07-29 17:46:18.979172",
+      "symbol": "XRP",
+      "price": 3.0932,
+      "volume_24h": 174178827.3,
+      "change_24h": -2.404,
+      "fear_greed": 73
+    },
+    {
+      "timestamp": "2025-07-29 17:46:18.979172",
+      "symbol": "SOL",
+      "price": 180.7,
+      "volume_24h": 3286560.427,
+      "change_24h": -3.909,
+      "fear_greed": 73
+    },
+    {
+      "timestamp": "2025-07-23 13:02:40.846063",
+      "symbol": "BTC",
+      "price": 118322.0,
+      "volume_24h": 15583.16254,
+      "change_24h": -0.51,
+      "fear_greed": 74
+    },
+    {
+      "timestamp": "2025-07-23 13:02:40.846063",
+      "symbol": "ETH",
+      "price": 3665.06,
+      "volume_24h": 669406.412,
+      "change_24h": -0.682,
+      "fear_greed": 74
+    },
+    {
+      "timestamp": "2025-07-23 13:02:40.846063",
+      "symbol": "XRP",
+      "price": 3.4459,
+      "volume_24h": 192010622.0,
+      "change_24h": -1.346,
+      "fear_greed": 74
+    },
+    {
+      "timestamp": "2025-07-23 13:02:40.846063",
+      "symbol": "SOL",
+      "price": 197.83,
+      "volume_24h": 5335158.136,
+      "change_24h": -0.307,
+      "fear_greed": 74
+    },
+    {
+      "timestamp": "2025-07-23 12:57:39.694375",
+      "symbol": "BTC",
+      "price": 118372.11,
+      "volume_24h": 15647.61424,
+      "change_24h": -0.442,
+      "fear_greed": 74
+    },
+    {
+      "timestamp": "2025-07-23 12:57:39.694375",
+      "symbol": "ETH",
+      "price": 3666.6,
+      "volume_24h": 671373.9774,
+      "change_24h": -0.799,
+      "fear_greed": 74
+    },
+    {
+      "timestamp": "2025-07-23 12:57:39.694375",
+      "symbol": "XRP",
+      "price": 3.4522,
+      "volume_24h": 192016710.9,
+      "change_24h": -1.253,
+      "fear_greed": 74
+    },
+    {
+      "timestamp": "2025-07-23 12:57:39.694375",
+      "symbol": "SOL",
+      "price": 197.97,
+      "volume_24h": 5349012.01,
+      "change_24h": -0.488,
+      "fear_greed": 74
+    },
+    {
+      "timestamp": "2025-07-23 12:52:38.418624",
+      "symbol": "BTC",
+      "price": 118356.71,
+      "volume_24h": 15739.87544,
+      "change_24h": -0.321,
+      "fear_greed": 74
+    },
+    {
+      "timestamp": "2025-07-23 12:52:38.418624",
+      "symbol": "ETH",
+      "price": 3665.46,
+      "volume_24h": 673754.9021,
+      "change_24h": -0.657,
+      "fear_greed": 74
+    },
+    {
+      "timestamp": "2025-07-23 12:52:38.418624",
+      "symbol": "XRP",
+      "price": 3.4514,
+      "volume_24h": 191898098.1,
+      "change_24h": -1.18,
+      "fear_greed": 74
+    },
+    {
+      "timestamp": "2025-07-23 12:52:38.418624",
+      "symbol": "SOL",
+      "price": 197.83,
+      "volume_24h": 5362966.478,
+      "change_24h": -0.468,
+      "fear_greed": 74
+    },
+    {
+      "timestamp": "2025-07-23 12:47:37.058246",
+      "symbol": "BTC",
+      "price": 118359.98,
+      "volume_24h": 15766.59931,
+      "change_24h": -0.35,
+      "fear_greed": 74
+    },
+    {
+      "timestamp": "2025-07-23 12:47:37.058246",
+      "symbol": "ETH",
+      "price": 3666.11,
+      "volume_24h": 674978.7582,
+      "change_24h": -0.568,
+      "fear_greed": 74
+    },
+    {
+      "timestamp": "2025-07-23 12:47:37.058246",
+      "symbol": "XRP",
+      "price": 3.4451,
+      "volume_24h": 191515264.9,
+      "change_24h": -1.371,
+      "fear_greed": 74
+    },
+    {
+      "timestamp": "2025-07-23 12:47:37.058246",
+      "symbol": "SOL",
+      "price": 197.87,
+      "volume_24h": 5366596.807,
+      "change_24h": -0.383,
+      "fear_greed": 74
+    },
+    {
+      "timestamp": "2025-07-23 12:42:35.627733",
+      "symbol": "BTC",
+      "price": 118301.62,
+      "volume_24h": 15800.14364,
+      "change_24h": -0.35,
+      "fear_greed": 74
+    },
+    {
+      "timestamp": "2025-07-23 12:42:35.627733",
+      "symbol": "ETH",
+      "price": 3663.76,
+      "volume_24h": 674856.738,
+      "change_24h": -0.532,
+      "fear_greed": 74
+    },
+    {
+      "timestamp": "2025-07-23 12:42:35.627733",
+      "symbol": "XRP",
+      "price": 3.4448,
+      "volume_24h": 191291572.3,
+      "change_24h": -1.306,
+      "fear_greed": 74
+    },
+    {
+      "timestamp": "2025-07-23 12:42:35.627733",
+      "symbol": "SOL",
+      "price": 197.51,
+      "volume_24h": 5370125.769,
+      "change_24h": -0.549,
+      "fear_greed": 74
+    },
+    {
+      "timestamp": "2025-07-23 12:37:34.316601",
+      "symbol": "BTC",
+      "price": 118224.96,
+      "volume_24h": 15824.14831,
+      "change_24h": -0.367,
+      "fear_greed": 74
+    },
+    {
+      "timestamp": "2025-07-23 12:37:34.316601",
+      "symbol": "ETH",
+      "price": 3660.21,
+      "volume_24h": 675698.0283,
+      "change_24h": -0.588,
+      "fear_greed": 74
+    },
+    {
+      "timestamp": "2025-07-23 12:37:34.316601",
+      "symbol": "XRP",
+      "price": 3.4426,
+      "volume_24h": 191254186.6,
+      "change_24h": -1.279,
+      "fear_greed": 74
+    },
+    {
+      "timestamp": "2025-07-23 12:37:34.316601",
+      "symbol": "SOL",
+      "price": 197.2,
+      "volume_24h": 5375348.858,
+      "change_24h": -0.665,
+      "fear_greed": 74
+    },
+    {
+      "timestamp": "2025-07-23 12:32:32.843545",
+      "symbol": "BTC",
+      "price": 118221.2,
+      "volume_24h": 15834.05778,
+      "change_24h": -0.343,
+      "fear_greed": 74
+    },
+    {
+      "timestamp": "2025-07-23 12:32:32.843545",
+      "symbol": "ETH",
+      "price": 3659.81,
+      "volume_24h": 678224.284,
+      "change_24h": -0.4,
+      "fear_greed": 74
+    },
+    {
+      "timestamp": "2025-07-23 12:32:32.843545",
+      "symbol": "XRP",
+      "price": 3.4415,
+      "volume_24h": 191224725.6,
+      "change_24h": -1.194,
+      "fear_greed": 74
+    },
+    {
+      "timestamp": "2025-07-23 12:32:32.843545",
+      "symbol": "SOL",
+      "price": 197.03,
+      "volume_24h": 5377128.898,
+      "change_24h": -0.6,
+      "fear_greed": 74
+    },
+    {
+      "timestamp": "2025-07-23 12:27:31.583861",
+      "symbol": "BTC",
+      "price": 118255.0,
+      "volume_24h": 15859.6025,
+      "change_24h": -0.189,
+      "fear_greed": 74
+    },
+    {
+      "timestamp": "2025-07-23 12:27:31.583861",
+      "symbol": "ETH",
+      "price": 3658.5,
+      "volume_24h": 678434.9157,
+      "change_24h": -0.293,
+      "fear_greed": 74
+    },
+    {
+      "timestamp": "2025-07-23 12:27:31.583861",
+      "symbol": "XRP",
+      "price": 3.4409,
+      "volume_24h": 190231385.2,
+      "change_24h": -1.098,
+      "fear_greed": 74
+    },
+    {
+      "timestamp": "2025-07-23 12:27:31.583861",
+      "symbol": "SOL",
+      "price": 197.06,
+      "volume_24h": 5385282.927,
+      "change_24h": -0.5,
+      "fear_greed": 74
+    },
+    {
+      "timestamp": "2025-07-23 12:22:30.302944",
+      "symbol": "BTC",
+      "price": 118182.27,
+      "volume_24h": 15861.76755,
+      "change_24h": -0.183,
+      "fear_greed": 74
+    },
+    {
+      "timestamp": "2025-07-23 12:22:30.302944",
+      "symbol": "ETH",
+      "price": 3658.32,
+      "volume_24h": 677786.639,
+      "change_24h": -0.115,
+      "fear_greed": 74
+    },
+    {
+      "timestamp": "2025-07-23 12:22:30.302944",
+      "symbol": "XRP",
+      "price": 3.4421,
+      "volume_24h": 189708205.0,
+      "change_24h": -0.787,
+      "fear_greed": 74
+    },
+    {
+      "timestamp": "2025-07-23 12:22:30.302944",
+      "symbol": "SOL",
+      "price": 196.89,
+      "volume_24h": 5381509.154,
+      "change_24h": -0.299,
+      "fear_greed": 74
+    },
+    {
+      "timestamp": "2025-07-23 12:17:29.034687",
+      "symbol": "BTC",
+      "price": 117928.49,
+      "volume_24h": 15826.35221,
+      "change_24h": -0.468,
+      "fear_greed": 74
+    },
+    {
+      "timestamp": "2025-07-23 12:17:29.034687",
+      "symbol": "ETH",
+      "price": 3646.26,
+      "volume_24h": 676546.051,
+      "change_24h": -0.699,
+      "fear_greed": 74
+    },
+    {
+      "timestamp": "2025-07-23 12:17:29.034687",
+      "symbol": "XRP",
+      "price": 3.4332,
+      "volume_24h": 189186322.0,
+      "change_24h": -1.43,
+      "fear_greed": 74
+    },
+    {
+      "timestamp": "2025-07-23 12:17:29.034687",
+      "symbol": "SOL",
+      "price": 196.47,
+      "volume_24h": 5365173.707,
+      "change_24h": -0.697,
+      "fear_greed": 74
+    },
+    {
+      "timestamp": "2025-07-23 12:12:27.773477",
+      "symbol": "BTC",
+      "price": 117880.84,
+      "volume_24h": 15827.18767,
+      "change_24h": -0.41,
+      "fear_greed": 74
+    },
+    {
+      "timestamp": "2025-07-23 12:12:27.773477",
+      "symbol": "ETH",
+      "price": 3646.78,
+      "volume_24h": 674075.3915,
+      "change_24h": -0.526,
+      "fear_greed": 74
+    },
+    {
+      "timestamp": "2025-07-23 12:12:27.773477",
+      "symbol": "XRP",
+      "price": 3.4334,
+      "volume_24h": 188409250.2,
+      "change_24h": -1.078,
+      "fear_greed": 74
+    },
+    {
+      "timestamp": "2025-07-23 12:12:27.773477",
+      "symbol": "SOL",
+      "price": 196.29,
+      "volume_24h": 5336805.679,
+      "change_24h": -0.663,
+      "fear_greed": 74
+    },
+    {
+      "timestamp": "2025-07-23 12:07:26.680842",
+      "symbol": "BTC",
+      "price": 118050.5,
+      "volume_24h": 15793.76457,
+      "change_24h": -0.337,
+      "fear_greed": 74
+    },
+    {
+      "timestamp": "2025-07-23 12:07:26.680842",
+      "symbol": "ETH",
+      "price": 3657.03,
+      "volume_24h": 670588.5762,
+      "change_24h": -0.339,
+      "fear_greed": 74
+    },
+    {
+      "timestamp": "2025-07-23 12:07:26.680842",
+      "symbol": "XRP",
+      "price": 3.4428,
+      "volume_24h": 187804328.8,
+      "change_24h": -0.995,
+      "fear_greed": 74
+    },
+    {
+      "timestamp": "2025-07-23 12:07:26.680842",
+      "symbol": "SOL",
+      "price": 197.42,
+      "volume_24h": 5290117.391,
+      "change_24h": -0.293,
+      "fear_greed": 74
+    },
+    {
+      "timestamp": "2025-07-23 12:02:25.233005",
+      "symbol": "BTC",
+      "price": 118001.42,
+      "volume_24h": 15742.64718,
+      "change_24h": -0.34,
+      "fear_greed": 74
+    },
+    {
+      "timestamp": "2025-07-23 12:02:25.233005",
+      "symbol": "ETH",
+      "price": 3655.9,
+      "volume_24h": 670833.6104,
+      "change_24h": -0.244,
+      "fear_greed": 74
+    },
+    {
+      "timestamp": "2025-07-23 12:02:25.233005",
+      "symbol": "XRP",
+      "price": 3.4423,
+      "volume_24h": 186146481.7,
+      "change_24h": -0.97,
+      "fear_greed": 74
+    },
+    {
+      "timestamp": "2025-07-23 12:02:25.233005",
+      "symbol": "SOL",
+      "price": 197.58,
+      "volume_24h": 5290617.685,
+      "change_24h": 0.076,
+      "fear_greed": 74
+    },
+    {
+      "timestamp": "2025-07-23 11:55:22.861084",
+      "symbol": "BTC",
+      "price": 118146.88,
+      "volume_24h": 15755.78376,
+      "change_24h": -0.224,
+      "fear_greed": 74
+    },
+    {
+      "timestamp": "2025-07-23 11:55:22.861084",
+      "symbol": "ETH",
+      "price": 3665.31,
+      "volume_24h": 671828.6895,
+      "change_24h": 0.195,
+      "fear_greed": 74
+    },
+    {
+      "timestamp": "2025-07-23 11:55:22.861084",
+      "symbol": "XRP",
+      "price": 3.4563,
+      "volume_24h": 186017647.3,
+      "change_24h": -0.507,
+      "fear_greed": 74
+    },
+    {
+      "timestamp": "2025-07-23 11:55:22.861084",
+      "symbol": "SOL",
+      "price": 198.04,
+      "volume_24h": 5341223.723,
+      "change_24h": 0.197,
+      "fear_greed": 74
+    },
+    {
+      "timestamp": "2025-07-23 11:50:21.076132",
+      "symbol": "BTC",
+      "price": 118115.26,
+      "volume_24h": 15788.80511,
+      "change_24h": -0.268,
+      "fear_greed": 74
+    },
+    {
+      "timestamp": "2025-07-23 11:50:21.076132",
+      "symbol": "ETH",
+      "price": 3659.41,
+      "volume_24h": 672197.0143,
+      "change_24h": 0.022,
+      "fear_greed": 74
+    },
+    {
+      "timestamp": "2025-07-23 11:50:21.076132",
+      "symbol": "XRP",
+      "price": 3.4537,
+      "volume_24h": 186279868.4,
+      "change_24h": -0.493,
+      "fear_greed": 74
+    },
+    {
+      "timestamp": "2025-07-23 11:50:21.076132",
+      "symbol": "SOL",
+      "price": 197.78,
+      "volume_24h": 5376655.106,
+      "change_24h": -0.071,
+      "fear_greed": 74
+    },
+    {
+      "timestamp": "2025-07-23 10:31:33.734325",
+      "symbol": "BTC",
+      "price": 118358.0,
+      "volume_24h": 16219.13396,
+      "change_24h": 0.43,
+      "fear_greed": 74
+    },
+    {
+      "timestamp": "2025-07-23 10:31:33.734325",
+      "symbol": "ETH",
+      "price": 3681.25,
+      "volume_24h": 700771.2523,
+      "change_24h": 1.263,
+      "fear_greed": 74
+    },
+    {
+      "timestamp": "2025-07-23 10:31:33.734325",
+      "symbol": "XRP",
+      "price": 3.4666,
+      "volume_24h": 187809153.4,
+      "change_24h": 0.811,
+      "fear_greed": 74
+    },
+    {
+      "timestamp": "2025-07-23 10:31:33.734325",
+      "symbol": "SOL",
+      "price": 199.26,
+      "volume_24h": 5565298.535,
+      "change_24h": 2.059,
+      "fear_greed": 74
+    },
+    {
+      "timestamp": "2025-07-23 10:26:32.578073",
+      "symbol": "BTC",
+      "price": 118352.09,
+      "volume_24h": 16247.58295,
+      "change_24h": 0.702,
+      "fear_greed": 74
+    },
+    {
+      "timestamp": "2025-07-23 10:26:32.578073",
+      "symbol": "ETH",
+      "price": 3681.47,
+      "volume_24h": 704077.8057,
+      "change_24h": 1.522,
+      "fear_greed": 74
+    },
+    {
+      "timestamp": "2025-07-23 10:26:32.578073",
+      "symbol": "XRP",
+      "price": 3.4671,
+      "volume_24h": 188763828.3,
+      "change_24h": 1.061,
+      "fear_greed": 74
+    },
+    {
+      "timestamp": "2025-07-23 10:26:32.578073",
+      "symbol": "SOL",
+      "price": 199.05,
+      "volume_24h": 5603319.008,
+      "change_24h": 2.324,
+      "fear_greed": 74
+    },
+    {
+      "timestamp": "2025-07-23 10:21:31.234452",
+      "symbol": "BTC",
+      "price": 118516.97,
+      "volume_24h": 16260.20075,
+      "change_24h": 0.476,
+      "fear_greed": 74
+    },
+    {
+      "timestamp": "2025-07-23 10:21:31.234452",
+      "symbol": "ETH",
+      "price": 3680.66,
+      "volume_24h": 706894.7016,
+      "change_24h": 0.841,
+      "fear_greed": 74
+    },
+    {
+      "timestamp": "2025-07-23 10:21:31.234452",
+      "symbol": "XRP",
+      "price": 3.4696,
+      "volume_24h": 189384647.5,
+      "change_24h": 0.545,
+      "fear_greed": 74
+    },
+    {
+      "timestamp": "2025-07-23 10:21:31.234452",
+      "symbol": "SOL",
+      "price": 199.14,
+      "volume_24h": 5633141.29,
+      "change_24h": 1.354,
+      "fear_greed": 74
+    },
+    {
+      "timestamp": "2025-07-23 10:16:29.708581",
+      "symbol": "BTC",
+      "price": 118532.31,
+      "volume_24h": 16325.43365,
+      "change_24h": 0.588,
+      "fear_greed": 74
+    },
+    {
+      "timestamp": "2025-07-23 10:16:29.708581",
+      "symbol": "ETH",
+      "price": 3681.49,
+      "volume_24h": 715192.4189,
+      "change_24h": 0.981,
+      "fear_greed": 74
+    },
+    {
+      "timestamp": "2025-07-23 10:16:29.708581",
+      "symbol": "XRP",
+      "price": 3.4725,
+      "volume_24h": 191407418.3,
+      "change_24h": 0.778,
+      "fear_greed": 74
+    },
+    {
+      "timestamp": "2025-07-23 10:16:29.708581",
+      "symbol": "SOL",
+      "price": 199.61,
+      "volume_24h": 5678320.567,
+      "change_24h": 1.645,
+      "fear_greed": 74
+    },
+    {
+      "timestamp": "2025-07-23 10:11:28.280585",
+      "symbol": "BTC",
+      "price": 118463.63,
+      "volume_24h": 16486.70091,
+      "change_24h": 0.717,
+      "fear_greed": 74
+    },
+    {
+      "timestamp": "2025-07-23 10:11:28.280585",
+      "symbol": "ETH",
+      "price": 3681.36,
+      "volume_24h": 719042.5439,
+      "change_24h": 0.948,
+      "fear_greed": 74
+    },
+    {
+      "timestamp": "2025-07-23 10:11:28.280585",
+      "symbol": "XRP",
+      "price": 3.4708,
+      "volume_24h": 192639074.2,
+      "change_24h": 0.72,
+      "fear_greed": 74
+    },
+    {
+      "timestamp": "2025-07-23 10:11:28.280585",
+      "symbol": "SOL",
+      "price": 199.67,
+      "volume_24h": 5699849.591,
+      "change_24h": 1.867,
+      "fear_greed": 74
+    },
+    {
+      "timestamp": "2025-07-23 10:06:27.023344",
+      "symbol": "BTC",
+      "price": 118270.83,
+      "volume_24h": 16616.90768,
+      "change_24h": 0.454,
+      "fear_greed": 74
+    },
+    {
+      "timestamp": "2025-07-23 10:06:27.023344",
+      "symbol": "ETH",
+      "price": 3670.39,
+      "volume_24h": 726174.6383,
+      "change_24h": 0.259,
+      "fear_greed": 74
+    },
+    {
+      "timestamp": "2025-07-23 10:06:27.023344",
+      "symbol": "XRP",
+      "price": 3.4641,
+      "volume_24h": 193822527.3,
+      "change_24h": 0.15,
+      "fear_greed": 74
+    },
+    {
+      "timestamp": "2025-07-23 10:06:27.023344",
+      "symbol": "SOL",
+      "price": 198.94,
+      "volume_24h": 5716630.609,
+      "change_24h": 1.165,
+      "fear_greed": 74
+    },
+    {
+      "timestamp": "2025-07-23 10:01:26.000416",
+      "symbol": "BTC",
+      "price": 118345.36,
+      "volume_24h": 16579.31466,
+      "change_24h": 0.442,
+      "fear_greed": 74
+    },
+    {
+      "timestamp": "2025-07-23 10:01:26.000416",
+      "symbol": "ETH",
+      "price": 3672.04,
+      "volume_24h": 726535.5505,
+      "change_24h": 0.23,
+      "fear_greed": 74
+    },
+    {
+      "timestamp": "2025-07-23 10:01:26.000416",
+      "symbol": "XRP",
+      "price": 3.4653,
+      "volume_24h": 194222212.9,
+      "change_24h": -0.038,
+      "fear_greed": 74
+    },
+    {
+      "timestamp": "2025-07-23 10:01:26.000416",
+      "symbol": "SOL",
+      "price": 199.38,
+      "volume_24h": 5735511.516,
+      "change_24h": 1.054,
+      "fear_greed": 74
+    },
+    {
+      "timestamp": "2025-07-23 10:01:24.568240",
+      "symbol": "BTC",
+      "price": 118345.76,
+      "volume_24h": 16579.24145,
+      "change_24h": 0.433,
+      "fear_greed": 74
+    },
+    {
+      "timestamp": "2025-07-23 10:01:24.568240",
+      "symbol": "ETH",
+      "price": 3672.04,
+      "volume_24h": 726568.2943,
+      "change_24h": 0.23,
+      "fear_greed": 74
+    },
+    {
+      "timestamp": "2025-07-23 10:01:24.568240",
+      "symbol": "XRP",
+      "price": 3.4653,
+      "volume_24h": 194222297.7,
+      "change_24h": -0.038,
+      "fear_greed": 74
+    },
+    {
+      "timestamp": "2025-07-23 10:01:24.568240",
+      "symbol": "SOL",
+      "price": 199.41,
+      "volume_24h": 5735723.007,
+      "change_24h": 1.039,
+      "fear_greed": 74
+    },
+    {
+      "timestamp": "2025-07-23 09:51:30.898660",
+      "symbol": "BTC",
+      "price": 118402.36,
+      "volume_24h": 16707.44225,
+      "change_24h": 0.264,
+      "fear_greed": 74
+    },
+    {
+      "timestamp": "2025-07-23 09:51:30.898660",
+      "symbol": "ETH",
+      "price": 3669.28,
+      "volume_24h": 733036.7368,
+      "change_24h": -0.559,
+      "fear_greed": 74
+    },
+    {
+      "timestamp": "2025-07-23 09:51:30.898660",
+      "symbol": "XRP",
+      "price": 3.4636,
+      "volume_24h": 195144941.2,
+      "change_24h": -0.52,
+      "fear_greed": 74
+    },
+    {
+      "timestamp": "2025-07-23 09:51:30.898660",
+      "symbol": "SOL",
+      "price": 199.27,
+      "volume_24h": 5772012.07,
+      "change_24h": 0.045,
+      "fear_greed": 74
+    },
+    {
+      "timestamp": "2025-07-23 09:51:29.525218",
+      "symbol": "BTC",
+      "price": 118402.37,
+      "volume_24h": 16707.42244,
+      "change_24h": 0.264,
+      "fear_greed": 74
+    },
+    {
+      "timestamp": "2025-07-23 09:51:29.525218",
+      "symbol": "ETH",
+      "price": 3669.02,
+      "volume_24h": 733038.8377,
+      "change_24h": -0.566,
+      "fear_greed": 74
+    },
+    {
+      "timestamp": "2025-07-23 09:51:29.525218",
+      "symbol": "XRP",
+      "price": 3.4636,
+      "volume_24h": 195145032.1,
+      "change_24h": -0.52,
+      "fear_greed": 74
+    },
+    {
+      "timestamp": "2025-07-23 09:51:29.525218",
+      "symbol": "SOL",
+      "price": 199.2,
+      "volume_24h": 5771996.693,
+      "change_24h": 0.005,
+      "fear_greed": 74
+    },
+    {
+      "timestamp": "2025-07-23 03:01:14.750564",
+      "symbol": "BTC",
+      "price": 119514.76,
+      "volume_24h": 20789.53751,
+      "change_24h": 2.075,
+      "fear_greed": 74
+    },
+    {
+      "timestamp": "2025-07-23 03:01:14.750564",
+      "symbol": "ETH",
+      "price": 3722.55,
+      "volume_24h": 878247.8266,
+      "change_24h": -0.532,
+      "fear_greed": 74
+    },
+    {
+      "timestamp": "2025-07-23 03:01:14.750564",
+      "symbol": "XRP",
+      "price": 3.5107,
+      "volume_24h": 248460745.9,
+      "change_24h": -0.485,
+      "fear_greed": 74
+    },
+    {
+      "timestamp": "2025-07-23 03:01:14.750564",
+      "symbol": "SOL",
+      "price": 203.72,
+      "volume_24h": 8531062.66,
+      "change_24h": 2.977,
+      "fear_greed": 74
+    },
+    {
+      "timestamp": "2025-07-23 02:56:12.862892",
+      "symbol": "BTC",
+      "price": 119550.72,
+      "volume_24h": 20889.53634,
+      "change_24h": 2.075,
+      "fear_greed": 74
+    },
+    {
+      "timestamp": "2025-07-23 02:56:12.862892",
+      "symbol": "ETH",
+      "price": 3734.45,
+      "volume_24h": 879699.1762,
+      "change_24h": -0.345,
+      "fear_greed": 74
+    },
+    {
+      "timestamp": "2025-07-23 02:56:12.862892",
+      "symbol": "XRP",
+      "price": 3.5184,
+      "volume_24h": 248697372.6,
+      "change_24h": -0.427,
+      "fear_greed": 74
+    },
+    {
+      "timestamp": "2025-07-23 02:56:12.862892",
+      "symbol": "SOL",
+      "price": 204.47,
+      "volume_24h": 8542593.583,
+      "change_24h": 3.629,
+      "fear_greed": 74
+    },
+    {
+      "timestamp": "2025-07-23 02:51:11.483995",
+      "symbol": "BTC",
+      "price": 119675.61,
+      "volume_24h": 20878.52621,
+      "change_24h": 2.133,
+      "fear_greed": 74
+    },
+    {
+      "timestamp": "2025-07-23 02:51:11.483995",
+      "symbol": "ETH",
+      "price": 3739.73,
+      "volume_24h": 880984.3087,
+      "change_24h": -0.335,
+      "fear_greed": 74
+    },
+    {
+      "timestamp": "2025-07-23 02:51:11.483995",
+      "symbol": "XRP",
+      "price": 3.5234,
+      "volume_24h": 248167600.3,
+      "change_24h": -0.421,
+      "fear_greed": 74
+    },
+    {
+      "timestamp": "2025-07-23 02:51:11.483995",
+      "symbol": "SOL",
+      "price": 204.77,
+      "volume_24h": 8552659.622,
+      "change_24h": 3.676,
+      "fear_greed": 74
+    },
+    {
+      "timestamp": "2025-07-23 02:46:09.257280",
+      "symbol": "BTC",
+      "price": 119860.0,
+      "volume_24h": 20884.32739,
+      "change_24h": 2.321,
+      "fear_greed": 74
+    },
+    {
+      "timestamp": "2025-07-23 02:46:09.257280",
+      "symbol": "ETH",
+      "price": 3746.08,
+      "volume_24h": 882051.8965,
+      "change_24h": -0.223,
+      "fear_greed": 74
+    },
+    {
+      "timestamp": "2025-07-23 02:46:09.257280",
+      "symbol": "XRP",
+      "price": 3.5295,
+      "volume_24h": 248420839.6,
+      "change_24h": -0.398,
+      "fear_greed": 74
+    },
+    {
+      "timestamp": "2025-07-23 02:46:09.257280",
+      "symbol": "SOL",
+      "price": 204.74,
+      "volume_24h": 8552192.927,
+      "change_24h": 3.755,
+      "fear_greed": 74
+    },
+    {
+      "timestamp": "2025-07-23 02:41:06.528986",
+      "symbol": "BTC",
+      "price": 119917.26,
+      "volume_24h": 20951.57359,
+      "change_24h": 2.303,
+      "fear_greed": 74
+    },
+    {
+      "timestamp": "2025-07-23 02:41:06.528986",
+      "symbol": "ETH",
+      "price": 3745.79,
+      "volume_24h": 882485.1621,
+      "change_24h": -0.134,
+      "fear_greed": 74
+    },
+    {
+      "timestamp": "2025-07-23 02:41:06.528986",
+      "symbol": "XRP",
+      "price": 3.5247,
+      "volume_24h": 248585072.6,
+      "change_24h": -0.449,
+      "fear_greed": 74
+    },
+    {
+      "timestamp": "2025-07-23 02:41:06.528986",
+      "symbol": "SOL",
+      "price": 204.35,
+      "volume_24h": 8566394.156,
+      "change_24h": 3.673,
+      "fear_greed": 74
+    },
+    {
+      "timestamp": "2025-07-23 02:36:04.597690",
+      "symbol": "BTC",
+      "price": 119770.76,
+      "volume_24h": 21008.19382,
+      "change_24h": 2.148,
+      "fear_greed": 74
+    },
+    {
+      "timestamp": "2025-07-23 02:36:04.597690",
+      "symbol": "ETH",
+      "price": 3737.28,
+      "volume_24h": 882399.4228,
+      "change_24h": -0.307,
+      "fear_greed": 74
+    },
+    {
+      "timestamp": "2025-07-23 02:36:04.597690",
+      "symbol": "XRP",
+      "price": 3.5291,
+      "volume_24h": 248359535.6,
+      "change_24h": -0.308,
+      "fear_greed": 74
+    },
+    {
+      "timestamp": "2025-07-23 02:36:04.597690",
+      "symbol": "SOL",
+      "price": 204.76,
+      "volume_24h": 8572629.605,
+      "change_24h": 3.865,
+      "fear_greed": 74
+    },
+    {
+      "timestamp": "2025-07-23 02:31:02.754985",
+      "symbol": "BTC",
+      "price": 119756.28,
+      "volume_24h": 21018.25492,
+      "change_24h": 1.919,
+      "fear_greed": 74
+    },
+    {
+      "timestamp": "2025-07-23 02:31:02.754985",
+      "symbol": "ETH",
+      "price": 3736.89,
+      "volume_24h": 882165.7824,
+      "change_24h": -0.874,
+      "fear_greed": 74
+    },
+    {
+      "timestamp": "2025-07-23 02:31:02.754985",
+      "symbol": "XRP",
+      "price": 3.5307,
+      "volume_24h": 248700042.5,
+      "change_24h": -0.837,
+      "fear_greed": 74
+    },
+    {
+      "timestamp": "2025-07-23 02:31:02.754985",
+      "symbol": "SOL",
+      "price": 204.07,
+      "volume_24h": 8583426.026,
+      "change_24h": 2.801,
+      "fear_greed": 74
+    },
+    {
+      "timestamp": "2025-07-23 02:26:01.468616",
+      "symbol": "BTC",
+      "price": 120015.73,
+      "volume_24h": 20996.44574,
+      "change_24h": 2.198,
+      "fear_greed": 74
+    },
+    {
+      "timestamp": "2025-07-23 02:26:01.468616",
+      "symbol": "ETH",
+      "price": 3753.78,
+      "volume_24h": 876689.2549,
+      "change_24h": -0.543,
+      "fear_greed": 74
+    },
+    {
+      "timestamp": "2025-07-23 02:26:01.468616",
+      "symbol": "XRP",
+      "price": 3.5443,
+      "volume_24h": 248339621.4,
+      "change_24h": -0.706,
+      "fear_greed": 74
+    },
+    {
+      "timestamp": "2025-07-23 02:26:01.468616",
+      "symbol": "SOL",
+      "price": 205.03,
+      "volume_24h": 8601742.371,
+      "change_24h": 3.347,
+      "fear_greed": 74
+    },
+    {
+      "timestamp": "2025-07-23 02:21:00.201062",
+      "symbol": "BTC",
+      "price": 119852.6,
+      "volume_24h": 20960.93278,
+      "change_24h": 2.041,
+      "fear_greed": 74
+    },
+    {
+      "timestamp": "2025-07-23 02:21:00.201062",
+      "symbol": "ETH",
+      "price": 3744.03,
+      "volume_24h": 874746.6786,
+      "change_24h": -0.577,
+      "fear_greed": 74
+    },
+    {
+      "timestamp": "2025-07-23 02:21:00.201062",
+      "symbol": "XRP",
+      "price": 3.5366,
+      "volume_24h": 248474818.7,
+      "change_24h": -0.652,
+      "fear_greed": 74
+    },
+    {
+      "timestamp": "2025-07-23 02:21:00.201062",
+      "symbol": "SOL",
+      "price": 204.49,
+      "volume_24h": 8620791.751,
+      "change_24h": 3.372,
+      "fear_greed": 74
+    },
+    {
+      "timestamp": "2025-07-23 02:15:58.653808",
+      "symbol": "BTC",
+      "price": 119787.28,
+      "volume_24h": 20971.03377,
+      "change_24h": 2.055,
+      "fear_greed": 74
+    },
+    {
+      "timestamp": "2025-07-23 02:15:58.653808",
+      "symbol": "ETH",
+      "price": 3732.11,
+      "volume_24h": 873692.2793,
+      "change_24h": -0.748,
+      "fear_greed": 74
+    },
+    {
+      "timestamp": "2025-07-23 02:15:58.653808",
+      "symbol": "XRP",
+      "price": 3.5287,
+      "volume_24h": 248715474.4,
+      "change_24h": -0.793,
+      "fear_greed": 74
+    },
+    {
+      "timestamp": "2025-07-23 02:15:58.653808",
+      "symbol": "SOL",
+      "price": 203.95,
+      "volume_24h": 8634050.114,
+      "change_24h": 3.318,
+      "fear_greed": 74
+    },
+    {
+      "timestamp": "2025-07-23 02:10:56.840146",
+      "symbol": "BTC",
+      "price": 119830.51,
+      "volume_24h": 20981.1563,
+      "change_24h": 2.185,
+      "fear_greed": 74
+    },
+    {
+      "timestamp": "2025-07-23 02:10:56.840146",
+      "symbol": "ETH",
+      "price": 3740.21,
+      "volume_24h": 871726.0167,
+      "change_24h": -0.381,
+      "fear_greed": 74
+    },
+    {
+      "timestamp": "2025-07-23 02:10:56.840146",
+      "symbol": "XRP",
+      "price": 3.5362,
+      "volume_24h": 248542254.0,
+      "change_24h": -0.127,
+      "fear_greed": 74
+    },
+    {
+      "timestamp": "2025-07-23 02:10:56.840146",
+      "symbol": "SOL",
+      "price": 204.9,
+      "volume_24h": 8643899.39,
+      "change_24h": 3.963,
+      "fear_greed": 74
+    },
+    {
+      "timestamp": "2025-07-23 02:05:55.551737",
+      "symbol": "BTC",
+      "price": 119911.01,
+      "volume_24h": 20964.83103,
+      "change_24h": 2.207,
+      "fear_greed": 74
+    },
+    {
+      "timestamp": "2025-07-23 02:05:55.551737",
+      "symbol": "ETH",
+      "price": 3737.94,
+      "volume_24h": 871138.1186,
+      "change_24h": -0.557,
+      "fear_greed": 74
+    },
+    {
+      "timestamp": "2025-07-23 02:05:55.551737",
+      "symbol": "XRP",
+      "price": 3.54,
+      "volume_24h": 248785891.0,
+      "change_24h": -0.321,
+      "fear_greed": 74
+    },
+    {
+      "timestamp": "2025-07-23 02:05:55.551737",
+      "symbol": "SOL",
+      "price": 205.21,
+      "volume_24h": 8652890.154,
+      "change_24h": 4.539,
+      "fear_greed": 74
+    },
+    {
+      "timestamp": "2025-07-23 02:00:54.091971",
+      "symbol": "BTC",
+      "price": 119929.16,
+      "volume_24h": 20957.17228,
+      "change_24h": 2.152,
+      "fear_greed": 74
+    },
+    {
+      "timestamp": "2025-07-23 02:00:54.091971",
+      "symbol": "ETH",
+      "price": 3744.9,
+      "volume_24h": 870151.323,
+      "change_24h": -0.48,
+      "fear_greed": 74
+    },
+    {
+      "timestamp": "2025-07-23 02:00:54.091971",
+      "symbol": "XRP",
+      "price": 3.5476,
+      "volume_24h": 248676624.2,
+      "change_24h": -0.129,
+      "fear_greed": 74
+    },
+    {
+      "timestamp": "2025-07-23 02:00:54.091971",
+      "symbol": "SOL",
+      "price": 205.36,
+      "volume_24h": 8637819.763,
+      "change_24h": 4.738,
+      "fear_greed": 74
+    },
+    {
+      "timestamp": "2025-07-23 01:55:52.641047",
+      "symbol": "BTC",
+      "price": 119865.57,
+      "volume_24h": 20948.03287,
+      "change_24h": 2.075,
+      "fear_greed": 72
+    },
+    {
+      "timestamp": "2025-07-23 01:55:52.641047",
+      "symbol": "ETH",
+      "price": 3742.15,
+      "volume_24h": 869908.2522,
+      "change_24h": -0.537,
+      "fear_greed": 72
+    },
+    {
+      "timestamp": "2025-07-23 01:55:52.641047",
+      "symbol": "XRP",
+      "price": 3.5489,
+      "volume_24h": 248458865.3,
+      "change_24h": -0.188,
+      "fear_greed": 72
+    },
+    {
+      "timestamp": "2025-07-23 01:55:52.641047",
+      "symbol": "SOL",
+      "price": 205.44,
+      "volume_24h": 8625890.985,
+      "change_24h": 4.832,
+      "fear_greed": 72
+    },
+    {
+      "timestamp": "2025-07-23 01:50:51.245046",
+      "symbol": "BTC",
+      "price": 119920.02,
+      "volume_24h": 20944.91991,
+      "change_24h": 2.085,
+      "fear_greed": 72
+    },
+    {
+      "timestamp": "2025-07-23 01:50:51.245046",
+      "symbol": "ETH",
+      "price": 3747.59,
+      "volume_24h": 870104.2112,
+      "change_24h": -0.419,
+      "fear_greed": 72
+    },
+    {
+      "timestamp": "2025-07-23 01:50:51.245046",
+      "symbol": "XRP",
+      "price": 3.5511,
+      "volume_24h": 248249094.1,
+      "change_24h": -0.284,
+      "fear_greed": 72
+    },
+    {
+      "timestamp": "2025-07-23 01:50:51.245046",
+      "symbol": "SOL",
+      "price": 205.03,
+      "volume_24h": 8590750.35,
+      "change_24h": 4.357,
+      "fear_greed": 72
+    },
+    {
+      "timestamp": "2025-07-23 01:45:49.993738",
+      "symbol": "BTC",
+      "price": 120024.0,
+      "volume_24h": 20938.10581,
+      "change_24h": 2.306,
+      "fear_greed": 72
+    },
+    {
+      "timestamp": "2025-07-23 01:45:49.993738",
+      "symbol": "ETH",
+      "price": 3742.24,
+      "volume_24h": 868675.4872,
+      "change_24h": -0.558,
+      "fear_greed": 72
+    },
+    {
+      "timestamp": "2025-07-23 01:45:49.993738",
+      "symbol": "XRP",
+      "price": 3.5487,
+      "volume_24h": 248207584.5,
+      "change_24h": 0.042,
+      "fear_greed": 72
+    },
+    {
+      "timestamp": "2025-07-23 01:45:49.993738",
+      "symbol": "SOL",
+      "price": 205.12,
+      "volume_24h": 8557073.942,
+      "change_24h": 4.584,
+      "fear_greed": 72
+    },
+    {
+      "timestamp": "2025-07-23 01:40:48.077139",
+      "symbol": "BTC",
+      "price": 119925.11,
+      "volume_24h": 20860.7376,
+      "change_24h": 2.104,
+      "fear_greed": 72
+    },
+    {
+      "timestamp": "2025-07-23 01:40:48.077139",
+      "symbol": "ETH",
+      "price": 3745.47,
+      "volume_24h": 862697.3781,
+      "change_24h": -0.622,
+      "fear_greed": 72
+    },
+    {
+      "timestamp": "2025-07-23 01:40:48.077139",
+      "symbol": "XRP",
+      "price": 3.5508,
+      "volume_24h": 247805817.3,
+      "change_24h": -0.07,
+      "fear_greed": 72
+    },
+    {
+      "timestamp": "2025-07-23 01:40:48.077139",
+      "symbol": "SOL",
+      "price": 204.87,
+      "volume_24h": 8490976.349,
+      "change_24h": 4.291,
+      "fear_greed": 72
+    },
+    {
+      "timestamp": "2025-07-23 01:35:46.513770",
+      "symbol": "BTC",
+      "price": 120052.67,
+      "volume_24h": 20850.52255,
+      "change_24h": 2.171,
+      "fear_greed": 72
+    },
+    {
+      "timestamp": "2025-07-23 01:35:46.513770",
+      "symbol": "ETH",
+      "price": 3746.93,
+      "volume_24h": 863523.6971,
+      "change_24h": -0.717,
+      "fear_greed": 72
+    },
+    {
+      "timestamp": "2025-07-23 01:35:46.513770",
+      "symbol": "XRP",
+      "price": 3.5489,
+      "volume_24h": 247649509.2,
+      "change_24h": -0.284,
+      "fear_greed": 72
+    },
+    {
+      "timestamp": "2025-07-23 01:35:46.513770",
+      "symbol": "SOL",
+      "price": 204.33,
+      "volume_24h": 8470683.676,
+      "change_24h": 3.863,
+      "fear_greed": 72
+    },
+    {
+      "timestamp": "2025-07-23 01:30:45.315341",
+      "symbol": "BTC",
+      "price": 120036.44,
+      "volume_24h": 20828.7735,
+      "change_24h": 2.229,
+      "fear_greed": 72
+    },
+    {
+      "timestamp": "2025-07-23 01:30:45.315341",
+      "symbol": "ETH",
+      "price": 3739.48,
+      "volume_24h": 862821.5774,
+      "change_24h": -0.83,
+      "fear_greed": 72
+    },
+    {
+      "timestamp": "2025-07-23 01:30:45.315341",
+      "symbol": "XRP",
+      "price": 3.5473,
+      "volume_24h": 247735548.2,
+      "change_24h": -0.174,
+      "fear_greed": 72
+    },
+    {
+      "timestamp": "2025-07-23 01:30:45.315341",
+      "symbol": "SOL",
+      "price": 204.02,
+      "volume_24h": 8450649.273,
+      "change_24h": 3.795,
+      "fear_greed": 72
+    },
+    {
+      "timestamp": "2025-07-23 01:25:44.069466",
+      "symbol": "BTC",
+      "price": 120182.93,
+      "volume_24h": 20817.39692,
+      "change_24h": 2.523,
+      "fear_greed": 72
+    },
+    {
+      "timestamp": "2025-07-23 01:25:44.069466",
+      "symbol": "ETH",
+      "price": 3740.45,
+      "volume_24h": 862872.483,
+      "change_24h": -0.644,
+      "fear_greed": 72
+    },
+    {
+      "timestamp": "2025-07-23 01:25:44.069466",
+      "symbol": "XRP",
+      "price": 3.5481,
+      "volume_24h": 247740644.4,
+      "change_24h": -0.034,
+      "fear_greed": 72
+    },
+    {
+      "timestamp": "2025-07-23 01:25:44.069466",
+      "symbol": "SOL",
+      "price": 203.86,
+      "volume_24h": 8415009.58,
+      "change_24h": 3.635,
+      "fear_greed": 72
+    },
+    {
+      "timestamp": "2025-07-23 01:20:42.125209",
+      "symbol": "BTC",
+      "price": 120162.99,
+      "volume_24h": 20797.79608,
+      "change_24h": 2.532,
+      "fear_greed": 72
+    },
+    {
+      "timestamp": "2025-07-23 01:20:42.125209",
+      "symbol": "ETH",
+      "price": 3738.78,
+      "volume_24h": 863097.0035,
+      "change_24h": -0.379,
+      "fear_greed": 72
+    },
+    {
+      "timestamp": "2025-07-23 01:20:42.125209",
+      "symbol": "XRP",
+      "price": 3.5495,
+      "volume_24h": 247471932.5,
+      "change_24h": 0.144,
+      "fear_greed": 72
+    },
+    {
+      "timestamp": "2025-07-23 01:20:42.125209",
+      "symbol": "SOL",
+      "price": 203.35,
+      "volume_24h": 8409691.814,
+      "change_24h": 3.407,
+      "fear_greed": 72
+    },
+    {
+      "timestamp": "2025-07-23 01:15:40.653580",
+      "symbol": "BTC",
+      "price": 120190.01,
+      "volume_24h": 20811.64566,
+      "change_24h": 2.494,
+      "fear_greed": 72
+    },
+    {
+      "timestamp": "2025-07-23 01:15:40.653580",
+      "symbol": "ETH",
+      "price": 3735.63,
+      "volume_24h": 862179.8656,
+      "change_24h": -0.539,
+      "fear_greed": 72
+    },
+    {
+      "timestamp": "2025-07-23 01:15:40.653580",
+      "symbol": "XRP",
+      "price": 3.5429,
+      "volume_24h": 247056266.5,
+      "change_24h": -0.27,
+      "fear_greed": 72
+    },
+    {
+      "timestamp": "2025-07-23 01:15:40.653580",
+      "symbol": "SOL",
+      "price": 203.34,
+      "volume_24h": 8403631.283,
+      "change_24h": 3.46,
+      "fear_greed": 72
+    },
+    {
+      "timestamp": "2025-07-23 01:10:39.257455",
+      "symbol": "BTC",
+      "price": 119994.01,
+      "volume_24h": 20743.19,
+      "change_24h": 2.294,
+      "fear_greed": 72
+    },
+    {
+      "timestamp": "2025-07-23 01:10:39.257455",
+      "symbol": "ETH",
+      "price": 3726.59,
+      "volume_24h": 861402.0132,
+      "change_24h": -0.868,
+      "fear_greed": 72
+    },
+    {
+      "timestamp": "2025-07-23 01:10:39.257455",
+      "symbol": "XRP",
+      "price": 3.5348,
+      "volume_24h": 246947697.8,
+      "change_24h": -0.711,
+      "fear_greed": 72
+    },
+    {
+      "timestamp": "2025-07-23 01:10:39.257455",
+      "symbol": "SOL",
+      "price": 203.03,
+      "volume_24h": 8386477.841,
+      "change_24h": 3.276,
+      "fear_greed": 72
+    },
+    {
+      "timestamp": "2025-07-23 01:05:37.563380",
+      "symbol": "BTC",
+      "price": 119989.65,
+      "volume_24h": 20706.86775,
+      "change_24h": 2.328,
+      "fear_greed": 72
+    },
+    {
+      "timestamp": "2025-07-23 01:05:37.563380",
+      "symbol": "ETH",
+      "price": 3726.42,
+      "volume_24h": 861933.9315,
+      "change_24h": -0.785,
+      "fear_greed": 72
+    },
+    {
+      "timestamp": "2025-07-23 01:05:37.563380",
+      "symbol": "XRP",
+      "price": 3.5333,
+      "volume_24h": 247200211.5,
+      "change_24h": -0.658,
+      "fear_greed": 72
+    },
+    {
+      "timestamp": "2025-07-23 01:05:37.563380",
+      "symbol": "SOL",
+      "price": 202.63,
+      "volume_24h": 8385552.693,
+      "change_24h": 3.114,
+      "fear_greed": 72
+    },
+    {
+      "timestamp": "2025-07-23 01:00:35.513991",
+      "symbol": "BTC",
+      "price": 119869.37,
+      "volume_24h": 20700.71361,
+      "change_24h": 2.148,
+      "fear_greed": 72
+    },
+    {
+      "timestamp": "2025-07-23 01:00:35.513991",
+      "symbol": "ETH",
+      "price": 3720.65,
+      "volume_24h": 862776.8078,
+      "change_24h": -1.095,
+      "fear_greed": 72
+    },
+    {
+      "timestamp": "2025-07-23 01:00:35.513991",
+      "symbol": "XRP",
+      "price": 3.5287,
+      "volume_24h": 247136587.4,
+      "change_24h": -1.06,
+      "fear_greed": 72
+    },
+    {
+      "timestamp": "2025-07-23 01:00:35.513991",
+      "symbol": "SOL",
+      "price": 202.04,
+      "volume_24h": 8395662.368,
+      "change_24h": 2.33,
+      "fear_greed": 72
+    },
+    {
+      "timestamp": "2025-07-23 00:55:34.174000",
+      "symbol": "BTC",
+      "price": 119884.7,
+      "volume_24h": 20672.25768,
+      "change_24h": 2.103,
+      "fear_greed": 72
+    },
+    {
+      "timestamp": "2025-07-23 00:55:34.174000",
+      "symbol": "ETH",
+      "price": 3720.05,
+      "volume_24h": 862547.6007,
+      "change_24h": -1.18,
+      "fear_greed": 72
+    },
+    {
+      "timestamp": "2025-07-23 00:55:34.174000",
+      "symbol": "XRP",
+      "price": 3.5268,
+      "volume_24h": 246914274.4,
+      "change_24h": -1.049,
+      "fear_greed": 72
+    },
+    {
+      "timestamp": "2025-07-23 00:55:34.174000",
+      "symbol": "SOL",
+      "price": 202.16,
+      "volume_24h": 8399870.34,
+      "change_24h": 2.531,
+      "fear_greed": 72
+    },
+    {
+      "timestamp": "2025-07-23 00:50:32.039057",
+      "symbol": "BTC",
+      "price": 119869.11,
+      "volume_24h": 20630.74076,
+      "change_24h": 2.017,
+      "fear_greed": 72
+    },
+    {
+      "timestamp": "2025-07-23 00:50:32.039057",
+      "symbol": "ETH",
+      "price": 3719.24,
+      "volume_24h": 862528.3263,
+      "change_24h": -1.334,
+      "fear_greed": 72
+    },
+    {
+      "timestamp": "2025-07-23 00:50:32.039057",
+      "symbol": "XRP",
+      "price": 3.5282,
+      "volume_24h": 246823224.3,
+      "change_24h": -1.104,
+      "fear_greed": 72
+    },
+    {
+      "timestamp": "2025-07-23 00:50:32.039057",
+      "symbol": "SOL",
+      "price": 202.45,
+      "volume_24h": 8403264.243,
+      "change_24h": 2.834,
+      "fear_greed": 72
+    },
+    {
+      "timestamp": "2025-07-23 00:45:30.594996",
+      "symbol": "BTC",
+      "price": 119965.82,
+      "volume_24h": 20621.94781,
+      "change_24h": 2.007,
+      "fear_greed": 72
+    },
+    {
+      "timestamp": "2025-07-23 00:45:30.594996",
+      "symbol": "ETH",
+      "price": 3723.06,
+      "volume_24h": 862384.3477,
+      "change_24h": -1.405,
+      "fear_greed": 72
+    },
+    {
+      "timestamp": "2025-07-23 00:45:30.594996",
+      "symbol": "XRP",
+      "price": 3.5343,
+      "volume_24h": 247018880.6,
+      "change_24h": -1.08,
+      "fear_greed": 72
+    },
+    {
+      "timestamp": "2025-07-23 00:45:30.594996",
+      "symbol": "SOL",
+      "price": 202.49,
+      "volume_24h": 8405180.374,
+      "change_24h": 2.672,
+      "fear_greed": 72
+    },
+    {
+      "timestamp": "2025-07-23 00:40:29.054748",
+      "symbol": "BTC",
+      "price": 119966.24,
+      "volume_24h": 20576.42146,
+      "change_24h": 2.012,
+      "fear_greed": 72
+    },
+    {
+      "timestamp": "2025-07-23 00:40:29.054748",
+      "symbol": "ETH",
+      "price": 3724.77,
+      "volume_24h": 863869.6613,
+      "change_24h": -1.285,
+      "fear_greed": 72
+    },
+    {
+      "timestamp": "2025-07-23 00:40:29.054748",
+      "symbol": "XRP",
+      "price": 3.5373,
+      "volume_24h": 247370595.4,
+      "change_24h": -0.905,
+      "fear_greed": 72
+    },
+    {
+      "timestamp": "2025-07-23 00:40:29.054748",
+      "symbol": "SOL",
+      "price": 202.69,
+      "volume_24h": 8407988.027,
+      "change_24h": 2.941,
+      "fear_greed": 72
+    },
+    {
+      "timestamp": "2025-07-23 00:40:27.580674",
+      "symbol": "BTC",
+      "price": 119972.07,
+      "volume_24h": 20576.08484,
+      "change_24h": 2.017,
+      "fear_greed": 72
+    },
+    {
+      "timestamp": "2025-07-23 00:40:27.580674",
+      "symbol": "ETH",
+      "price": 3725.17,
+      "volume_24h": 863862.6256,
+      "change_24h": -1.275,
+      "fear_greed": 72
+    },
+    {
+      "timestamp": "2025-07-23 00:40:27.580674",
+      "symbol": "XRP",
+      "price": 3.5373,
+      "volume_24h": 247370549.8,
+      "change_24h": -0.905,
+      "fear_greed": 72
+    },
+    {
+      "timestamp": "2025-07-23 00:40:27.580674",
+      "symbol": "SOL",
+      "price": 202.68,
+      "volume_24h": 8408005.149,
+      "change_24h": 2.936,
+      "fear_greed": 72
+    }
+  ]
+}

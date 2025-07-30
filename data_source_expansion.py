@@ -1,14 +1,23 @@
 #!/usr/bin/env python3
 """
+Data Source Expansion - Including Santiment Integration
+"""
+"""
 AgentCeli Data Source Expansion Module
 Allows easy addition of new data sources and API connections
 """
 
-import requests
 import json
 import time
-from datetime import datetime
+import sys
+from datetime import datetime, timedelta
 from abc import ABC, abstractmethod
+
+# Import requests properly (avoid local file conflict)
+if "/Users/julius/Desktop/AgentCeli" in sys.path:
+    sys.path.remove("/Users/julius/Desktop/AgentCeli")
+
+import requests as http_requests
 
 class DataSourceInterface(ABC):
     """Base interface for all data sources"""
@@ -120,17 +129,138 @@ class CoinbaseAdvancedAPI(DataSourceInterface):
     def connect(self):
         """Test Coinbase API connection"""
         try:
-            response = requests.get(f"{self.base_url}/time", timeout=5)
+            response = http_requests.get(f"{self.base_url}/time", timeout=5)
+            return response.status_code == 200
+        except:
+            return False
+
+class SantimentWhaleAPI(DataSourceInterface):
+    """Santiment Whale Alerts API - Direct Integration"""
+    
+    def __init__(self, config=None):
+        self.api_key = "7zelhlvci5blrymf_o5vruhdpz42smn7t"
+        self.endpoint = "https://api.santiment.net/graphql"
+        self.config = config or {}
+        
+        self.headers = {
+            "Authorization": f"Apikey {self.api_key}",
+            "Content-Type": "application/json"
+        }
+        
+        # Target metrics and assets
+        self.metrics = [
+            "whale_transaction_count_1m_usd_to_inf",
+            "exchange_inflow",
+            "exchange_outflow", 
+            "sentiment_balance_total"
+        ]
+        
+        self.assets = ["bitcoin", "ethereum", "ripple", "solana"]
+        
+    def connect(self):
+        """Test Santiment API connection"""
+        try:
+            test_query = '{ getMetric(metric: "price_usd") { metadata { availableAssets } } }'
+            payload = {"query": test_query}
+            
+            response = http_requests.post(
+                self.endpoint,
+                headers=self.headers,
+                data=json.dumps(payload),
+                timeout=10
+            )
+            
             return response.status_code == 200
         except:
             return False
     
-    def fetch_data(self):
-        """Fetch crypto prices from Coinbase"""
-        self._rate_limit()
+    def build_query(self, metric, assets, from_date, to_date, interval="1d"):
+        """Build GraphQL query for Santiment"""
+        asset_list = json.dumps(assets)
         
-        symbols = ['BTC-USD', 'ETH-USD', 'XRP-USD', 'SOL-USD']
-        result = {}
+        return f'''
+        query {{
+            getMetric(metric: "{metric}") {{
+                timeseriesDataPerSlugJson(
+                    selector: {{ slugs: {asset_list} }},
+                    from: "{from_date}",
+                    to: "{to_date}",
+                    interval: "{interval}"
+                )
+            }}
+        }}
+        '''.strip()
+    
+    def fetch_data(self):
+        """Fetch whale data from Santiment"""
+        # Get yesterday's data (1 day interval)
+        to_date = datetime.now().strftime("%Y-%m-%dT00:00:00Z")
+        from_date = (datetime.now() - timedelta(days=1)).strftime("%Y-%m-%dT00:00:00Z")
+        
+        result = {
+            "source": "santiment",
+            "timestamp": datetime.now().isoformat(),
+            "whale_data": {}
+        }
+        
+        # Asset mapping for output
+        asset_map = {
+            "bitcoin": "BTC",
+            "ethereum": "ETH",
+            "ripple": "XRP", 
+            "solana": "SOL"
+        }
+        
+        # Initialize asset data
+        for symbol in asset_map.values():
+            result["whale_data"][symbol] = {}
+        
+        # Fetch each metric
+        for metric in self.metrics:
+            try:
+                query = self.build_query(metric, self.assets, from_date, to_date)
+                payload = {"query": query}
+                
+                response = http_requests.post(
+                    self.endpoint,
+                    headers=self.headers,
+                    data=json.dumps(payload),
+                    timeout=30
+                )
+                
+                if response.status_code == 200:
+                    data = response.json()
+                    
+                    if "data" in data and data["data"]["getMetric"]:
+                        metric_data = data["data"]["getMetric"]["timeseriesDataPerSlugJson"]
+                        
+                        # Process each asset
+                        for santiment_asset, symbol in asset_map.items():
+                            if santiment_asset in metric_data and metric_data[santiment_asset]:
+                                try:
+                                    timeseries = json.loads(metric_data[santiment_asset])
+                                    if timeseries:
+                                        latest_value = timeseries[-1].get("value", 0)
+                                        result["whale_data"][symbol][metric] = latest_value
+                                    else:
+                                        result["whale_data"][symbol][metric] = 0
+                                except:
+                                    result["whale_data"][symbol][metric] = 0
+                            else:
+                                result["whale_data"][symbol][metric] = 0
+                
+                # Rate limiting
+                time.sleep(1)
+                
+            except Exception as e:
+                print(f"Santiment metric {metric} failed: {e}")
+                continue
+        
+        return result
+    
+    def get_cost_estimate(self):
+        """Estimate API costs - already paid"""
+        return 0.0  # APIs already paid, no additional cost to AgentCeli
         
         try:
             for symbol in symbols:

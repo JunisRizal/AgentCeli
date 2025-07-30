@@ -1,0 +1,202 @@
+{
+  "timestamp": "2025-07-30T11:43:05.264336",
+  "data_source": "santiment",
+  "metric": "social_volume_ai_total",
+  "scope": "gesamtmarkt",
+  "date_range": {
+    "from": "2025-07-28T11:00:00Z",
+    "to": "2025-07-30T11:00:00Z"
+  },
+  "interval": "1h",
+  "cost_estimate": 0.02,
+  "data": [
+    {
+      "value": 1.0,
+      "datetime": "2025-07-28T11:00:00Z"
+    },
+    {
+      "value": 0.0,
+      "datetime": "2025-07-28T12:00:00Z"
+    },
+    {
+      "value": 0.0,
+      "datetime": "2025-07-28T13:00:00Z"
+    },
+    {
+      "value": 0.0,
+      "datetime": "2025-07-28T14:00:00Z"
+    },
+    {
+      "value": 0.0,
+      "datetime": "2025-07-28T15:00:00Z"
+    },
+    {
+      "value": 0.0,
+      "datetime": "2025-07-28T16:00:00Z"
+    },
+    {
+      "value": 0.0,
+      "datetime": "2025-07-28T17:00:00Z"
+    },
+    {
+      "value": 0.0,
+      "datetime": "2025-07-28T18:00:00Z"
+    },
+    {
+      "value": 0.0,
+      "datetime": "2025-07-28T19:00:00Z"
+    },
+    {
+      "value": 0.0,
+      "datetime": "2025-07-28T20:00:00Z"
+    },
+    {
+      "value": 0.0,
+      "datetime": "2025-07-28T21:00:00Z"
+    },
+    {
+      "value": 0.0,
+      "datetime": "2025-07-28T22:00:00Z"
+    },
+    {
+      "value": 0.0,
+      "datetime": "2025-07-28T23:00:00Z"
+    },
+    {
+      "value": 0.0,
+      "datetime": "2025-07-29T00:00:00Z"
+    },
+    {
+      "value": 0.0,
+      "datetime": "2025-07-29T01:00:00Z"
+    },
+    {
+      "value": 0.0,
+      "datetime": "2025-07-29T02:00:00Z"
+    },
+    {
+      "value": 0.0,
+      "datetime": "2025-07-29T03:00:00Z"
+    },
+    {
+      "value": 0.0,
+      "datetime": "2025-07-29T04:00:00Z"
+    },
+    {
+      "value": 0.0,
+      "datetime": "2025-07-29T05:00:00Z"
+    },
+    {
+      "value": 0.0,
+      "datetime": "2025-07-29T06:00:00Z"
+    },
+    {
+      "value": 0.0,
+      "datetime": "2025-07-29T07:00:00Z"
+    },
+    {
+      "value": 0.0,
+      "datetime": "2025-07-29T08:00:00Z"
+    },
+    {
+      "value": 1.0,
+      "datetime": "2025-07-29T09:00:00Z"
+    },
+    {
+      "value": 0.0,
+      "datetime": "2025-07-29T10:00:00Z"
+    },
+    {
+      "value": 1.0,
+      "datetime": "2025-07-29T11:00:00Z"
+    },
+    {
+      "value": 0.0,
+      "datetime": "2025-07-29T12:00:00Z"
+    },
+    {
+      "value": 0.0,
+      "datetime": "2025-07-29T13:00:00Z"
+    },
+    {
+      "value": 0.0,
+      "datetime": "2025-07-29T14:00:00Z"
+    },
+    {
+      "value": 0.0,
+      "datetime": "2025-07-29T15:00:00Z"
+    },
+    {
+      "value": 0.0,
+      "datetime": "2025-07-29T16:00:00Z"
+    },
+    {
+      "value": 0.0,
+      "datetime": "2025-07-29T17:00:00Z"
+    },
+    {
+      "value": 0.0,
+      "datetime": "2025-07-29T18:00:00Z"
+    },
+    {
+      "value": 0.0,
+      "datetime": "2025-07-29T19:00:00Z"
+    },
+    {
+      "value": 0.0,
+      "datetime": "2025-07-29T20:00:00Z"
+    },
+    {
+      "value": 0.0,
+      "datetime": "2025-07-29T21:00:00Z"
+    },
+    {
+      "value": 1.0,
+      "datetime": "2025-07-29T22:00:00Z"
+    },
+    {
+      "value": 0.0,
+      "datetime": "2025-07-29T23:00:00Z"
+    },
+    {
+      "value": 0.0,
+      "datetime": "2025-07-30T00:00:00Z"
+    },
+    {
+      "value": 0.0,
+      "datetime": "2025-07-30T01:00:00Z"
+    },
+    {
+      "value": 0.0,
+      "datetime": "2025-07-30T02:00:00Z"
+    },
+    {
+      "value": 0.0,
+      "datetime": "2025-07-30T03:00:00Z"
+    },
+    {
+      "value": 0.0,
+      "datetime": "2025-07-30T04:00:00Z"
+    },
+    {
+      "value": 0.0,
+      "datetime": "2025-07-30T05:00:00Z"
+    },
+    {
+      "value": 0.0,
+      "datetime": "2025-07-30T06:00:00Z"
+    },
+    {
+      "value": 0.0,
+      "datetime": "2025-07-30T07:00:00Z"
+    },
+    {
+      "value": 0.0,
+      "datetime": "2025-07-30T08:00:00Z"
+    },
+    {
+      "value": 0.0,
+      "datetime": "2025-07-30T09:00:00Z"
+    }
+  ]
+}

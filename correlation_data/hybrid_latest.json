@@ -1,80 +1,80 @@
 {
-  "timestamp": "2025-07-23T13:02:40.846063",
+  "timestamp": "2025-07-30T15:33:35.862144",
   "api_tier": "FREE",
   "sources": {
     "binance": {
       "BTCUSDT": {
-        "price": 118322.0,
-        "volume_24h": 15583.16254,
-        "change_24h": -0.51,
+        "price": 117499.8,
+        "volume_24h": 13127.49912,
+        "change_24h": -1.217,
         "source": "binance_free"
       },
       "ETHUSDT": {
-        "price": 3665.06,
-        "volume_24h": 669406.412,
-        "change_24h": -0.682,
+        "price": 3756.7,
+        "volume_24h": 504448.7843,
+        "change_24h": -2.754,
         "source": "binance_free"
       },
       "XRPUSDT": {
-        "price": 3.4459,
-        "volume_24h": 192010622.0,
-        "change_24h": -1.346,
+        "price": 3.0817,
+        "volume_24h": 152451577.3,
+        "change_24h": -2.752,
         "source": "binance_free"
       },
       "SOLUSDT": {
-        "price": 197.83,
-        "volume_24h": 5335158.136,
-        "change_24h": -0.307,
+        "price": 176.96,
+        "volume_24h": 2540133.444,
+        "change_24h": -4.092,
         "source": "binance_free"
       }
     },
     "coingecko": {
       "bitcoin": {
-        "usd": 118397,
-        "usd_market_cap": 2355714547963.9956,
-        "usd_24h_change": -0.44204542014838494
+        "usd": 117512,
+        "usd_market_cap": 2339317705470.535,
+        "usd_24h_change": -1.1880149871692396
       },
       "ethereum": {
-        "usd": 3667.38,
-        "usd_market_cap": 442670724345.3485,
-        "usd_24h_change": -0.6466787234544029
+        "usd": 3759.54,
+        "usd_market_cap": 453995473391.397,
+        "usd_24h_change": -2.654971068582625
       },
       "ripple": {
-        "usd": 3.45,
-        "usd_market_cap": 204235967966.28796,
-        "usd_24h_change": -1.2748739706220158
+        "usd": 3.08,
+        "usd_market_cap": 182443589497.14658,
+        "usd_24h_change": -2.790152944913821
       },
       "solana": {
-        "usd": 197.99,
-        "usd_market_cap": 106548067855.8483,
-        "usd_24h_change": -0.28350174384811805
+        "usd": 177.06,
+        "usd_market_cap": 95265270837.86954,
+        "usd_24h_change": -4.072833971779592
       }
     }
   },
   "live_prices": {
     "binance": {
       "BTCUSDT": {
-        "price": 118322.0,
-        "volume_24h": 15583.16254,
-        "change_24h": -0.51,
+        "price": 117499.8,
+        "volume_24h": 13127.49912,
+        "change_24h": -1.217,
         "source": "binance_free"
       },
       "ETHUSDT": {
-        "price": 3665.06,
-        "volume_24h": 669406.412,
-        "change_24h": -0.682,
+        "price": 3756.7,
+        "volume_24h": 504448.7843,
+        "change_24h": -2.754,
         "source": "binance_free"
       },
       "XRPUSDT": {
-        "price": 3.4459,
-        "volume_24h": 192010622.0,
-        "change_24h": -1.346,
+        "price": 3.0817,
+        "volume_24h": 152451577.3,
+        "change_24h": -2.752,
         "source": "binance_free"
       },
       "SOLUSDT": {
-        "price": 197.83,
-        "volume_24h": 5335158.136,
-        "change_24h": -0.307,
+        "price": 176.96,
+        "volume_24h": 2540133.444,
+        "change_24h": -4.092,
         "source": "binance_free"
       }
     }
@@ -82,8 +82,8 @@
   "fear_greed": {
     "value": "74",
     "value_classification": "Greed",
-    "timestamp": "1753228800",
-    "time_until_update": "46639"
+    "timestamp": "1753833600",
+    "time_until_update": "37584"
   },
   "paid_apis": {},
   "total_sources": 2,

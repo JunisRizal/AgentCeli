@@ -1,0 +1,11 @@
+{
+  "timestamp": "2025-07-30T03:10:26.483497",
+  "data_source": "santiment",
+  "metric": "exchange_inflow",
+  "date_range": {
+    "from": "2025-06-01T00:00:00Z",
+    "to": "2025-07-29T00:00:00Z"
+  },
+  "cost_estimate": 0.02,
+  "data": []
+}

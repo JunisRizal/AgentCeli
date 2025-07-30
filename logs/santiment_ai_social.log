@@ -1,0 +1,9 @@
+2025-07-30 09:35:10,949 - AI_SOCIAL - INFO - 🚀 Starting AI Social Volume Monitoring...
+2025-07-30 09:35:10,949 - AI_SOCIAL - INFO - 🤖 Collecting AI social volume (Gesamtmarkt) from 2025-07-28T09:00:00Z to 2025-07-30T09:00:00Z
+2025-07-30 09:35:11,272 - AI_SOCIAL - INFO - ✅ Collected 47 AI social volume data points
+2025-07-30 09:35:11,275 - AI_SOCIAL - INFO - 💾 AI Social data saved: /Users/julius/Desktop/AgentCeli/santiment_data/ai_social_20250730_093511.json
+2025-07-30 11:43:04,744 - AI_SOCIAL - INFO - 🚀 Starting AI Social Volume Monitoring...
+2025-07-30 11:43:04,744 - AI_SOCIAL - INFO - 🤖 Collecting AI social volume (Gesamtmarkt) from 2025-07-28T11:00:00Z to 2025-07-30T11:00:00Z
+2025-07-30 11:43:05,264 - AI_SOCIAL - INFO - ✅ Collected 47 AI social volume data points
+2025-07-30 11:43:05,267 - AI_SOCIAL - INFO - 💾 AI Social data saved: /Users/julius/Desktop/AgentCeli/santiment_data/ai_social_20250730_114305.json
+2025-07-30 11:43:05,693 - AI_SOCIAL - INFO - ⏭️ AI social data collected recently - skipping to avoid over-polling

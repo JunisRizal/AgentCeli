@@ -28,6 +28,18 @@
         "enabled": false,
         "key": null,
         "cost_per_call": 0.005
+      },
+      "santiment": {
+        "enabled": true,
+        "key": "7zelhlvci5blrymf_o5vruhdpz42smn7t",
+        "cost_per_call": 0.02,
+        "endpoint": "https://api.santiment.net/graphql",
+        "metrics": [
+          "whale_transaction_count_1m_usd_to_inf",
+          "exchange_inflow",
+          "exchange_outflow",
+          "sentiment_balance_total"
+        ]
       }
     }
   },
@@ -63,8 +75,14 @@
     }
   },
   "update_intervals": {
-    "fast_data": 60,
-    "slow_data": 300,
+    "fast_data": 300,
+    "slow_data": 900, 
     "very_slow": 3600
+  },
+  "rate_limits": {
+    "daily_cost_limit": 5.00,
+    "santiment_max_calls_per_hour": 10,
+    "whale_alert_max_calls_per_hour": 20,
+    "emergency_stop_threshold": 8.00
   }
 }

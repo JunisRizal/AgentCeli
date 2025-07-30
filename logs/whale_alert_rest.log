@@ -1,0 +1,19 @@
+2025-07-30 04:46:22,206 - WHALE_REST - INFO - 📄 Created transactions CSV: /Users/julius/Desktop/AgentCeli/whale_transactions_rest.csv
+2025-07-30 04:46:22,206 - WHALE_REST - WARNING - ⚠️ No API key configured. Some endpoints may not work.
+2025-07-30 04:46:22,206 - WHALE_REST - INFO - 🚀 Starting Whale Alert REST API collection cycle
+2025-07-30 04:46:22,206 - WHALE_REST - INFO - 🌐 Making request to: https://leviathan.whale-alert.io/v1/status
+2025-07-30 04:46:22,433 - WHALE_REST - ERROR - 🔑 Authentication failed - check your API key
+2025-07-30 04:46:22,434 - WHALE_REST - INFO - 🐋 Fetching transactions from 2025-07-29 04:46:22.434326 to 2025-07-30 04:46:22.434326
+2025-07-30 04:46:22,434 - WHALE_REST - INFO - 💰 Minimum value: $500,000
+2025-07-30 04:46:22,434 - WHALE_REST - INFO - 🌐 Making request to: https://leviathan.whale-alert.io/v1/transactions
+2025-07-30 04:46:22,616 - WHALE_REST - ERROR - 🔑 Authentication failed - check your API key
+2025-07-30 04:46:22,617 - WHALE_REST - ERROR - ❌ Failed to fetch transactions
+2025-07-30 04:46:34,620 - WHALE_REST - WARNING - ⚠️ No API key configured. Some endpoints may not work.
+2025-07-30 04:46:34,621 - WHALE_REST - INFO - 🚀 Starting Whale Alert REST API collection cycle
+2025-07-30 04:46:34,621 - WHALE_REST - INFO - 🌐 Making request to: https://leviathan.whale-alert.io/v1/status
+2025-07-30 04:46:34,784 - WHALE_REST - ERROR - 🔑 Authentication failed - check your API key
+2025-07-30 04:46:34,785 - WHALE_REST - INFO - 🐋 Fetching transactions from 2025-07-29 04:46:34.785746 to 2025-07-30 04:46:34.785746
+2025-07-30 04:46:34,785 - WHALE_REST - INFO - 💰 Minimum value: $500,000
+2025-07-30 04:46:34,785 - WHALE_REST - INFO - 🌐 Making request to: https://leviathan.whale-alert.io/v1/transactions
+2025-07-30 04:46:34,948 - WHALE_REST - ERROR - 🔑 Authentication failed - check your API key
+2025-07-30 04:46:34,949 - WHALE_REST - ERROR - ❌ Failed to fetch transactions

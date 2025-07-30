@@ -14,26 +14,23 @@ import requests
 from datetime import datetime, timedelta
 from pathlib import Path
 
+# Import Santiment module
+try:
+    from santiment_whale_alerts import SantimentWhaleCollector
+    SANTIMENT_AVAILABLE = True
+except ImportError:
+    SANTIMENT_AVAILABLE = False
+    print("⚠️ Santiment module not available")
+
 class AgentCeliHybrid:
     def __init__(self, config=None):
         """Initialize with configurable API tiers"""
         
-        # Default configuration - START FREE
-        self.config = config or {
-            'free_apis': {
-                'binance': True,
-                'coinbase': True, 
-                'coingecko': True,
-                'fear_greed': True
-            },
-            'paid_apis': {
-                'coinglass': {'enabled': False, 'key': None},
-                'taapi': {'enabled': False, 'key': None},
-                'coingecko_pro': {'enabled': False, 'key': None}
-            },
-            'fallback_mode': True,
-            'update_interval': 300
-        }
+        # Load real configuration file first
+        if config is None:
+            config = self.load_real_config()
+        
+        self.config = config
         
         print("🐙 AgentCeli Hybrid initializing...")
         self.print_config()
@@ -54,28 +51,111 @@ class AgentCeliHybrid:
         
         print("✅ AgentCeli Hybrid ready!")
     
+    def load_real_config(self):
+        """Load the real agentceli_config.json file"""
+        try:
+            config_file = Path("agentceli_config.json")
+            if config_file.exists():
+                with open(config_file, 'r') as f:
+                    real_config = json.load(f)
+                    print("✅ Loaded real config from agentceli_config.json")
+                    return real_config
+            else:
+                print("⚠️ agentceli_config.json not found, using defaults")
+        except Exception as e:
+            print(f"❌ Error loading config: {e}")
+        
+        # Fallback to defaults if file not found
+        return {
+            'data_sources': {
+                'free_apis': {
+                    'binance': {'enabled': True, 'priority': 'high'},
+                    'coinbase': {'enabled': True, 'priority': 'medium'}, 
+                    'coingecko': {'enabled': True, 'priority': 'high'},
+                    'fear_greed': {'enabled': True, 'priority': 'medium'}
+                },
+                'paid_apis': {
+                    'santiment': {'enabled': False, 'key': None, 'cost_per_call': 0.02},
+                    'coinglass': {'enabled': False, 'key': None, 'cost_per_call': 0.01},
+                    'taapi': {'enabled': False, 'key': None, 'cost_per_call': 0.005}
+                }
+            },
+            'update_intervals': {'fast_data': 300},
+            'rate_limits': {'daily_cost_limit': 5.0}
+        }
+    
     def print_config(self):
         """Show current API configuration"""
         print(f"📊 API Configuration:")
         
+        # Get data sources from config
+        data_sources = self.config.get('data_sources', {})
+        
         # Free APIs
-        enabled_free = [api for api, enabled in self.config['free_apis'].items() if enabled]
-        print(f"   🆓 Free APIs: {', '.join(enabled_free)}")
+        free_apis = data_sources.get('free_apis', {})
+        enabled_free = [api for api, config in free_apis.items() if config.get('enabled', False)]
+        print(f"   🆓 Free APIs: {', '.join(enabled_free) if enabled_free else 'None'}")
         
         # Paid APIs
+        paid_apis = data_sources.get('paid_apis', {})
         enabled_paid = []
-        for api, settings in self.config['paid_apis'].items():
-            if settings['enabled'] and settings['key']:
+        total_cost = 0
+        
+        for api, settings in paid_apis.items():
+            if settings.get('enabled', False) and settings.get('key'):
                 enabled_paid.append(api)
+                total_cost += settings.get('cost_per_call', 0) * 100  # Rough monthly estimate
         
         if enabled_paid:
             print(f"   💰 Paid APIs: {', '.join(enabled_paid)}")
-            estimated_cost = len(enabled_paid) * 20  # Rough estimate
-            print(f"   💳 Estimated monthly cost: ~${estimated_cost}")
+            print(f"   💳 Estimated monthly cost: ~${total_cost}")
+            
+            # Check for separate collectors
+            santiment_files = Path("santiment_data").glob("*latest.json") if Path("santiment_data").exists() else []
+            if 'santiment' in enabled_paid and santiment_files:
+                print(f"   ✅ Santiment: Active with {len(list(santiment_files))} data files")
+            elif 'santiment' in enabled_paid:
+                print(f"   ⚠️ Santiment: Enabled but no data files found!")
         else:
             print(f"   💰 Paid APIs: None (100% FREE)")
         
-        print(f"   🔄 Fallback mode: {self.config['fallback_mode']}")
+        # Check for external collectors
+        self.check_external_collectors()
+    
+    def check_external_collectors(self):
+        """Check for external data collectors and warn if missing"""
+        print(f"🔍 Checking external collectors...")
+        
+        # Check Santiment collectors
+        santiment_dir = Path("santiment_data")
+        if santiment_dir.exists():
+            santiment_files = list(santiment_dir.glob("*latest.json"))
+            if santiment_files:
+                print(f"   ✅ Found {len(santiment_files)} Santiment data files")
+                
+                # Check file ages
+                now = datetime.now()
+                for file in santiment_files:
+                    file_age = now - datetime.fromtimestamp(file.stat().st_mtime)
+                    if file_age.total_seconds() > 86400:  # > 24 hours
+                        print(f"   ⚠️ {file.name} is {file_age.days} days old!")
+                    else:
+                        print(f"   📅 {file.name}: {file_age.seconds//3600}h old")
+            else:
+                print(f"   ❌ No Santiment data files found in santiment_data/")
+        else:
+            print(f"   ❌ santiment_data/ directory not found!")
+        
+        # Check for running processes
+        try:
+            import subprocess
+            result = subprocess.run(['ps', 'aux'], capture_output=True, text=True)
+            if 'santiment' in result.stdout.lower():
+                print(f"   ✅ Santiment collector process running")
+            else:
+                print(f"   ⚠️ No Santiment collector process found")
+        except:
+            print(f"   ❓ Could not check running processes")
     
     def setup_directories(self):
         """Setup output directories"""
@@ -112,8 +192,10 @@ class AgentCeliHybrid:
         })
         
         # Add paid API headers if configured
-        if self.config['paid_apis']['coingecko_pro']['enabled']:
-            key = self.config['paid_apis']['coingecko_pro']['key']
+        paid_apis = self.config.get('data_sources', {}).get('paid_apis', {})
+        coingecko_pro = paid_apis.get('coingecko_pro', {})
+        if coingecko_pro.get('enabled', False):
+            key = coingecko_pro.get('key')
             if key:
                 self.session.headers['x-cg-demo-api-key'] = key
     
@@ -128,21 +210,24 @@ class AgentCeliHybrid:
         
         print("🆓 Collecting FREE data...")
         
+        # Get free APIs from config
+        free_apis = self.config.get('data_sources', {}).get('free_apis', {})
+        
         # Binance (always free)
-        if self.config['free_apis']['binance']:
+        if free_apis.get('binance', {}).get('enabled', False):
             binance_data = self.get_binance_data()
             if binance_data:
                 data['sources']['binance'] = binance_data
                 data['live_prices']['binance'] = binance_data
         
         # CoinGecko free
-        if self.config['free_apis']['coingecko']:
+        if free_apis.get('coingecko', {}).get('enabled', False):
             coingecko_data = self.get_coingecko_free()
             if coingecko_data:
                 data['sources']['coingecko'] = coingecko_data
         
         # Fear & Greed (always free)
-        if self.config['free_apis']['fear_greed']:
+        if free_apis.get('fear_greed', {}).get('enabled', False):
             fear_greed = self.get_fear_greed()
             if fear_greed:
                 data['fear_greed'] = fear_greed
@@ -155,24 +240,43 @@ class AgentCeliHybrid:
         
         print("💰 Checking paid APIs...")
         
+        # Get paid APIs from config  
+        paid_apis = self.config.get('data_sources', {}).get('paid_apis', {})
+        
         # CoinGlass (paid)
-        if self.config['paid_apis']['coinglass']['enabled']:
-            coinglass_key = self.config['paid_apis']['coinglass']['key']
+        coinglass = paid_apis.get('coinglass', {})
+        if coinglass.get('enabled', False):
+            coinglass_key = coinglass.get('key')
             if coinglass_key:
                 print("💰 Collecting CoinGlass premium data...")
                 # Add CoinGlass API calls here
                 paid_data['coinglass'] = {'status': 'premium_data_collected'}
         
         # TAAPI (paid)
-        if self.config['paid_apis']['taapi']['enabled']:
-            taapi_key = self.config['paid_apis']['taapi']['key']
+        taapi = paid_apis.get('taapi', {})
+        if taapi.get('enabled', False):
+            taapi_key = taapi.get('key')
             if taapi_key:
                 print("💰 Collecting TAAPI premium data...")
                 # Add TAAPI calls here
                 paid_data['taapi'] = {'status': 'technical_indicators_collected'}
         
+        # Santiment (paid) - check if enabled with key
+        santiment = paid_apis.get('santiment', {})
+        if santiment.get('enabled', False) and santiment.get('key'):
+            print("💰 Santiment Pro enabled with API key")
+            paid_data['santiment_pro'] = {
+                'status': 'api_key_configured',
+                'key_present': bool(santiment.get('key')),
+                'metrics': santiment.get('metrics', [])
+            }
+        elif santiment.get('enabled', False):
+            print("⚠️ Santiment enabled but no API key found!")
+            paid_data['santiment_warning'] = {'status': 'missing_api_key'}
+        
         # CoinGecko Pro (paid)
-        if self.config['paid_apis']['coingecko_pro']['enabled']:
+        coingecko_pro = paid_apis.get('coingecko_pro', {})
+        if coingecko_pro.get('enabled', False):
             print("💰 Using CoinGecko PRO tier...")
             # Enhanced rate limits, more data
             paid_data['coingecko_pro'] = {'status': 'pro_tier_active'}
@@ -253,6 +357,54 @@ class AgentCeliHybrid:
         
         return None
     
+    def collect_santiment_data(self):
+        """Collect Santiment data from external collectors"""
+        santiment_dir = Path("santiment_data")
+        if not santiment_dir.exists():
+            return None
+        
+        santiment_summary = {
+            'status': 'external_collectors',
+            'data_files': {},
+            'last_updates': {},
+            'warnings': []
+        }
+        
+        # Check for data files
+        files = list(santiment_dir.glob("*latest.json"))
+        if not files:
+            santiment_summary['warnings'].append("No Santiment data files found")
+            return santiment_summary
+        
+        now = datetime.now()
+        for file in files:
+            try:
+                file_age = now - datetime.fromtimestamp(file.stat().st_mtime)
+                santiment_summary['data_files'][file.name] = {
+                    'size': file.stat().st_size,
+                    'age_hours': file_age.seconds // 3600,
+                    'age_days': file_age.days
+                }
+                
+                # Load summary data
+                with open(file, 'r') as f:
+                    data = json.load(f)
+                    santiment_summary['last_updates'][file.name] = data.get('timestamp', 'unknown')
+                
+                # Check if data is stale
+                if file_age.total_seconds() > 86400:  # > 24 hours
+                    santiment_summary['warnings'].append(f"{file.name} is {file_age.days} days old")
+                    
+            except Exception as e:
+                santiment_summary['warnings'].append(f"Error reading {file.name}: {e}")
+        
+        print(f"📊 Santiment: Found {len(files)} data files")
+        if santiment_summary['warnings']:
+            for warning in santiment_summary['warnings']:
+                print(f"⚠️ Santiment: {warning}")
+        
+        return santiment_summary
+    
     def collect_all_data(self):
         """Main data collection - combines free + paid"""
         print(f"🐙 Hybrid data collection at {datetime.now().strftime('%H:%M:%S')}")
@@ -263,6 +415,11 @@ class AgentCeliHybrid:
         # Collect paid data if enabled
         paid_data = self.collect_paid_data()
         
+        # Check for external Santiment data
+        santiment_data = self.collect_santiment_data()
+        if santiment_data:
+            paid_data['santiment'] = santiment_data
+        
         # Combine data
         self.collected_data = {
             **free_data,
@@ -270,8 +427,8 @@ class AgentCeliHybrid:
             'total_sources': len(free_data.get('sources', {})) + len(paid_data),
             'cost_estimate': len(paid_data) * 20,  # Monthly estimate
             'configuration': {
-                'free_apis_active': len([k for k, v in self.config['free_apis'].items() if v]),
-                'paid_apis_active': len([k for k, v in self.config['paid_apis'].items() if v['enabled']])
+                'free_apis_active': len([k for k, v in self.config.get('data_sources', {}).get('free_apis', {}).items() if v.get('enabled', False)]),
+                'paid_apis_active': len([k for k, v in self.config.get('data_sources', {}).get('paid_apis', {}).items() if v.get('enabled', False)])
             }
         }
         
@@ -380,9 +537,10 @@ class AgentCeliHybrid:
     
     def upgrade_to_paid(self, api_name, api_key):
         """Upgrade specific API to paid tier"""
-        if api_name in self.config['paid_apis']:
-            self.config['paid_apis'][api_name]['enabled'] = True
-            self.config['paid_apis'][api_name]['key'] = api_key
+        paid_apis = self.config.get('data_sources', {}).get('paid_apis', {})
+        if api_name in paid_apis:
+            paid_apis[api_name]['enabled'] = True
+            paid_apis[api_name]['key'] = api_key
             print(f"💰 Upgraded {api_name} to paid tier")
             self.print_config()
         else:
@@ -390,9 +548,10 @@ class AgentCeliHybrid:
     
     def downgrade_to_free(self, api_name):
         """Downgrade API to free tier"""
-        if api_name in self.config['paid_apis']:
-            self.config['paid_apis'][api_name]['enabled'] = False
-            self.config['paid_apis'][api_name]['key'] = None
+        paid_apis = self.config.get('data_sources', {}).get('paid_apis', {})
+        if api_name in paid_apis:
+            paid_apis[api_name]['enabled'] = False
+            paid_apis[api_name]['key'] = None
             print(f"🆓 Downgraded {api_name} to free tier")
             self.print_config()
     
@@ -418,7 +577,8 @@ class AgentCeliHybrid:
             while self.is_running:
                 try:
                     self.collect_all_data()
-                    time.sleep(self.config['update_interval'])
+                    update_interval = self.config.get('update_intervals', {}).get('fast_data', 300)
+                    time.sleep(update_interval)
                 except Exception as e:
                     print(f"❌ Error: {e}")
                     time.sleep(60)
