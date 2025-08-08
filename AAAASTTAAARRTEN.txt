@@ -1,0 +1,86 @@
+🐙 AgentCeli - AKTUELLE START-KOMMANDOS 2025
+=============================================
+cd /Users/julius/Desktop/AgentCeli
+  ./start_watchdog.sh
+
+  Warum der beste?
+  - ✅ Startet automatisch alle Hauptkomponenten
+  - 🔄 Auto-Restart alle 10 Minuten falls Crash
+  - 📊 Datensammlung läuft kontinuierlich
+  - 🛡️ System-Health-Monitoring inklusive
+  - 🚀 Production-ready Setup
+
+  Alternative für manueller Kontrolle:
+  python3 agentceli_hybrid.py
+  - Startet nur Datensammlung ohne Auto-Restart
+
+  Dann zusätzlich Dashboard:
+  bash start_dashboard_clean.sh
+  - Öffnet http://localhost:8088 für Web-Interface
+
+  Status prüfen:
+  python3 agentceli_control.py status
+
+  ➡️ Empfehlung: bash start_watchdog.sh für komplette autonome 
+  AgentCeli-Installation!
+
+⚡ 
+
+SCHNELLSTART (Empfohlen):
+  bash agentceli_start_commands.sh    # Zeigt alle Optionen
+  python3 agentceli_hybrid.py         # Startet Datensammlung
+  python3 liquidation_analyzer.py     # Liquidation-Analyse
+
+🔄 SYSTEMSTEUERUNG:
+  python3 agentceli_control.py start  # System starten
+  python3 agentceli_control.py status # Status prüfen  
+  python3 agentceli_control.py stop   # System stoppen
+
+🌐 DASHBOARDS:
+  bash start_dashboard_clean.sh       # Haupt-Dashboard (Port 8088)
+  python3 dashboard_working.py        # Live-Dashboard
+  python3 datasource_monitor_dashboard.py # API-Monitor
+
+📊 LIQUIDATION TOOLS:
+  python3 liquidation_analyzer.py     # Pure Datenanalyse
+  # (Heatmap entfernt - nur Analyse verfügbar)
+
+🐋 SANTIMENT MONITORING:
+  python3 santiment_ai_social_monitor.py    # AI Social Sentiment
+  python3 santiment_exchange_flows.py       # Exchange Flows
+  python3 santiment_whale_alerts.py         # Whale Alerts
+
+🛡️ MONITORING & WATCHDOG:
+  bash start_watchdog.sh              # Auto-Restart System
+  python3 agentceli_watchdog.py       # System Health Monitor
+  python3 api_usage_monitor.py        # API Usage Tracking
+
+📈 DATENSAMMLUNG:
+  python3 agentceli_hybrid.py         # Multi-Source Sammlung
+  python3 data_source_expansion.py    # Neue Datenquellen
+
+🔧 VERFÜGBARE BASH-SKRIPTE:
+  start_agentceli.sh                  # Legacy Start
+  start_api.sh                        # API Server
+  start_watchdog.sh                   # Watchdog Service
+  setup_daily_santiment.sh            # Santiment Daily Setup
+  setup_15min_ai_social.sh            # Social Monitoring
+
+🌐 AKTUELLE ENDPOINTS:
+  http://localhost:8088               # Haupt-Dashboard
+  http://localhost:8080               # API Server (falls aktiv)
+  http://localhost:5000               # Alternative Dashboard
+
+📋 DATEN-ÜBERPRÜFUNG:
+  cat correlation_data/hybrid_latest.json | jq
+  cat liquidation_data/liquidation_analysis_latest.json | jq
+  ls santiment_data/                  # Santiment Files
+
+🛑 STOPPEN:
+  python3 agentceli_control.py stop   # Sauberes Stoppen
+  pkill -f agentceli                  # Force Kill
+  pkill -f dashboard                  # Dashboard stoppen
+
+💡 NEU: Alles dokumentiert in CLAUDE.md
+  cat CLAUDE.md                       # Vollständige Übersicht
+

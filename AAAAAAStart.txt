@@ -1,0 +1,33 @@
+
+ cd /Users/julius/Desktop/AgentCeli && ./start_watchdog.sh
+
+
+
+ Nach Start prüfen:
+  python3 agentceli_control.py status
+
+Kompletten Pfad für neues Terminal:
+
+  cd /Users/julius/Desktop/AgentCeli && ./start_watchdog.sh
+
+  Für Dashboard:
+
+ Wenn Live-Daten kommen, dann Dashboard separat:
+  python3 dashboard_working.py
+
+  cd /Users/julius/Desktop/AgentCeli && ./start_dashboard_clean.sh
+
+  Oder Schritt für Schritt:
+
+
+  cd /Users/julius/Desktop/AgentCeli
+  ./start_watchdog.sh
+
+  Alternative - direkt ausführen:
+
+  /Users/julius/Desktop/AgentCeli/start_watchdog.sh
+
+  Status prüfen:
+
+  cd /Users/julius/Desktop/AgentCeli && python3 agentceli_control.py status
+

@@ -76,13 +76,13 @@
   },
   "update_intervals": {
     "fast_data": 300,
-    "slow_data": 900, 
+    "slow_data": 900,
     "very_slow": 3600
   },
   "rate_limits": {
-    "daily_cost_limit": 5.00,
+    "daily_cost_limit": 5.0,
     "santiment_max_calls_per_hour": 10,
     "whale_alert_max_calls_per_hour": 20,
-    "emergency_stop_threshold": 8.00
+    "emergency_stop_threshold": 8.0
   }
 }

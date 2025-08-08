@@ -1,95 +1,72 @@
 {
-  "timestamp": "2025-07-30T15:33:35.862144",
+  "timestamp": "2025-08-09T01:15:33.649870",
   "api_tier": "FREE",
-  "sources": {
-    "binance": {
-      "BTCUSDT": {
-        "price": 117499.8,
-        "volume_24h": 13127.49912,
-        "change_24h": -1.217,
-        "source": "binance_free"
+  "sources": {},
+  "live_prices": {},
+  "paid_apis": {
+    "santiment": {
+      "status": "external_collectors",
+      "data_files": {
+        "santiment_inflows_latest.json": {
+          "size": 239,
+          "age_hours": 22,
+          "age_days": 9
+        },
+        "multi_asset_flows_latest.json": {
+          "size": 104333,
+          "age_hours": 20,
+          "age_days": 9
+        },
+        "santiment_outflows_latest.json": {
+          "size": 240,
+          "age_hours": 22,
+          "age_days": 9
+        },
+        "ai_social_latest.json": {
+          "size": 3772,
+          "age_hours": 13,
+          "age_days": 9
+        },
+        "whale_data_latest.json": {
+          "size": 132,
+          "age_hours": 22,
+          "age_days": 9
+        },
+        "exchange_flows_latest.json": {
+          "size": 560,
+          "age_hours": 22,
+          "age_days": 9
+        },
+        "whale_alerts_latest.json": {
+          "size": 82,
+          "age_hours": 22,
+          "age_days": 9
+        }
       },
-      "ETHUSDT": {
-        "price": 3756.7,
-        "volume_24h": 504448.7843,
-        "change_24h": -2.754,
-        "source": "binance_free"
+      "last_updates": {
+        "santiment_inflows_latest.json": "2025-07-30T03:10:26.483497",
+        "multi_asset_flows_latest.json": "2025-07-30T04:56:54.440517",
+        "santiment_outflows_latest.json": "2025-07-30T03:10:28.684584",
+        "ai_social_latest.json": "2025-07-30T11:43:05.264336",
+        "whale_data_latest.json": "2025-07-30T03:08:45.170253",
+        "exchange_flows_latest.json": "2025-07-30T03:08:42.502321",
+        "whale_alerts_latest.json": "2025-07-30T03:08:50.378906"
       },
-      "XRPUSDT": {
-        "price": 3.0817,
-        "volume_24h": 152451577.3,
-        "change_24h": -2.752,
-        "source": "binance_free"
-      },
-      "SOLUSDT": {
-        "price": 176.96,
-        "volume_24h": 2540133.444,
-        "change_24h": -4.092,
-        "source": "binance_free"
-      }
-    },
-    "coingecko": {
-      "bitcoin": {
-        "usd": 117512,
-        "usd_market_cap": 2339317705470.535,
-        "usd_24h_change": -1.1880149871692396
-      },
-      "ethereum": {
-        "usd": 3759.54,
-        "usd_market_cap": 453995473391.397,
-        "usd_24h_change": -2.654971068582625
-      },
-      "ripple": {
-        "usd": 3.08,
-        "usd_market_cap": 182443589497.14658,
-        "usd_24h_change": -2.790152944913821
-      },
-      "solana": {
-        "usd": 177.06,
-        "usd_market_cap": 95265270837.86954,
-        "usd_24h_change": -4.072833971779592
-      }
+      "warnings": [
+        "santiment_inflows_latest.json is 9 days old",
+        "multi_asset_flows_latest.json is 9 days old",
+        "santiment_outflows_latest.json is 9 days old",
+        "ai_social_latest.json is 9 days old",
+        "whale_data_latest.json is 9 days old",
+        "exchange_flows_latest.json is 9 days old",
+        "whale_alerts_latest.json is 9 days old"
+      ]
     }
   },
-  "live_prices": {
-    "binance": {
-      "BTCUSDT": {
-        "price": 117499.8,
-        "volume_24h": 13127.49912,
-        "change_24h": -1.217,
-        "source": "binance_free"
-      },
-      "ETHUSDT": {
-        "price": 3756.7,
-        "volume_24h": 504448.7843,
-        "change_24h": -2.754,
-        "source": "binance_free"
-      },
-      "XRPUSDT": {
-        "price": 3.0817,
-        "volume_24h": 152451577.3,
-        "change_24h": -2.752,
-        "source": "binance_free"
-      },
-      "SOLUSDT": {
-        "price": 176.96,
-        "volume_24h": 2540133.444,
-        "change_24h": -4.092,
-        "source": "binance_free"
-      }
-    }
-  },
-  "fear_greed": {
-    "value": "74",
-    "value_classification": "Greed",
-    "timestamp": "1753833600",
-    "time_until_update": "37584"
-  },
-  "paid_apis": {},
-  "total_sources": 2,
-  "cost_estimate": 0,
+  "total_sources": 1,
+  "cost_estimate": 20,
   "configuration": {
-    "free_apis_active": 4,
+    "free_apis_active": 0,
     "paid_apis_active": 0
   }
 }

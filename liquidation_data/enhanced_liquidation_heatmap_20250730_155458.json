@@ -1,0 +1,100 @@
+{
+  "timestamp": "2025-07-30T15:54:58.080137",
+  "method": "enhanced_multi_source",
+  "liquidation_heatmap": {
+    "BTC": {
+      "liquidation_risk_score": 9.131515035349626,
+      "risk_class": "LOW",
+      "color_intensity": 30,
+      "price_change_24h": -0.997,
+      "current_price": 117553.1,
+      "volume_24h": 13187.86447,
+      "volatility_component": 9.97,
+      "whale_component": 0.002854610100209975,
+      "fear_greed_multiplier": 1.5,
+      "whale_flow_pressure": "LOW",
+      "estimated_liquidation_zones": {
+        "high_leverage_long": 99920.13500000001,
+        "medium_leverage_long": 88164.82500000001,
+        "high_leverage_short": 135186.065,
+        "medium_leverage_short": 146941.375,
+        "adjusted_support": 104724.35209989805,
+        "adjusted_resistance": 130381.84790010199
+      }
+    },
+    "ETH": {
+      "liquidation_risk_score": 24.672518595903618,
+      "risk_class": "LOW",
+      "color_intensity": 30,
+      "price_change_24h": -2.06,
+      "current_price": 3763.31,
+      "volume_24h": 503455.149,
+      "volatility_component": 20.6,
+      "whale_component": 0.3704287755094771,
+      "fear_greed_multiplier": 1.5,
+      "whale_flow_pressure": "LOW",
+      "estimated_liquidation_zones": {
+        "high_leverage_long": 3198.8134999999997,
+        "medium_leverage_long": 2822.4825,
+        "high_leverage_short": 4327.8065,
+        "medium_leverage_short": 4704.1375,
+        "adjusted_support": 3294.1286640428502,
+        "adjusted_resistance": 4232.49133595715
+      }
+    },
+    "XRP": {
+      "liquidation_risk_score": 97.13683166674292,
+      "risk_class": "EXTREME",
+      "color_intensity": 100,
+      "price_change_24h": -2.177,
+      "current_price": 3.0819,
+      "volume_24h": 153753158.4,
+      "volatility_component": 21.77,
+      "whale_component": 22.04192789157705,
+      "fear_greed_multiplier": 1.5,
+      "whale_flow_pressure": "LOW",
+      "estimated_liquidation_zones": {
+        "high_leverage_long": 2.619615,
+        "medium_leverage_long": 2.311425,
+        "high_leverage_short": 3.5441849999999997,
+        "medium_leverage_short": 3.8523750000000003,
+        "adjusted_support": 2.474343998486265,
+        "adjusted_resistance": 3.689456001513735
+      }
+    },
+    "SOL": {
+      "liquidation_risk_score": 58.427252796000005,
+      "risk_class": "MEDIUM",
+      "color_intensity": 60,
+      "price_change_24h": -3.073,
+      "current_price": 177.56,
+      "volume_24h": 2564187.733,
+      "volatility_component": 30.73,
+      "whale_component": 0.0,
+      "fear_greed_multiplier": 1.5,
+      "whale_flow_pressure": "LOW",
+      "estimated_liquidation_zones": {
+        "high_leverage_long": 150.926,
+        "medium_leverage_long": 133.17000000000002,
+        "high_leverage_short": 204.194,
+        "medium_leverage_short": 221.95,
+        "adjusted_support": 149.42965699354224,
+        "adjusted_resistance": 205.69034300645777
+      }
+    }
+  },
+  "market_overview": {
+    "fear_greed": {
+      "fear_greed_value": 74,
+      "fear_greed_class": "Greed",
+      "liquidation_multiplier": 1.5,
+      "risk_level": "HIGH",
+      "market_sentiment": "GREED"
+    },
+    "whale_activity": "LOW",
+    "total_symbols_analyzed": 4,
+    "average_liquidation_risk": 47.34202952349904,
+    "high_risk_symbols": 1
+  },
+  "risk_factors": []
+}

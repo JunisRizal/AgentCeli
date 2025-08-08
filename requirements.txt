@@ -1,0 +1,28 @@
+# AgentCeli Dependencies
+# Cryptocurrency data collection and analysis platform
+
+# Core web framework
+flask>=2.3.0
+
+# HTTP requests
+requests>=2.31.0
+
+# Data processing
+pandas>=2.0.0
+numpy>=1.24.0
+
+# Database (sqlite3 is built into Python)
+
+# Standard library (included with Python)
+# json
+# threading
+# time
+# datetime
+# pathlib
+# csv
+
+# Optional: Enhanced features
+# plotly>=5.15.0          # For advanced charts
+# websocket-client>=1.6.0 # For real-time WebSocket connections
+# schedule>=1.2.0         # For advanced scheduling
+# cryptography>=41.0.0    # For API key encryption

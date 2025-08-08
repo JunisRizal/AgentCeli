@@ -1,0 +1,626 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AgentCeli - Monitoring Dashboard</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: #333;
+            min-height: 100vh;
+        }
+
+        .header {
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(10px);
+            padding: 1rem 2rem;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+            margin-bottom: 2rem;
+        }
+
+        .header h1 {
+            color: #4a5568;
+            font-size: 2rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .header .subtitle {
+            color: #718096;
+            font-size: 1rem;
+        }
+
+        .container {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 0 1rem;
+        }
+
+        .api-sources-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 1.5rem;
+            margin-bottom: 3rem;
+        }
+
+        .dashboard-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
+            gap: 2rem;
+            margin-bottom: 2rem;
+        }
+
+        .card {
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(10px);
+            border-radius: 16px;
+            padding: 1.5rem;
+            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+        }
+
+        .card h2 {
+            color: #2d3748;
+            margin-bottom: 1rem;
+            font-size: 1.25rem;
+            border-bottom: 2px solid #e2e8f0;
+            padding-bottom: 0.5rem;
+        }
+
+        .status-indicator {
+            display: inline-block;
+            width: 12px;
+            height: 12px;
+            border-radius: 50%;
+            margin-right: 8px;
+        }
+
+        .status-online { background-color: #48bb78; }
+        .status-offline { background-color: #f56565; }
+        .status-error { background-color: #ed8936; }
+        .status-active { background-color: #4299e1; }
+        .status-inactive { background-color: #a0aec0; }
+
+        .metric-row {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 0.75rem 0;
+            border-bottom: 1px solid #e2e8f0;
+        }
+
+        .metric-row:last-child {
+            border-bottom: none;
+        }
+
+        .metric-label {
+            font-weight: 600;
+            color: #4a5568;
+        }
+
+        .metric-value {
+            color: #718096;
+            font-family: 'Courier New', monospace;
+        }
+
+        .process-list, .api-list, .file-list, .log-list {
+            max-height: 300px;
+            overflow-y: auto;
+        }
+
+        .process-item, .api-item, .file-item, .log-item {
+            padding: 0.75rem;
+            margin-bottom: 0.5rem;
+            background: #f7fafc;
+            border-radius: 8px;
+            border-left: 4px solid #e2e8f0;
+        }
+
+        .process-item.running { border-left-color: #48bb78; }
+        .api-item.online { border-left-color: #48bb78; }
+        .api-item.offline { border-left-color: #f56565; }
+        .file-item.valid { border-left-color: #4299e1; }
+        .file-item.error { border-left-color: #f56565; }
+        .log-item.active { border-left-color: #38b2ac; }
+        .log-item.inactive { border-left-color: #a0aec0; }
+
+        .item-header {
+            font-weight: 600;
+            color: #2d3748;
+            margin-bottom: 0.25rem;
+        }
+
+        .item-details {
+            font-size: 0.875rem;
+            color: #718096;
+        }
+
+        .loading {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100px;
+            color: #718096;
+        }
+
+        .refresh-btn {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            border: none;
+            padding: 0.75rem 1.5rem;
+            border-radius: 8px;
+            cursor: pointer;
+            font-weight: 600;
+            margin-bottom: 1rem;
+            transition: transform 0.2s;
+        }
+
+        .refresh-btn:hover {
+            transform: translateY(-2px);
+        }
+
+        .overview-stats {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 1rem;
+            margin-bottom: 2rem;
+        }
+
+        .stat-card {
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(10px);
+            border-radius: 12px;
+            padding: 1.5rem;
+            text-align: center;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+        }
+
+        .stat-number {
+            font-size: 2rem;
+            font-weight: bold;
+            color: #2d3748;
+            margin-bottom: 0.5rem;
+        }
+
+        .stat-label {
+            color: #718096;
+            font-size: 0.875rem;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .crypto-data {
+            font-family: 'Courier New', monospace;
+            background: #1a202c;
+            color: #e2e8f0;
+            padding: 1rem;
+            border-radius: 8px;
+            overflow-x: auto;
+        }
+
+        .api-source-box {
+            background: linear-gradient(135deg, rgba(255, 255, 255, 0.95) 0%, rgba(248, 250, 252, 0.95) 100%);
+            backdrop-filter: blur(10px);
+            border-radius: 16px;
+            padding: 1.5rem;
+            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .api-source-box.active {
+            border-left: 4px solid #48bb78;
+        }
+
+        .api-source-box.inactive {
+            border-left: 4px solid #f56565;
+            opacity: 0.8;
+        }
+
+        .api-source-box.configured {
+            border-left: 4px solid #ed8936;
+        }
+
+        .api-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 1rem;
+        }
+
+        .api-name {
+            font-size: 1.25rem;
+            font-weight: bold;
+            color: #2d3748;
+        }
+
+        .api-status {
+            padding: 0.25rem 0.75rem;
+            border-radius: 20px;
+            font-size: 0.75rem;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+
+        .api-status.aktiv {
+            background: #c6f6d5;
+            color: #22543d;
+        }
+
+        .api-status.inaktiv {
+            background: #fed7d7;
+            color: #742a2a;
+        }
+
+        .api-status.konfiguriert {
+            background: #feebc8;
+            color: #7b341e;
+        }
+
+        .api-value {
+            font-size: 1.5rem;
+            font-weight: bold;
+            color: #1a202c;
+            margin: 0.5rem 0;
+            font-family: 'Courier New', monospace;
+        }
+
+        .api-change {
+            font-size: 0.875rem;
+            color: #718096;
+            margin-bottom: 1rem;
+        }
+
+        .api-details {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 1rem;
+            margin-top: 1rem;
+            padding-top: 1rem;
+            border-top: 1px solid #e2e8f0;
+        }
+
+        .api-detail {
+            display: flex;
+            flex-direction: column;
+        }
+
+        .api-detail-label {
+            font-size: 0.75rem;
+            color: #a0aec0;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            margin-bottom: 0.25rem;
+        }
+
+        .api-detail-value {
+            font-size: 0.875rem;
+            color: #4a5568;
+            font-weight: 500;
+        }
+
+        .api-next-request {
+            background: rgba(102, 126, 234, 0.1);
+            border: 1px solid rgba(102, 126, 234, 0.2);
+            border-radius: 8px;
+            padding: 0.5rem;
+            text-align: center;
+            margin-top: 1rem;
+        }
+
+        .api-next-label {
+            font-size: 0.75rem;
+            color: #667eea;
+            text-transform: uppercase;
+            font-weight: 600;
+        }
+
+        .api-next-time {
+            font-size: 1rem;
+            color: #4c51bf;
+            font-weight: bold;
+            font-family: 'Courier New', monospace;
+        }
+
+        .timestamp {
+            text-align: center;
+            color: #718096;
+            font-size: 0.875rem;
+            margin-top: 1rem;
+        }
+
+        @media (max-width: 768px) {
+            .api-sources-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .dashboard-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .header h1 {
+                font-size: 1.5rem;
+            }
+            
+            .container {
+                padding: 0 0.5rem;
+            }
+
+            .api-details {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="header">
+        <div class="container">
+            <h1>🔍 AgentCeli Monitoring Dashboard</h1>
+            <div class="subtitle">Umfassendes Live-Monitoring aller Systemaktivitäten</div>
+        </div>
+    </div>
+
+    <div class="container">
+        <button class="refresh-btn" onclick="refreshAll()">🔄 Alle Daten aktualisieren</button>
+        
+        <div class="overview-stats" id="overview-stats">
+            <div class="stat-card">
+                <div class="stat-number" id="processes-count">-</div>
+                <div class="stat-label">Aktive Prozesse</div>
+            </div>
+            <div class="stat-card">
+                <div class="stat-number" id="apis-online">-</div>
+                <div class="stat-label">APIs Online</div>
+            </div>
+            <div class="stat-card">
+                <div class="stat-number" id="files-valid">-</div>
+                <div class="stat-label">Gültige Dateien</div>
+            </div>
+            <div class="stat-card">
+                <div class="stat-number" id="logs-active">-</div>
+                <div class="stat-label">Aktive Logs</div>
+            </div>
+        </div>
+
+        <div class="api-sources-grid" id="api-sources-grid">
+            <!-- API Boxen werden hier dynamisch eingefügt -->
+        </div>
+
+        <div class="dashboard-grid">
+            <div class="card">
+                <h2>🔧 System & Prozesse</h2>
+                <div id="system-content" class="loading">Lade System-Daten...</div>
+            </div>
+
+            <div class="card">
+                <h2>📊 Datenfiles</h2>
+                <div id="data-content" class="loading">Lade Daten-Status...</div>
+            </div>
+
+            <div class="card">
+                <h2>📝 Log-Dateien</h2>
+                <div id="log-content" class="loading">Lade Log-Status...</div>
+            </div>
+        </div>
+
+        <div class="timestamp" id="last-update">Letztes Update: -</div>
+    </div>
+
+    <script>
+        let refreshInterval;
+
+        function formatTimestamp(timestamp) {
+            return new Date(timestamp).toLocaleString('de-DE');
+        }
+
+        async function loadOverview() {
+            try {
+                const response = await fetch('/api/overview');
+                const data = await response.json();
+                
+                document.getElementById('processes-count').textContent = data.system.processes;
+                document.getElementById('apis-online').textContent = `${data.apis.online}/${data.apis.total}`;
+                document.getElementById('files-valid').textContent = data.data.valid_files;
+                document.getElementById('logs-active').textContent = data.logs.active_logs;
+            } catch (error) {
+                console.error('Overview load failed:', error);
+            }
+        }
+
+        async function loadSystemStatus() {
+            try {
+                const response = await fetch('/api/system');
+                const data = await response.json();
+                
+                const content = document.getElementById('system-content');
+                if (data.processes.length === 0) {
+                    content.innerHTML = '<div class="metric-row"><span class="metric-label">Status:</span><span class="metric-value">Keine AgentCeli-Prozesse aktiv</span></div>';
+                    return;
+                }
+                
+                let html = '<div class="process-list">';
+                data.processes.forEach(proc => {
+                    html += `
+                        <div class="process-item ${proc.status}">
+                            <div class="item-header">
+                                <span class="status-indicator status-${proc.status}"></span>
+                                PID ${proc.pid} - ${proc.name}
+                            </div>
+                            <div class="item-details">${proc.command}</div>
+                        </div>
+                    `;
+                });
+                html += '</div>';
+                content.innerHTML = html;
+            } catch (error) {
+                document.getElementById('system-content').innerHTML = '<div class="metric-row"><span class="metric-label">Fehler:</span><span class="metric-value">Laden fehlgeschlagen</span></div>';
+            }
+        }
+
+        async function loadAPISourcesDetail() {
+            try {
+                const response = await fetch('/api/apis');
+                const data = await response.json();
+                
+                const grid = document.getElementById('api-sources-grid');
+                let html = '';
+                
+                data.api_sources.forEach(source => {
+                    const statusClass = source.active ? 'active' : 
+                                       source.status === 'konfiguriert' ? 'configured' : 'inactive';
+                    
+                    html += `
+                        <div class="api-source-box ${statusClass}">
+                            <div class="api-header">
+                                <div class="api-name">${source.name}</div>
+                                <div class="api-status ${source.status}">${source.status}</div>
+                            </div>
+                            
+                            <div class="api-value">${source.value}</div>
+                            <div class="api-change">${source.change || source.data_type}</div>
+                            
+                            <div class="api-details">
+                                <div class="api-detail">
+                                    <div class="api-detail-label">Datentyp</div>
+                                    <div class="api-detail-value">${source.data_type}</div>
+                                </div>
+                                <div class="api-detail">
+                                    <div class="api-detail-label">Letzter Eintrag</div>
+                                    <div class="api-detail-value">${source.last_update}</div>
+                                </div>
+                                <div class="api-detail">
+                                    <div class="api-detail-label">Intervall</div>
+                                    <div class="api-detail-value">${source.interval || 'N/A'}</div>
+                                </div>
+                                <div class="api-detail">
+                                    <div class="api-detail-label">Antwortzeit</div>
+                                    <div class="api-detail-value">${source.response_time || 'N/A'}</div>
+                                </div>
+                            </div>
+                            
+                            <div class="api-next-request">
+                                <div class="api-next-label">Nächste Abfrage</div>
+                                <div class="api-next-time">${source.next_request}</div>
+                            </div>
+                        </div>
+                    `;
+                });
+                
+                grid.innerHTML = html;
+            } catch (error) {
+                console.error('API Sources load failed:', error);
+                document.getElementById('api-sources-grid').innerHTML = 
+                    '<div class="api-source-box inactive"><div class="api-name">Fehler beim Laden der API-Quellen</div></div>';
+            }
+        }
+
+        async function loadDataStatus() {
+            try {
+                const response = await fetch('/api/data');
+                const data = await response.json();
+                
+                const content = document.getElementById('data-content');
+                let html = '<div class="file-list">';
+                
+                data.files.forEach(file => {
+                    html += `
+                        <div class="file-item ${file.status}">
+                            <div class="item-header">
+                                <span class="status-indicator status-${file.status}"></span>
+                                ${file.name}
+                            </div>
+                            <div class="item-details">
+                                Größe: ${file.size || 'N/A'} | 
+                                ${file.type === 'database' ? 'Tabellen' : 'Records'}: ${file.records || file.tables || 0} | 
+                                Geändert: ${file.modified || 'N/A'}
+                            </div>
+                        </div>
+                    `;
+                });
+                html += '</div>';
+                content.innerHTML = html;
+            } catch (error) {
+                document.getElementById('data-content').innerHTML = '<div class="metric-row"><span class="metric-label">Fehler:</span><span class="metric-value">Laden fehlgeschlagen</span></div>';
+            }
+        }
+
+        async function loadLogStatus() {
+            try {
+                const response = await fetch('/api/logs');
+                const data = await response.json();
+                
+                const content = document.getElementById('log-content');
+                let html = '<div class="log-list">';
+                
+                data.logs.forEach(log => {
+                    html += `
+                        <div class="log-item ${log.status}">
+                            <div class="item-header">
+                                <span class="status-indicator status-${log.status}"></span>
+                                ${log.name}
+                            </div>
+                            <div class="item-details">
+                                Größe: ${log.size || 'N/A'} | 
+                                Zeilen: ${log.lines || 0} | 
+                                Geändert: ${log.modified || 'N/A'}
+                            </div>
+                        </div>
+                    `;
+                });
+                html += '</div>';
+                content.innerHTML = html;
+            } catch (error) {
+                document.getElementById('log-content').innerHTML = '<div class="metric-row"><span class="metric-label">Fehler:</span><span class="metric-value">Laden fehlgeschlagen</span></div>';
+            }
+        }
+
+        async function loadCryptoData() {
+            try {
+                const response = await fetch('/api/crypto');
+                const data = await response.json();
+                
+                const content = document.getElementById('crypto-content');
+                if (Object.keys(data.data).length === 0) {
+                    content.innerHTML = '<div class="metric-row"><span class="metric-label">Status:</span><span class="metric-value">Keine aktuellen Daten verfügbar</span></div>';
+                    return;
+                }
+                
+                const html = `<div class="crypto-data">${JSON.stringify(data.data, null, 2)}</div>`;
+                content.innerHTML = html;
+            } catch (error) {
+                document.getElementById('crypto-content').innerHTML = '<div class="metric-row"><span class="metric-label">Fehler:</span><span class="metric-value">Laden fehlgeschlagen</span></div>';
+            }
+        }
+
+        async function refreshAll() {
+            document.getElementById('last-update').textContent = 'Aktualisiere...';
+            
+            await Promise.all([
+                loadOverview(),
+                loadAPISourcesDetail(),
+                loadSystemStatus(),
+                loadDataStatus(),
+                loadLogStatus(),
+                loadCryptoData()
+            ]);
+            
+            document.getElementById('last-update').textContent = `Letztes Update: ${formatTimestamp(new Date())}`;
+        }
+
+        // Initial load
+        refreshAll();
+
+        // Auto-refresh every 30 seconds
+        refreshInterval = setInterval(refreshAll, 30000);
+    </script>
+</body>
+</html>

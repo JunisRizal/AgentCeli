@@ -1,0 +1,160 @@
+/Users/julius/Library/Python/3.9/lib/python/site-packages/urllib3/__init__.py:35: NotOpenSSLWarning: urllib3 v2 only supports OpenSSL 1.1.1+, currently the 'ssl' module is compiled with 'LibreSSL 2.8.3'. See: https://github.com/urllib3/urllib3/issues/3020
+  warnings.warn(
+📊 Liquidation Risk Analyzer - AgentCeli
+==================================================
+Features:
+  🔍 Multi-source risk analysis
+  🌊 Volatility-based liquidation estimates
+  🐋 Whale movement correlation
+  😨 Fear & Greed sentiment integration
+  🎯 Estimated liquidation zones
+  📋 Detailed German explanations
+
+📊 Liquidation Risk Analyzer - AgentCeli initialized
+
+🔍 Starting comprehensive liquidation analysis...
+📊 Analyzing BTC...
+📊 Analyzing ETH...
+📊 Analyzing XRP...
+📊 Analyzing SOL...
+💾 Analysis saved to liquidation_data/liquidation_analysis_latest.json
+
+============================================================
+📊 LIQUIDATION RISK SUMMARY REPORT
+============================================================
+🔍 Symbols Analyzed: 4
+📈 Average Risk Score: 8.4/100
+⚠️ High Risk Assets: 0
+😨 Market Sentiment: Fear & Greed Index
+
+📋 INDIVIDUAL SYMBOL ANALYSIS:
+------------------------------------------------------------
+🟢 BTC  | Risk:   0.0 | Price: $    0.00 | Change:  +0.00%
+🟢 ETH  | Risk:   0.6 | Price: $    0.00 | Change:  +0.00%
+🟢 SOL  | Risk:   0.0 | Price: $    0.00 | Change:  +0.00%
+🟡 XRP  | Risk:  33.1 | Price: $    0.00 | Change:  +0.00%
+
+💡 DETAILED EXPLANATIONS:
+============================================================
+
+🔥 BTC DETAILS:
+------------------------------
+BTC Liquidation-Analyse:
+
+📊 PREIS (24h):
+   Aktuell: $0.00
+   Gestern: $0.00
+   Änderung: +0.00% (unverändert)
+
+🐋 WHALE-AKTIVITÄT (7 Tage):
+   Zufluss: 0.0M BTC
+   Abfluss: 0.0M BTC
+   Netto: -0.0M BTC
+   Status: Neutral
+
+🔥 LIQUIDATION-RISIKO:
+   Score: 0.0/100
+   Klasse: NIEDRIG RISKANT - Stabile Bedingungen
+   Empfehlung: Relativ sichere Handelsbedingungen.
+
+🎯 LIQUIDATION-ZONEN:
+   10x Long: $0.00 (-15%)
+   5x Long: $0.00 (-25%)
+   10x Short: $0.00 (+15%)
+   5x Short: $0.00 (+25%)
+
+😨 MARKET SENTIMENT:
+   Fear & Greed: 74 (Greed)
+   Impact: Gier verstärkt Liquidation-Risiko (überkauft)
+
+🔥 ETH DETAILS:
+------------------------------
+ETH Liquidation-Analyse:
+
+📊 PREIS (24h):
+   Aktuell: $0.00
+   Gestern: $0.00
+   Änderung: +0.00% (unverändert)
+
+🐋 WHALE-AKTIVITÄT (7 Tage):
+   Zufluss: 0.0M ETH
+   Abfluss: 0.0M ETH
+   Netto: -0.4M ETH
+   Status: Neutral
+
+🔥 LIQUIDATION-RISIKO:
+   Score: 0.6/100
+   Klasse: NIEDRIG RISKANT - Stabile Bedingungen
+   Empfehlung: Relativ sichere Handelsbedingungen.
+
+🎯 LIQUIDATION-ZONEN:
+   10x Long: $0.00 (-15%)
+   5x Long: $0.00 (-25%)
+   10x Short: $0.00 (+15%)
+   5x Short: $0.00 (+25%)
+
+😨 MARKET SENTIMENT:
+   Fear & Greed: 74 (Greed)
+   Impact: Gier verstärkt Liquidation-Risiko (überkauft)
+
+🔥 SOL DETAILS:
+------------------------------
+SOL Liquidation-Analyse:
+
+📊 PREIS (24h):
+   Aktuell: $0.00
+   Gestern: $0.00
+   Änderung: +0.00% (unverändert)
+
+🐋 WHALE-AKTIVITÄT (7 Tage):
+   Zufluss: 0.0M SOL
+   Abfluss: 0.0M SOL
+   Netto: +0.0M SOL
+   Status: Neutral
+
+🔥 LIQUIDATION-RISIKO:
+   Score: 0.0/100
+   Klasse: NIEDRIG RISKANT - Stabile Bedingungen
+   Empfehlung: Relativ sichere Handelsbedingungen.
+
+🎯 LIQUIDATION-ZONEN:
+   10x Long: $0.00 (-15%)
+   5x Long: $0.00 (-25%)
+   10x Short: $0.00 (+15%)
+   5x Short: $0.00 (+25%)
+
+😨 MARKET SENTIMENT:
+   Fear & Greed: 74 (Greed)
+   Impact: Gier verstärkt Liquidation-Risiko (überkauft)
+
+🔥 XRP DETAILS:
+------------------------------
+XRP Liquidation-Analyse:
+
+📊 PREIS (24h):
+   Aktuell: $0.00
+   Gestern: $0.00
+   Änderung: +0.00% (unverändert)
+
+🐋 WHALE-AKTIVITÄT (7 Tage):
+   Zufluss: 0.0M XRP
+   Abfluss: 0.0M XRP
+   Netto: -22.0M XRP
+   Status: Akkumulation
+
+🔥 LIQUIDATION-RISIKO:
+   Score: 33.1/100
+   Klasse: MODERATE GEFAHR - Normale Marktrisiken
+   Empfehlung: Standard-Risikomanagement anwenden.
+
+🎯 LIQUIDATION-ZONEN:
+   10x Long: $0.00 (-15%)
+   5x Long: $0.00 (-25%)
+   10x Short: $0.00 (+15%)
+   5x Short: $0.00 (+25%)
+
+😨 MARKET SENTIMENT:
+   Fear & Greed: 74 (Greed)
+   Impact: Gier verstärkt Liquidation-Risiko (überkauft)
+
+✅ Analysis complete at 18:34:24

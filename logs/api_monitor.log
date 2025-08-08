@@ -1,0 +1,10 @@
+Traceback (most recent call last):
+  File "/Users/julius/Desktop/AgentCeli/api_usage_monitor.py", line 10, in <module>
+    from api_rate_limiter import rate_limiter
+  File "/Users/julius/Desktop/AgentCeli/api_rate_limiter.py", line 217, in <module>
+    rate_limiter = APIRateLimiter()
+  File "/Users/julius/Desktop/AgentCeli/api_rate_limiter.py", line 27, in __init__
+    self.load_config()
+  File "/Users/julius/Desktop/AgentCeli/api_rate_limiter.py", line 55, in load_config
+    if api_name in self.rate_limits:
+AttributeError: 'APIRateLimiter' object has no attribute 'rate_limits'

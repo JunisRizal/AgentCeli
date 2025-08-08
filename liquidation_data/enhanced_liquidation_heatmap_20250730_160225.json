@@ -1,0 +1,288 @@
+{
+  "timestamp": "2025-07-30T16:02:25.317270",
+  "method": "enhanced_multi_source",
+  "liquidation_heatmap": {
+    "BTC": {
+      "liquidation_risk_score": 7.142391000034858,
+      "risk_class": "LOW",
+      "color_intensity": 30,
+      "price_change_24h": -0.776,
+      "current_price": 117690.51,
+      "volume_24h": 13182.25987,
+      "volatility_component": 7.76,
+      "whale_component": 0.002854610100209975,
+      "fear_greed_multiplier": 1.5,
+      "whale_flow_pressure": "LOW",
+      "estimated_liquidation_zones": {
+        "high_leverage_long": 100036.9335,
+        "medium_leverage_long": 88267.88249999999,
+        "high_leverage_short": 135344.08649999998,
+        "medium_leverage_short": 147113.13749999998,
+        "adjusted_support": 105080.86736058648,
+        "adjusted_resistance": 130300.15263941351
+      },
+      "detailed_explanation": {
+        "summary": "BTC ist in 24h gefallen um 0.78%, Risk Score: 7.1/100",
+        "price_analysis": {
+          "current_price_usd": 117690.51,
+          "previous_price_24h": 118610.93082318793,
+          "price_change_24h": -0.776,
+          "price_direction": "gefallen um 0.78%",
+          "trend": "BEARISH"
+        },
+        "whale_analysis": {
+          "summary": "Ausgeglichene Whale-Aktivit\u00e4t",
+          "signal": "Neutral",
+          "inflow_7d_millions": 0.14926504833711995,
+          "outflow_7d_millions": 0.14641043823690997,
+          "net_flow_7d_millions": -0.002854610100209975,
+          "net_flow_24h_millions": 0.00040952865409000106,
+          "pressure_explanation": "Geringe Whale-Aktivit\u00e4t",
+          "trend_explanation": "Verkaufsdruck nimmt zu"
+        },
+        "risk_analysis": {
+          "risk_score": 7.142391000034858,
+          "risk_class": "NIEDRIG RISKANT - Stabile Bedingungen",
+          "trading_advice": "Relativ sichere Handelsbedingungen.",
+          "volatility_component": 7.76,
+          "whale_component": 0.002854610100209975,
+          "fear_greed_multiplier": 1.5,
+          "fear_greed_impact": "Gier verst\u00e4rkt Liquidation-Risiko (\u00fcberkauft)"
+        },
+        "liquidation_zones": {
+          "support_level": "$100036.93 (10x Long Liquidation)",
+          "strong_support": "$88267.88 (5x Long Liquidation)",
+          "resistance_level": "$135344.09 (10x Short Liquidation)",
+          "strong_resistance": "$147113.14 (5x Short Liquidation)"
+        },
+        "human_readable": "\nBTC Liquidation-Analyse:\n\n\ud83d\udcca PREIS (24h):\n   Aktuell: $117,690.51\n   Gestern: $118,610.93\n   \u00c4nderung: -0.78% (gefallen um 0.78%)\n\n\ud83d\udc0b WHALE-AKTIVIT\u00c4T (7 Tage):\n   Zufluss: 0.1M BTC\n   Abfluss: 0.1M BTC\n   Netto: -0.0M BTC\n   Status: Neutral\n\n\ud83d\udd25 LIQUIDATION-RISIKO:\n   Score: 7.1/100\n   Klasse: NIEDRIG RISKANT - Stabile Bedingungen\n   Empfehlung: Relativ sichere Handelsbedingungen.\n\n\ud83c\udfaf LIQUIDATION-ZONEN:\n   10x Long: $100036.93 (-15%)\n   5x Long: $88267.88 (-25%)\n   10x Short: $135344.09 (+15%)\n   5x Short: $147113.14 (+25%)\n\n\ud83d\ude28 MARKET SENTIMENT:\n   Fear & Greed: 74 (Greed)\n   Impact: Gier verst\u00e4rkt Liquidation-Risiko (\u00fcberkauft)\n            "
+      },
+      "whale_flow_data": {
+        "net_flow_7d": -2854.610100209975,
+        "net_flow_24h": 409.52865409000106,
+        "inflow_7d": 149265.04833711995,
+        "outflow_7d": 146410.43823690998,
+        "inflow_24h": 1320.716630499999,
+        "outflow_24h": 1730.24528459,
+        "pressure_explanation": "Geringe Whale-Aktivit\u00e4t",
+        "trend_explanation": "Verkaufsdruck nimmt zu",
+        "flow_trend": "INCREASING"
+      }
+    },
+    "ETH": {
+      "liquidation_risk_score": 21.934638977400525,
+      "risk_class": "LOW",
+      "color_intensity": 30,
+      "price_change_24h": -1.759,
+      "current_price": 3768.0,
+      "volume_24h": 501890.5528,
+      "volatility_component": 17.59,
+      "whale_component": 0.3704287755094771,
+      "fear_greed_multiplier": 1.5,
+      "whale_flow_pressure": "LOW",
+      "estimated_liquidation_zones": {
+        "high_leverage_long": 3202.7999999999997,
+        "medium_leverage_long": 2826.0,
+        "high_leverage_short": 4333.2,
+        "medium_leverage_short": 4710.0,
+        "adjusted_support": 3308.5502803331547,
+        "adjusted_resistance": 4227.449719666845
+      },
+      "detailed_explanation": {
+        "summary": "ETH ist in 24h gefallen um 1.76%, Risk Score: 21.9/100",
+        "price_analysis": {
+          "current_price_usd": 3768.0,
+          "previous_price_24h": 3835.465844199469,
+          "price_change_24h": -1.759,
+          "price_direction": "gefallen um 1.76%",
+          "trend": "BEARISH"
+        },
+        "whale_analysis": {
+          "summary": "Ausgeglichene Whale-Aktivit\u00e4t",
+          "signal": "Neutral",
+          "inflow_7d_millions": 1.9972096545411793,
+          "outflow_7d_millions": 1.6267808790317022,
+          "net_flow_7d_millions": -0.3704287755094771,
+          "net_flow_24h_millions": -0.003220936348804284,
+          "pressure_explanation": "Geringe Whale-Aktivit\u00e4t",
+          "trend_explanation": "Verkaufsdruck nimmt zu"
+        },
+        "risk_analysis": {
+          "risk_score": 21.934638977400525,
+          "risk_class": "NIEDRIG RISKANT - Stabile Bedingungen",
+          "trading_advice": "Relativ sichere Handelsbedingungen.",
+          "volatility_component": 17.59,
+          "whale_component": 0.3704287755094771,
+          "fear_greed_multiplier": 1.5,
+          "fear_greed_impact": "Gier verst\u00e4rkt Liquidation-Risiko (\u00fcberkauft)"
+        },
+        "liquidation_zones": {
+          "support_level": "$3202.80 (10x Long Liquidation)",
+          "strong_support": "$2826.00 (5x Long Liquidation)",
+          "resistance_level": "$4333.20 (10x Short Liquidation)",
+          "strong_resistance": "$4710.00 (5x Short Liquidation)"
+        },
+        "human_readable": "\nETH Liquidation-Analyse:\n\n\ud83d\udcca PREIS (24h):\n   Aktuell: $3,768.00\n   Gestern: $3,835.47\n   \u00c4nderung: -1.76% (gefallen um 1.76%)\n\n\ud83d\udc0b WHALE-AKTIVIT\u00c4T (7 Tage):\n   Zufluss: 2.0M ETH\n   Abfluss: 1.6M ETH\n   Netto: -0.4M ETH\n   Status: Neutral\n\n\ud83d\udd25 LIQUIDATION-RISIKO:\n   Score: 21.9/100\n   Klasse: NIEDRIG RISKANT - Stabile Bedingungen\n   Empfehlung: Relativ sichere Handelsbedingungen.\n\n\ud83c\udfaf LIQUIDATION-ZONEN:\n   10x Long: $3202.80 (-15%)\n   5x Long: $2826.00 (-25%)\n   10x Short: $4333.20 (+15%)\n   5x Short: $4710.00 (+25%)\n\n\ud83d\ude28 MARKET SENTIMENT:\n   Fear & Greed: 74 (Greed)\n   Impact: Gier verst\u00e4rkt Liquidation-Risiko (\u00fcberkauft)\n            "
+      },
+      "whale_flow_data": {
+        "net_flow_7d": -370428.7755094771,
+        "net_flow_24h": -3220.9363488042836,
+        "inflow_7d": 1997209.6545411793,
+        "outflow_7d": 1626780.8790317022,
+        "inflow_24h": 17638.30842795644,
+        "outflow_24h": 14417.372079152155,
+        "pressure_explanation": "Geringe Whale-Aktivit\u00e4t",
+        "trend_explanation": "Verkaufsdruck nimmt zu",
+        "flow_trend": "INCREASING"
+      }
+    },
+    "XRP": {
+      "liquidation_risk_score": 90.54656756059778,
+      "risk_class": "EXTREME",
+      "color_intensity": 100,
+      "price_change_24h": -1.577,
+      "current_price": 3.0895,
+      "volume_24h": 154088572.7,
+      "volatility_component": 15.77,
+      "whale_component": 22.04192789157705,
+      "fear_greed_multiplier": 1.5,
+      "whale_flow_pressure": "ACCUMULATION",
+      "estimated_liquidation_zones": {
+        "high_leverage_long": 2.626075,
+        "medium_leverage_long": 2.317125,
+        "high_leverage_short": 3.5529249999999997,
+        "medium_leverage_short": 3.8618750000000004,
+        "adjusted_support": 2.5008063795215336,
+        "adjusted_resistance": 3.6781936204784675
+      },
+      "detailed_explanation": {
+        "summary": "XRP ist in 24h gefallen um 1.58%, Risk Score: 90.5/100",
+        "price_analysis": {
+          "current_price_usd": 3.0895,
+          "previous_price_24h": 3.1390020625260355,
+          "price_change_24h": -1.577,
+          "price_direction": "gefallen um 1.58%",
+          "trend": "BEARISH"
+        },
+        "whale_analysis": {
+          "summary": "22.0M weg von Exchanges (BULLISH)",
+          "signal": "Akkumulation",
+          "inflow_7d_millions": 127.4870587914512,
+          "outflow_7d_millions": 105.44513089987414,
+          "net_flow_7d_millions": -22.04192789157705,
+          "net_flow_24h_millions": 1.6882049467469407,
+          "pressure_explanation": "Wale akkumulieren (kaufen)",
+          "trend_explanation": "Verkaufsdruck nimmt zu"
+        },
+        "risk_analysis": {
+          "risk_score": 90.54656756059778,
+          "risk_class": "EXTREM GEF\u00c4HRLICH - Sehr hohe Liquidation-Wahrscheinlichkeit",
+          "trading_advice": "Vorsicht bei Leverage! Starke Bewegungen wahrscheinlich.",
+          "volatility_component": 15.77,
+          "whale_component": 22.04192789157705,
+          "fear_greed_multiplier": 1.5,
+          "fear_greed_impact": "Gier verst\u00e4rkt Liquidation-Risiko (\u00fcberkauft)"
+        },
+        "liquidation_zones": {
+          "support_level": "$2.63 (10x Long Liquidation)",
+          "strong_support": "$2.32 (5x Long Liquidation)",
+          "resistance_level": "$3.55 (10x Short Liquidation)",
+          "strong_resistance": "$3.86 (5x Short Liquidation)"
+        },
+        "human_readable": "\nXRP Liquidation-Analyse:\n\n\ud83d\udcca PREIS (24h):\n   Aktuell: $3.09\n   Gestern: $3.14\n   \u00c4nderung: -1.58% (gefallen um 1.58%)\n\n\ud83d\udc0b WHALE-AKTIVIT\u00c4T (7 Tage):\n   Zufluss: 127.5M XRP\n   Abfluss: 105.4M XRP\n   Netto: -22.0M XRP\n   Status: Akkumulation\n\n\ud83d\udd25 LIQUIDATION-RISIKO:\n   Score: 90.5/100\n   Klasse: EXTREM GEF\u00c4HRLICH - Sehr hohe Liquidation-Wahrscheinlichkeit\n   Empfehlung: Vorsicht bei Leverage! Starke Bewegungen wahrscheinlich.\n\n\ud83c\udfaf LIQUIDATION-ZONEN:\n   10x Long: $2.63 (-15%)\n   5x Long: $2.32 (-25%)\n   10x Short: $3.55 (+15%)\n   5x Short: $3.86 (+25%)\n\n\ud83d\ude28 MARKET SENTIMENT:\n   Fear & Greed: 74 (Greed)\n   Impact: Gier verst\u00e4rkt Liquidation-Risiko (\u00fcberkauft)\n            "
+      },
+      "whale_flow_data": {
+        "net_flow_7d": -22041927.89157705,
+        "net_flow_24h": 1688204.9467469407,
+        "inflow_7d": 127487058.7914512,
+        "outflow_7d": 105445130.89987415,
+        "inflow_24h": 832789.1757221245,
+        "outflow_24h": 2520994.1224690652,
+        "pressure_explanation": "Wale akkumulieren (kaufen)",
+        "trend_explanation": "Verkaufsdruck nimmt zu",
+        "flow_trend": "INCREASING"
+      }
+    },
+    "SOL": {
+      "liquidation_risk_score": 53.40723366000001,
+      "risk_class": "MEDIUM",
+      "color_intensity": 60,
+      "price_change_24h": -2.502,
+      "current_price": 178.05,
+      "volume_24h": 2574102.805,
+      "volatility_component": 25.019999999999996,
+      "whale_component": 0.0,
+      "fear_greed_multiplier": 1.5,
+      "whale_flow_pressure": "LOW",
+      "estimated_liquidation_zones": {
+        "high_leverage_long": 151.3425,
+        "medium_leverage_long": 133.53750000000002,
+        "high_leverage_short": 204.7575,
+        "medium_leverage_short": 222.5625,
+        "adjusted_support": 150.735842046837,
+        "adjusted_resistance": 205.36415795316302
+      },
+      "detailed_explanation": {
+        "summary": "SOL ist in 24h gefallen um 2.50%, Risk Score: 53.4/100",
+        "price_analysis": {
+          "current_price_usd": 178.05,
+          "previous_price_24h": 182.61913064883385,
+          "price_change_24h": -2.502,
+          "price_direction": "gefallen um 2.50%",
+          "trend": "BEARISH"
+        },
+        "whale_analysis": {
+          "summary": "Ausgeglichene Whale-Aktivit\u00e4t",
+          "signal": "Neutral",
+          "inflow_7d_millions": 0.0,
+          "outflow_7d_millions": 0.0,
+          "net_flow_7d_millions": 0.0,
+          "net_flow_24h_millions": 0.0,
+          "pressure_explanation": "Geringe Whale-Aktivit\u00e4t",
+          "trend_explanation": "Stabile Whale-Aktivit\u00e4t"
+        },
+        "risk_analysis": {
+          "risk_score": 53.40723366000001,
+          "risk_class": "MODERATE GEFAHR - Normale Marktrisiken",
+          "trading_advice": "Standard-Risikomanagement anwenden.",
+          "volatility_component": 25.019999999999996,
+          "whale_component": 0.0,
+          "fear_greed_multiplier": 1.5,
+          "fear_greed_impact": "Gier verst\u00e4rkt Liquidation-Risiko (\u00fcberkauft)"
+        },
+        "liquidation_zones": {
+          "support_level": "$151.34 (10x Long Liquidation)",
+          "strong_support": "$133.54 (5x Long Liquidation)",
+          "resistance_level": "$204.76 (10x Short Liquidation)",
+          "strong_resistance": "$222.56 (5x Short Liquidation)"
+        },
+        "human_readable": "\nSOL Liquidation-Analyse:\n\n\ud83d\udcca PREIS (24h):\n   Aktuell: $178.05\n   Gestern: $182.62\n   \u00c4nderung: -2.50% (gefallen um 2.50%)\n\n\ud83d\udc0b WHALE-AKTIVIT\u00c4T (7 Tage):\n   Zufluss: 0.0M SOL\n   Abfluss: 0.0M SOL\n   Netto: +0.0M SOL\n   Status: Neutral\n\n\ud83d\udd25 LIQUIDATION-RISIKO:\n   Score: 53.4/100\n   Klasse: MODERATE GEFAHR - Normale Marktrisiken\n   Empfehlung: Standard-Risikomanagement anwenden.\n\n\ud83c\udfaf LIQUIDATION-ZONEN:\n   10x Long: $151.34 (-15%)\n   5x Long: $133.54 (-25%)\n   10x Short: $204.76 (+15%)\n   5x Short: $222.56 (+25%)\n\n\ud83d\ude28 MARKET SENTIMENT:\n   Fear & Greed: 74 (Greed)\n   Impact: Gier verst\u00e4rkt Liquidation-Risiko (\u00fcberkauft)\n            "
+      },
+      "whale_flow_data": {
+        "net_flow_7d": 0,
+        "net_flow_24h": 0,
+        "inflow_7d": 0,
+        "outflow_7d": 0,
+        "inflow_24h": 0,
+        "outflow_24h": 0,
+        "pressure_explanation": "Geringe Whale-Aktivit\u00e4t",
+        "trend_explanation": "Stabile Whale-Aktivit\u00e4t",
+        "flow_trend": "STABLE"
+      }
+    }
+  },
+  "market_overview": {
+    "fear_greed": {
+      "fear_greed_value": 74,
+      "fear_greed_class": "Greed",
+      "liquidation_multiplier": 1.5,
+      "risk_level": "HIGH",
+      "market_sentiment": "GREED"
+    },
+    "whale_activity": "LOW",
+    "total_symbols_analyzed": 4,
+    "average_liquidation_risk": 43.257707799508296,
+    "high_risk_symbols": 1
+  },
+  "risk_factors": []
+}

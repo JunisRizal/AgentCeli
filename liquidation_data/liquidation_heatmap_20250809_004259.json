@@ -1,0 +1,12 @@
+{
+  "timestamp": "2025-08-09T00:42:53.067090",
+  "heatmap_data": {},
+  "total_liquidations_24h": 0,
+  "major_liquidations": [],
+  "correlation": {
+    "fear_greed_value": 74,
+    "fear_greed_class": "Greed",
+    "liquidation_risk": "MEDIUM",
+    "market_sentiment": "GREED"
+  }
+}
