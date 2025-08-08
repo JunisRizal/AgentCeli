@@ -4737,3 +4737,9 @@ collector.continuous_collection(300)
 [2025-08-09 01:10:46] WATCHDOG: 📊 Health Status: Data=True, API=True, Processes=4
 [2025-08-09 01:10:46] WATCHDOG: ✅ System healthy
 [2025-08-09 01:10:46] WATCHDOG: 😴 Sleeping for 600 seconds...
+[2025-08-09 01:20:46] WATCHDOG: 🔍 Performing health check...
+[2025-08-09 01:20:46] WATCHDOG: ✅ Data is fresh
+[2025-08-09 01:20:46] WATCHDOG: ✅ API is healthy
+[2025-08-09 01:20:46] WATCHDOG: 📊 Health Status: Data=True, API=True, Processes=4
+[2025-08-09 01:20:46] WATCHDOG: ✅ System healthy
+[2025-08-09 01:20:46] WATCHDOG: 😴 Sleeping for 600 seconds...
